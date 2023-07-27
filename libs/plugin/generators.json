@@ -1,0 +1,9 @@
+{
+  "generators": {
+    "apps-poc-nest": {
+      "factory": "./src/generators/apps-poc-nest/generator",
+      "schema": "./src/generators/apps-poc-nest/schema.json",
+      "description": "apps-poc-nest generator"
+    }
+  }
+}
