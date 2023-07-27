@@ -1,0 +1,50 @@
+{
+  "name": "poc-backend",
+  "$schema": "../../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "apps/poc/backend/src",
+  "projectType": "application",
+  "targets": {
+    "build": {
+      "executor": "@nx/webpack:webpack",
+      "outputs": ["{options.outputPath}"],
+      "defaultConfiguration": "production",
+      "options": {
+        "target": "node",
+        "compiler": "tsc",
+        "outputPath": "dist/apps/poc/backend",
+        "main": "apps/poc/backend/src/main.ts",
+        "tsConfig": "apps/poc/backend/tsconfig.app.json",
+        "assets": ["apps/poc/backend/src/assets"],
+        "isolatedConfig": true,
+        "webpackConfig": "apps/poc/backend/webpack.config.js"
+      },
+      "configurations": {
+        "development": {},
+        "production": {}
+      }
+    },
+    "serve": {
+      "executor": "@nx/js:node",
+      "defaultConfiguration": "development",
+      "options": {
+        "buildTarget": "poc-backend:build"
+      },
+      "configurations": {
+        "development": {
+          "buildTarget": "poc-backend:build:development"
+        },
+        "production": {
+          "buildTarget": "poc-backend:build:production"
+        }
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": ["{options.outputFile}"],
+      "options": {
+        "lintFilePatterns": ["apps/poc/backend/**/*.ts"]
+      }
+    }
+  },
+  "tags": ["poc"]
+}
