@@ -1,4 +1,4 @@
-import { Tree, names } from '@nrwl/devkit';
+import { names,Tree } from '@nrwl/devkit';
 
 import { renameAndReplaceContentInFile } from '../-shared/rename-and-place-content-in-file';
 

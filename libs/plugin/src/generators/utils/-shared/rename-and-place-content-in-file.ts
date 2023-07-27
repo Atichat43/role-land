@@ -1,4 +1,4 @@
-import { Tree, joinPathFragments } from '@nrwl/devkit';
+import { joinPathFragments,Tree } from '@nrwl/devkit';
 
 export async function renameAndReplaceContentInFile(
   tree: Tree,

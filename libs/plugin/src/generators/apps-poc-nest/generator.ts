@@ -1,8 +1,8 @@
 import { formatFiles, readJson, Tree } from '@nx/devkit';
 import { applicationGenerator } from '@nx/nest';
 
-import { AppsPocNestGeneratorSchema } from './schema';
 import { Nest } from '../utils';
+import { AppsPocNestGeneratorSchema } from './schema';
 
 export async function appsPocNestGenerator(
   tree: Tree,
