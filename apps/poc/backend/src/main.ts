@@ -6,6 +6,9 @@
 import { NestFactory } from '@nestjs/core';
 
 import { BackendModule } from './app/backend.module';
+import { app as _App } from './app/slack-bot/index';
+
+_App;
 
 async function bootstrap() {
   // const app = await NestFactory.create(BackendModule);
