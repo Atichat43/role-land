@@ -1,6 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule } from '@nestjs/typeorm';
-import { User } from './user.entity';
+import { UserEntity } from './entities/user/user.entity';
 import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
 
 @Module({
@@ -18,15 +18,12 @@ import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
           password: typeOrmConfig.TYPEORM_PASSWORD,
           database: typeOrmConfig.TYPEORM_DATABASE,
           synchronize: typeOrmConfig.TYPEORM_SYNCHRONIZE,
-          entities: [User],
+          entities: [UserEntity],
         };
       },
       inject: [TypeOrmConfigService],
     }),
-    TypeOrmModule.forFeature([User]),
+    TypeOrmModule.forFeature([UserEntity]),
   ],
-  controllers: [],
-  providers: [],
-  exports: [],
 })
 export class TypeormModule {}
