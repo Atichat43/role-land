@@ -1,0 +1,17 @@
+### Generate Token
+POST http://localhost:3000/auth/generate-token
+Content-Type: application/json
+
+{
+  "username": "testuser",
+  "role": "admin"
+}
+
+### Validate Token
+# Replace YOUR_JWT_TOKEN_HERE with the token generated from the above request
+POST http://localhost:3000/auth/validate-token
+Content-Type: application/json
+
+{
+  "token": "eyJhbGciOiJSUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VybmFtZSI6InRlc3R1c2VyIiwicm9sZSI6ImFkbWluIiwiaWF0IjoxNjkyNjkxNzUyfQ.cu59ar-0nMyicHLDCBYzEhTN4aRXDUMN_yGq8TxZ7-REYcAkMokhkWLDg779obEr5J09L-avqILmJaSSinPytEwiYSS1jPowvI-NLR_qGDFyZogvaYU4EvmrQPPBd6CTbZa23Xdzi8YkjMS4hcz7e4btBcTHNsZAr0LUkHUQr8uPM508-wzssamKIW0TBUySj0MmeBYo0KpC35VVg7ENqrHr5GE4XteEm65sjWroCtyfQyXU0bn4fjAVrrQ8HeIXatrulOlDst6UONLDerfKQ-MLgkz_7xUTQALyQXSqO1V8kjpktWyRvhCfc6f_m38GtdeyJ45oEBegrsLNwUwbeQ"
+}

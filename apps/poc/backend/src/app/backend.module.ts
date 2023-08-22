@@ -1,12 +1,12 @@
 import { Module } from '@nestjs/common';
-
-// import { BackendController } from './backend.controller';
-// import { BackendService } from './backend.service';
-import { DiscordBotModule } from './discord-bot/discord-bot.module';
+import { AuthDevModule, AuthEnvConfig, AuthModule } from '@role-land/auth';
+import { ConfigModule } from '@role-land/config';
 
 @Module({
-  imports: [DiscordBotModule],
-  // controllers: [BackendController],
-  // providers: [BackendService],
+  imports: [ConfigModule.forRoot([AuthEnvConfig]), AuthDevModule],
 })
-export class BackendModule {}
+export class BackendModule {
+  constructor() {
+    // console.log('BackendModule', process.env.AUTH_PRIVATE_KEY);
+  }
+}
