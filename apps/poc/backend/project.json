@@ -6,7 +6,9 @@
   "targets": {
     "build": {
       "executor": "@nx/webpack:webpack",
-      "outputs": ["{options.outputPath}"],
+      "outputs": [
+        "{options.outputPath}"
+      ],
       "defaultConfiguration": "production",
       "options": {
         "target": "node",
@@ -14,7 +16,9 @@
         "outputPath": "dist/apps/poc/backend",
         "main": "apps/poc/backend/src/main.ts",
         "tsConfig": "apps/poc/backend/tsconfig.app.json",
-        "assets": ["apps/poc/backend/src/assets"],
+        "assets": [
+          "apps/poc/backend/src/assets"
+        ],
         "isolatedConfig": true,
         "webpackConfig": "apps/poc/backend/webpack.config.js"
       },
@@ -36,15 +40,27 @@
         "production": {
           "buildTarget": "poc-backend:build:production"
         }
-      }
+      },
+      "dependsOn": [
+        {
+          "target": "compose",
+          "projects": "typeorm"
+        }
+      ]
     },
     "lint": {
       "executor": "@nx/linter:eslint",
-      "outputs": ["{options.outputFile}"],
+      "outputs": [
+        "{options.outputFile}"
+      ],
       "options": {
-        "lintFilePatterns": ["apps/poc/backend/**/*.ts"]
+        "lintFilePatterns": [
+          "apps/poc/backend/**/*.ts"
+        ]
       }
     }
   },
-  "tags": ["poc"]
+  "tags": [
+    "poc"
+  ]
 }
