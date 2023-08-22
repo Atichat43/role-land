@@ -4,6 +4,14 @@
   "sourceRoot": "libs/typeorm/src",
   "projectType": "library",
   "targets": {
+    "compose": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          "docker compose -f libs/typeorm/src/lib/dev/docker-compose.yml up -d"
+        ]
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": [
