@@ -1,15 +1,15 @@
 import { Module, OnModuleInit } from '@nestjs/common';
 
-import { TypeormModule } from '../typeorm.module';
+import { TypeOrmModule } from '../typeorm.module';
 import { SeederService } from './seeder.service';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from '../entities/user/user.entity';
 
 @Module({
-  imports: [TypeormModule, TypeOrmModule.forFeature([UserEntity])],
+  imports: [TypeOrmModule, _TypeOrmModule.forFeature([UserEntity])],
   providers: [SeederService],
 })
-export class TypeormDevModule implements OnModuleInit {
+export class TypeOrmDevModule implements OnModuleInit {
   constructor(private readonly seederService: SeederService) {}
 
   async onModuleInit() {

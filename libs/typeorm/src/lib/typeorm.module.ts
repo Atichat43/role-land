@@ -1,11 +1,11 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
 import { UserEntity } from './entities/user/user.entity';
 import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
 
 @Module({
   imports: [
-    TypeOrmModule.forRootAsync({
+    _TypeOrmModule.forRootAsync({
       imports: [TypeOrmConfigModule],
       useFactory: async (configService: TypeOrmConfigService) => {
         const typeOrmConfig = configService.get();
@@ -23,7 +23,7 @@ import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
       },
       inject: [TypeOrmConfigService],
     }),
-    TypeOrmModule.forFeature([UserEntity]),
+    _TypeOrmModule.forFeature([UserEntity]),
   ],
 })
-export class TypeormModule {}
+export class TypeOrmModule {}
