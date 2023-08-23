@@ -22,7 +22,10 @@ export class SessionEntity extends BaseEntityWithSoftDelete implements Session {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('enum', { enum: SessionStatusEnum })
+  @Column('enum', {
+    enum: SessionStatusEnum,
+    default: SessionStatusEnum.PENDING,
+  })
   status: SessionStatusEnum;
 
   // aggregates
