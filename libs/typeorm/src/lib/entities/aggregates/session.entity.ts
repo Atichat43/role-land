@@ -6,6 +6,7 @@ import {
   JoinTable,
   JoinColumn,
   OneToOne,
+  Index,
 } from 'typeorm';
 import { SharedLinkEntity } from '../models/shared-link.entity';
 import { Session } from '../../core/aggregates.types';
@@ -15,6 +16,7 @@ import { ThemeEntity } from '../models/theme.entity';
 import { BaseEntityWithSoftDelete } from '../_common.entity';
 
 @Entity('Session')
+@Index('session_status_index', ['status']) // NOTE: query sessions by status.
 // NOTE: soft delete: analyzing past sessions (important interactions or events).
 export class SessionEntity extends BaseEntityWithSoftDelete implements Session {
   @PrimaryGeneratedColumn('uuid')

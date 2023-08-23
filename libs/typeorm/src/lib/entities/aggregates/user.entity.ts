@@ -9,6 +9,7 @@ import { User } from '../../core/aggregates.types';
 import { BaseEntityWithSoftDelete } from '../_common.entity';
 
 @Entity('User')
+// @Index('email_index', ['email'])
 // NOTE: soft delete: analyzing user trends and maintaining historical data.
 export class UserEntity extends BaseEntityWithSoftDelete implements User {
   @PrimaryGeneratedColumn('uuid')
