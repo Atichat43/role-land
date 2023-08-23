@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { UserEntity } from '../user/user.entity';
 import { Badge } from '../../core/models.types';
 
-@Entity()
+@Entity('Badge')
 export class BadgeEntity implements Badge {
   @PrimaryGeneratedColumn('uuid')
   id: string;

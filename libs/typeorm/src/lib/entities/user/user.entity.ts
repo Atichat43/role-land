@@ -4,7 +4,7 @@ import { AchievementEntity } from '../achievement/achievement.entity';
 import { ProfileEmbeded } from './profile.embed';
 import { RolePreferenceEmbeded } from './role-preference.embed';
 
-@Entity()
+@Entity('User')
 export class UserEntity {
   @PrimaryGeneratedColumn('uuid')
   id: string;

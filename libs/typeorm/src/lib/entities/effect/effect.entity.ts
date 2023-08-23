@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
 import { Effect } from '../../core/models.types';
 
-@Entity()
+@Entity('Effect')
 export class EffectEntity implements Effect {
   @PrimaryGeneratedColumn('uuid')
   id: string;

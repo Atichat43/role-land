@@ -12,7 +12,7 @@ export class SeederService {
   ) {}
 
   async seed() {
-    await this.userRepository.clear();
-    await this.userRepository.save(users);
+    // await this.userRepository.clear();
+    // await this.userRepository.save(users);
   }
 }

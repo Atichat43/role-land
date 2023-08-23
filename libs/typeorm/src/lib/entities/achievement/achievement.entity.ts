@@ -2,7 +2,7 @@ import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { UserEntity } from '../user/user.entity';
 import { Achievement } from '../../core/models.types';
 
-@Entity()
+@Entity('Achievement')
 export class AchievementEntity implements Achievement {
   @PrimaryGeneratedColumn('uuid')
   id: string;
