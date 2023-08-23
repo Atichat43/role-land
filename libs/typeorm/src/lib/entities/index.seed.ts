@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import { RolePreferenceEnum } from '../core/value-objects';
 
 import { PointEntity } from './aggregates/point.entity';
@@ -13,29 +15,29 @@ import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
 
 export const themes: ThemeEntity[] = [
-  { id: '1', name: 'Adventure', premium: false, roles: [] },
-  { id: '2', name: 'Mystery', premium: true, roles: [] },
+  { id: uuid(), name: 'Adventure', premium: false, roles: [] },
+  { id: uuid(), name: 'Mystery', premium: true, roles: [] },
 ];
 
 export const effects: EffectEntity[] = [
-  { id: '1', name: 'Fire', premium: false },
-  { id: '2', name: 'Ice', premium: true },
+  { id: uuid(), name: 'Fire', premium: false },
+  { id: uuid(), name: 'Ice', premium: true },
 ];
 
 export const sharedLinks: SharedLinkEntity[] = [
-  { id: '1', url: 'https://example.com/link1', isActive: true },
-  { id: '2', url: 'https://example.com/link2', isActive: false },
+  { id: uuid(), url: 'https://example.com/link1', isActive: true },
+  { id: uuid(), url: 'https://example.com/link2', isActive: false },
 ];
 
 export const roles: RoleEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     name: 'Warrior',
     theme: themes[0],
     attributes: ['Strength', 'Courage'],
   },
   {
-    id: '2',
+    id: uuid(),
     name: 'Detective',
     theme: themes[1],
     attributes: ['Intelligence', 'Observation'],
@@ -44,7 +46,7 @@ export const roles: RoleEntity[] = [
 
 export const users: UserEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     name: 'Alice',
     points: 100,
     premiumStatus: true,
@@ -54,7 +56,7 @@ export const users: UserEntity[] = [
     achievements: [],
   },
   {
-    id: '2',
+    id: uuid(),
     name: 'Bob',
     points: 50,
     premiumStatus: false,
@@ -67,13 +69,13 @@ export const users: UserEntity[] = [
 
 export const achievements: AchievementEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     achievementType: 'First Win',
     timestamp: new Date(),
     user: users[0],
   },
   {
-    id: '2',
+    id: uuid(),
     achievementType: 'Top Scorer',
     timestamp: new Date(),
     user: users[1],
@@ -81,13 +83,13 @@ export const achievements: AchievementEntity[] = [
 ];
 
 export const badges: BadgeEntity[] = [
-  { id: '1', badgeType: 'Gold', timestamp: new Date(), user: users[0] },
-  { id: '2', badgeType: 'Silver', timestamp: new Date(), user: users[1] },
+  { id: uuid(), badgeType: 'Gold', timestamp: new Date(), user: users[0] },
+  { id: uuid(), badgeType: 'Silver', timestamp: new Date(), user: users[1] },
 ];
 
 export const sessions: SessionEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     status: 'started',
     participants: [users[0], users[1]],
     sharedLink: sharedLinks[0],
@@ -98,7 +100,7 @@ export const sessions: SessionEntity[] = [
 
 export const points: PointEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     user: users[0],
     session: sessions[0],
     timestamp: new Date(),
@@ -110,7 +112,7 @@ export const points: PointEntity[] = [
 
 export const roleRecords: RoleRecordEntity[] = [
   {
-    id: '1',
+    id: uuid(),
     user: users[0],
     role: roles[0],
     session: sessions[0],
