@@ -1,4 +1,3 @@
-import { User, Role } from 'discord.js';
 import {
   Entity,
   PrimaryGeneratedColumn,
@@ -13,9 +12,11 @@ import { Session } from '../../core/aggregates.types';
 import { UserEntity } from './user.entity';
 import { RoleEntity } from '../models/role.entity';
 import { ThemeEntity } from '../models/theme.entity';
+import { BaseEntityWithSoftDelete } from '../_common.entity';
 
 @Entity('Session')
-export class SessionEntity implements Session {
+// NOTE: soft delete: analyzing past sessions (important interactions or events).
+export class SessionEntity extends BaseEntityWithSoftDelete implements Session {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

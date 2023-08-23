@@ -6,9 +6,11 @@ import { RolePreferenceEmbeded } from './user.role-preference.embed';
 import { AchievementEntity } from '../models/achievement.entity';
 import { BadgeEntity } from '../models/badge.entity';
 import { User } from '../../core/aggregates.types';
+import { BaseEntityWithSoftDelete } from '../_common.entity';
 
 @Entity('User')
-export class UserEntity implements User {
+// NOTE: soft delete: analyzing user trends and maintaining historical data.
+export class UserEntity extends BaseEntityWithSoftDelete implements User {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
