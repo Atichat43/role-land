@@ -7,7 +7,7 @@ export interface User {
   points: number;
   premiumStatus: boolean;
 
-  // model
+  // models
   badges: Badge[];
   achievements: Achievement[];
 
@@ -24,7 +24,7 @@ export interface Session {
   rolesAssigned: Role[];
   participants: User[];
 
-  // model
+  // models
   sharedLink: SharedLink;
   theme: Theme;
 }
@@ -37,7 +37,7 @@ export interface RoleRecord {
   user: User;
   session: Session;
 
-  // model
+  // models
   role: Role;
 }
 
