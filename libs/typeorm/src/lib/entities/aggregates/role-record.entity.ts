@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
-import { UserEntity } from '../user/user.entity';
-import { RoleEntity } from '../../models/role/role.entity';
-import { SessionEntity } from '../session/session.entity';
+import { UserEntity } from './user.entity';
+import { RoleEntity } from '../models/role.entity';
+import { SessionEntity } from './session.entity';
 
 @Entity('RoleRecord')
 export class RoleRecordEntity {

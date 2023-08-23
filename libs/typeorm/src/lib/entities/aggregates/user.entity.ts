@@ -1,11 +1,11 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 
-import { ProfileEmbeded } from './embed/profile.embed';
-import { RolePreferenceEmbeded } from './embed/role-preference.embed';
+import { ProfileEmbeded } from './user.profile.embed';
+import { RolePreferenceEmbeded } from './user.role-preference.embed';
 
-import { AchievementEntity } from '../../models/achievement/achievement.entity';
-import { BadgeEntity } from '../../models/badge/badge.entity';
-import { User } from '../../../core/aggregates.types';
+import { AchievementEntity } from '../models/achievement.entity';
+import { BadgeEntity } from '../models/badge.entity';
+import { User } from '../../core/aggregates.types';
 
 @Entity('User')
 export class UserEntity implements User {

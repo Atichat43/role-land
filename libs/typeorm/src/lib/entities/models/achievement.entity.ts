@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Achievement } from '../../../core/models.types';
-import { UserEntity } from '../../aggregates/user/user.entity';
+import { Achievement } from '../../core/models.types';
+import { UserEntity } from '../aggregates/user.entity';
 
 @Entity('Achievement')
 export class AchievementEntity implements Achievement {

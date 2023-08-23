@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column } from 'typeorm';
-import { Effect } from '../../../core/models.types';
+import { Effect } from '../../core/models.types';
 
 @Entity('Effect')
 export class EffectEntity implements Effect {

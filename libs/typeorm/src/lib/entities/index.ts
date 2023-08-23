@@ -1,14 +1,14 @@
-import { PointEntity } from './aggregates/point/point.entity';
-import { RoleRecordEntity } from './aggregates/role-record/role-record.entity';
-import { SessionEntity } from './aggregates/session/session.entity';
-import { UserEntity } from './aggregates/user/user.entity';
+import { PointEntity } from './aggregates/point.entity';
+import { RoleRecordEntity } from './aggregates/role-record.entity';
+import { SessionEntity } from './aggregates/session.entity';
+import { UserEntity } from './aggregates/user.entity';
 
-import { AchievementEntity } from './models/achievement/achievement.entity';
-import { BadgeEntity } from './models/badge/badge.entity';
-import { EffectEntity } from './models/effect/effect.entity';
-import { RoleEntity } from './models/role/role.entity';
-import { SharedLinkEntity } from './models/shared-link/shared-link.entity';
-import { ThemeEntity } from './models/theme/theme.entity';
+import { AchievementEntity } from './models/achievement.entity';
+import { BadgeEntity } from './models/badge.entity';
+import { EffectEntity } from './models/effect.entity';
+import { RoleEntity } from './models/role.entity';
+import { SharedLinkEntity } from './models/shared-link.entity';
+import { ThemeEntity } from './models/theme.entity';
 
 export const entities = [
   // aggregates
