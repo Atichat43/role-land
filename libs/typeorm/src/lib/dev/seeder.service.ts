@@ -76,102 +76,102 @@ export class SeederService {
   }
 
   private async seedThemes() {
-    Logger.debug('Seeding themes...');
+    Logger.verbose('Seeding themes...');
     await this.themeRepository.save(SEED.themes);
   }
 
   private async clearThemes() {
-    Logger.debug('Clearing themes...');
+    Logger.verbose('Clearing themes...');
     await this.themeRepository.delete({});
   }
 
   private async seedEffects() {
-    Logger.debug('Seeding effects...');
+    Logger.verbose('Seeding effects...');
     await this.effectRepository.save(SEED.effects);
   }
 
   private async clearEffects() {
-    Logger.debug('Clearing effects...');
+    Logger.verbose('Clearing effects...');
     await this.effectRepository.delete({});
   }
 
   private async seedSharedLinks() {
-    Logger.debug('Seeding shared links...');
+    Logger.verbose('Seeding shared links...');
     await this.sharedLinkRepository.save(SEED.sharedLinks);
   }
 
   private async clearSharedLinks() {
-    Logger.debug('Clearing shared links...');
+    Logger.verbose('Clearing shared links...');
     await this.sharedLinkRepository.delete({});
   }
 
   private async seedRoles() {
-    Logger.debug('Seeding roles...');
+    Logger.verbose('Seeding roles...');
     await this.roleRepository.save(SEED.roles);
   }
 
   private async clearRoles() {
-    Logger.debug('Clearing roles...');
+    Logger.verbose('Clearing roles...');
     await this.roleRepository.delete({});
   }
 
   private async seedUsers() {
-    Logger.debug('Seeding users...');
+    Logger.verbose('Seeding users...');
     await this.userRepository.save(SEED.users);
   }
 
   private async clearUsers() {
-    Logger.debug('Clearing users...');
+    Logger.verbose('Clearing users...');
     await this.userRepository.delete({});
   }
 
   private async seedAchievements() {
-    Logger.debug('Seeding achievements...');
+    Logger.verbose('Seeding achievements...');
     await this.achievementRepository.save(SEED.achievements);
   }
 
   private async clearAchievements() {
-    Logger.debug('Clearing achievements...');
+    Logger.verbose('Clearing achievements...');
     await this.achievementRepository.delete({});
   }
 
   private async seedBadges() {
-    Logger.debug('Seeding badges...');
+    Logger.verbose('Seeding badges...');
     await this.badgeRepository.save(SEED.badges);
   }
 
   private async clearBadges() {
-    Logger.debug('Clearing badges...');
+    Logger.verbose('Clearing badges...');
     await this.badgeRepository.delete({});
   }
 
   private async seedSessions() {
-    Logger.debug('Seeding sessions...');
+    Logger.verbose('Seeding sessions...');
     await this.sessionRepository.save(SEED.sessions);
   }
 
   private async clearSessions() {
-    Logger.debug('Clearing sessions...');
+    Logger.verbose('Clearing sessions...');
     await this.sessionRepository.delete({});
   }
 
   private async seedPoints() {
-    Logger.debug('Seeding points...');
+    Logger.verbose('Seeding points...');
     await this.pointRepository.save(SEED.points);
   }
 
   private async clearPoints() {
-    Logger.debug('Clearing points...');
+    Logger.verbose('Clearing points...');
     await this.pointRepository.delete({});
   }
 
   private async seedRoleRecords() {
-    Logger.debug('Seeding role records...');
+    Logger.verbose('Seeding role records...');
     await this.roleRecordRepository.save(SEED.roleRecords);
   }
 
   private async clearRoleRecords() {
-    Logger.debug('Clearing role records...');
+    Logger.verbose('Clearing role records...');
     await this.roleRecordRepository.delete({});
   }
 }
