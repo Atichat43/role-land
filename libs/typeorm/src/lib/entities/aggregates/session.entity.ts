@@ -9,7 +9,7 @@ import {
   Index,
 } from 'typeorm';
 import { SharedLinkEntity } from '../models/shared-link.entity';
-import { Session } from '../../core/aggregates.types';
+import { Session, SessionStatusEnum } from '../../core/aggregates.types';
 import { UserEntity } from './user.entity';
 import { RoleEntity } from '../models/role.entity';
 import { ThemeEntity } from '../models/theme.entity';
@@ -22,8 +22,8 @@ export class SessionEntity extends BaseEntityWithSoftDelete implements Session {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column({ type: 'enum', enum: ['started', 'ended'] })
-  status: 'started' | 'ended';
+  @Column('enum', { enum: SessionStatusEnum })
+  status: SessionStatusEnum;
 
   // aggregates
   @ManyToMany(() => RoleEntity)

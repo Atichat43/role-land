@@ -15,6 +15,7 @@ import { EffectEntity } from './models/effect.entity';
 import { RoleEntity } from './models/role.entity';
 import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
+import { SessionStatusEnum } from '../core/aggregates.types';
 
 type OmitBaseEntity<T> = Omit<T, keyof BaseEntity | 'version'>;
 type OmitBaseEntityWithSoftDelete<T> = Omit<
@@ -112,7 +113,7 @@ export const badges: OmitBaseEntity<BadgeEntity>[] = [
 export const sessions: OmitBaseEntity<SessionEntity>[] = [
   {
     id: uuid(),
-    status: 'started',
+    status: SessionStatusEnum.STARTED,
     participants: [users[0], users[1]] as UserEntity[],
     sharedLink: sharedLinks[0] as SharedLinkEntity,
     rolesAssigned: [roles[0]] as RoleEntity[],

@@ -16,9 +16,15 @@ export interface User {
   rolePreferences: RolePreference[];
 }
 
+export enum SessionStatusEnum {
+  PENDING = 'pending',
+  STARTED = 'started',
+  ENDED = 'ended',
+}
+
 export interface Session {
   id: string;
-  status: 'started' | 'ended';
+  status: SessionStatusEnum;
 
   // aggregates
   rolesAssigned: Role[];
