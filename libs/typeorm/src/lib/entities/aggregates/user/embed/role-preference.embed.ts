@@ -1,6 +1,9 @@
+import {
+  RolePreference,
+  RolePreferenceEnum,
+} from 'libs/typeorm/src/lib/core/value-objects';
 import { Column, ManyToOne } from 'typeorm';
-import { RoleEntity } from '../role/role.entity';
-import { RolePreference, RolePreferenceEnum } from '../../core/value-objects';
+import { RoleEntity } from '../../../models/role/role.entity';
 
 export class RolePreferenceEmbeded implements RolePreference {
   @Column('enum', { enum: RolePreferenceEnum })

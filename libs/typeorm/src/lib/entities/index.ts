@@ -1,16 +1,9 @@
-// export * from './achievement/achievement.entity';
-// export * from './badge/badge.entity';
-// export * from './effect/effect.entity';
-// export * from './role/role.entity';
-// export * from './theme/theme.entity';
-// export * from './user/user.entity';
-
-import { AchievementEntity } from './achievement/achievement.entity';
-import { BadgeEntity } from './badge/badge.entity';
-import { EffectEntity } from './effect/effect.entity';
-import { RoleEntity } from './role/role.entity';
-import { ThemeEntity } from './theme/theme.entity';
-import { UserEntity } from './user/user.entity';
+import { UserEntity } from './aggregates/user/user.entity';
+import { AchievementEntity } from './models/achievement/achievement.entity';
+import { BadgeEntity } from './models/badge/badge.entity';
+import { EffectEntity } from './models/effect/effect.entity';
+import { RoleEntity } from './models/role/role.entity';
+import { ThemeEntity } from './models/theme/theme.entity';
 
 export const entities = [
   AchievementEntity,

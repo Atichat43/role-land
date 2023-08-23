@@ -1,6 +1,6 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
 import { RoleEntity } from '../role/role.entity';
-import { Theme } from '../../core/models.types';
+import { Theme } from '../../../core/models.types';
 
 @Entity('Theme')
 export class ThemeEntity implements Theme {

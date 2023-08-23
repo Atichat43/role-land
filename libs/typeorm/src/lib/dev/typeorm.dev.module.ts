@@ -3,7 +3,7 @@ import { Module, OnModuleInit } from '@nestjs/common';
 import { TypeOrmModule } from '../typeorm.module';
 import { SeederService } from './seeder.service';
 import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
-import { UserEntity } from '../entities/user/user.entity';
+import { UserEntity } from '../entities/aggregates/user/user.entity';
 
 @Module({
   imports: [TypeOrmModule, _TypeOrmModule.forFeature([UserEntity])],

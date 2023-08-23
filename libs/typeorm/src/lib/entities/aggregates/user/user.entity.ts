@@ -1,8 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
-import { BadgeEntity } from '../badge/badge.entity';
-import { AchievementEntity } from '../achievement/achievement.entity';
-import { ProfileEmbeded } from './profile.embed';
-import { RolePreferenceEmbeded } from './role-preference.embed';
+
+import { ProfileEmbeded } from './embed/profile.embed';
+import { RolePreferenceEmbeded } from './embed/role-preference.embed';
+
+import { AchievementEntity } from '../../models/achievement/achievement.entity';
+import { BadgeEntity } from '../../models/badge/badge.entity';
 
 @Entity('User')
 export class UserEntity {
