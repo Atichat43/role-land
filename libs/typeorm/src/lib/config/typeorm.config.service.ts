@@ -1,12 +1,13 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { EnumDatabaseType, TypeOrmEnvConfig } from './typeorm.env.config';
+import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
 @Injectable()
 export class TypeOrmConfigService {
   constructor(private configService: ConfigService) {}
 
-  get(): TypeOrmEnvConfig {
+  get(): TypeOrmModuleOptions {
     const TYPEORM_TYPE = this.configService.get<string>(
       'TYPEORM_TYPE',
     ) as EnumDatabaseType;
@@ -30,13 +31,17 @@ export class TypeOrmConfigService {
     ) as boolean;
 
     return {
-      TYPEORM_TYPE,
-      TYPEORM_HOST,
-      TYPEORM_PORT,
-      TYPEORM_USERNAME,
-      TYPEORM_PASSWORD,
-      TYPEORM_DATABASE,
-      TYPEORM_SYNCHRONIZE,
+      // data source options
+      type: TYPEORM_TYPE,
+      host: TYPEORM_HOST,
+      port: TYPEORM_PORT,
+      username: TYPEORM_USERNAME,
+      password: TYPEORM_PASSWORD,
+      database: TYPEORM_DATABASE,
+      synchronize: TYPEORM_SYNCHRONIZE,
+
+      retryAttempts: 3,
+      autoLoadEntities: true, // every entity registered through the forFeature() method will be automatically added to the entities
     };
   }
 }

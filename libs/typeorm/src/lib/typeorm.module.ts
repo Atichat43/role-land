@@ -8,18 +8,9 @@ import { entities } from './entities';
     _TypeOrmModule.forRootAsync({
       imports: [TypeOrmConfigModule],
       useFactory: async (configService: TypeOrmConfigService) => {
-        const typeOrmConfig = configService.get();
+        const typeOrmModuleOptions = configService.get();
 
-        return {
-          type: typeOrmConfig.TYPEORM_TYPE,
-          host: typeOrmConfig.TYPEORM_HOST,
-          port: typeOrmConfig.TYPEORM_PORT,
-          username: typeOrmConfig.TYPEORM_USERNAME,
-          password: typeOrmConfig.TYPEORM_PASSWORD,
-          database: typeOrmConfig.TYPEORM_DATABASE,
-          synchronize: typeOrmConfig.TYPEORM_SYNCHRONIZE,
-          entities: entities,
-        };
+        return typeOrmModuleOptions;
       },
       inject: [TypeOrmConfigService],
     }),
