@@ -16,8 +16,11 @@ import { RoleEntity } from './models/role.entity';
 import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
 
-type OmitBaseEntity<T> = Omit<T, keyof BaseEntity>;
-type OmitBaseEntityWithSoftDelete<T> = Omit<T, keyof BaseEntityWithSoftDelete>;
+type OmitBaseEntity<T> = Omit<T, keyof BaseEntity | 'version'>;
+type OmitBaseEntityWithSoftDelete<T> = Omit<
+  T,
+  keyof BaseEntityWithSoftDelete | 'version'
+>;
 
 export const themes: OmitBaseEntity<ThemeEntity>[] = [
   { id: uuid(), name: 'Adventure', premium: false, roles: [] },

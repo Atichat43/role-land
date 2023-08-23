@@ -1,4 +1,10 @@
-import { Entity, PrimaryGeneratedColumn, Column, OneToMany } from 'typeorm';
+import {
+  Entity,
+  PrimaryGeneratedColumn,
+  Column,
+  OneToMany,
+  VersionColumn,
+} from 'typeorm';
 
 import { ProfileEmbeded } from './user.profile.embed';
 import { RolePreferenceEmbeded } from './user.role-preference.embed';
@@ -35,4 +41,7 @@ export class UserEntity extends BaseEntityWithSoftDelete implements User {
 
   @OneToMany(() => AchievementEntity, (achievement) => achievement.user)
   achievements: AchievementEntity[];
+
+  @VersionColumn({ default: 0 })
+  version: number;
 }
