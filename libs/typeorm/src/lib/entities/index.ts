@@ -10,6 +10,8 @@ import { RoleEntity } from './models/role.entity';
 import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
 
+import { UserSubscriber } from './subscriber/user.entity.subscriber';
+
 export const entities = [
   // aggregates
   PointEntity,
@@ -25,3 +27,5 @@ export const entities = [
   SharedLinkEntity,
   ThemeEntity,
 ];
+
+export const subscribers = [UserSubscriber];

@@ -41,7 +41,6 @@ export class TypeOrmConfigService {
       synchronize: TYPEORM_SYNCHRONIZE,
 
       retryAttempts: 3,
-      autoLoadEntities: true, // every entity registered through the forFeature() method will be automatically added to the entities
     };
   }
 }

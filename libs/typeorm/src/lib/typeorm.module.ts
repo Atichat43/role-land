@@ -1,7 +1,7 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
 import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
-import { entities } from './entities';
+import { entities, subscribers } from './entities';
 
 @Module({
   imports: [
@@ -10,7 +10,7 @@ import { entities } from './entities';
       useFactory: async (configService: TypeOrmConfigService) => {
         const typeOrmModuleOptions = configService.get();
 
-        return typeOrmModuleOptions;
+        return { ...typeOrmModuleOptions, entities, subscribers };
       },
       inject: [TypeOrmConfigService],
     }),
