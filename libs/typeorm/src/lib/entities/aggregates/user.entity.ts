@@ -12,12 +12,15 @@ import { RolePreferenceEmbeded } from './user.role-preference.embed';
 import { AchievementEntity } from '../models/achievement.entity';
 import { BadgeEntity } from '../models/badge.entity';
 import { User } from '../../core/aggregates.types';
-import { BaseEntityWithSoftDelete } from '../_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from '../_common.entity';
 
 @Entity('User')
 // @Index('email_index', ['email'])
 // NOTE: soft delete: analyzing user trends and maintaining historical data.
-export class UserEntity extends BaseEntityWithSoftDelete implements User {
+export class UserEntity
+  extends TimestampsAndSoftDeletionEntityColumns
+  implements User
+{
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

@@ -1,7 +1,8 @@
 import { Badge, Achievement, SharedLink, Theme, Role } from './models.types';
 import { Profile, RolePreference } from './value-objects.types';
+import { SoftDeletion, Timestamps } from './base.types';
 
-export interface User {
+export interface User extends Timestamps, SoftDeletion {
   id: string;
   name: string;
   points: number;
@@ -22,7 +23,7 @@ export enum SessionStatusEnum {
   ENDED = 'ended',
 }
 
-export interface Session {
+export interface Session extends Timestamps {
   id: string;
   status: SessionStatusEnum;
 
@@ -35,9 +36,8 @@ export interface Session {
   theme: Theme;
 }
 
-export interface Point {
+export interface Point extends Timestamps {
   id: string;
-  timestamp: Date;
   pointsEarned: number;
   pointsSpent: number;
   pointsBalance: number;

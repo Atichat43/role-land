@@ -1,6 +1,12 @@
-import { CreateDateColumn, UpdateDateColumn, DeleteDateColumn } from 'typeorm';
+import {
+  CreateDateColumn,
+  UpdateDateColumn,
+  DeleteDateColumn,
+  Column,
+} from 'typeorm';
+import { SoftDeletion, Timestamps } from '../core/base.types';
 
-export abstract class BaseEntity {
+export abstract class TimestampsEntityColumns implements Timestamps {
   @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;
 
@@ -8,7 +14,21 @@ export abstract class BaseEntity {
   updatedDate: Date;
 }
 
-export abstract class BaseEntityWithSoftDelete extends BaseEntity {
+export abstract class SoftDeletionEntityColumns implements SoftDeletion {
+  @Column({ default: false })
+  isDeleted: boolean;
+
+  @DeleteDateColumn()
+  deleteDate?: Date;
+}
+
+export abstract class TimestampsAndSoftDeletionEntityColumns
+  extends TimestampsEntityColumns
+  implements SoftDeletionEntityColumns
+{
+  @Column({ default: false })
+  isDeleted: boolean;
+
   @DeleteDateColumn()
   deleteDate?: Date;
 }

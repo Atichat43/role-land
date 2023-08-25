@@ -1,29 +1,31 @@
-export interface Achievement {
+import { Timestamps } from './base.types';
+
+export interface Achievement extends Timestamps {
   id: string;
   achievementType: string;
-  timestamp: Date;
 }
 
-export interface Badge {
+export interface Badge extends Timestamps {
   id: string;
   badgeType: string;
-  timestamp: Date;
 }
 
-export interface Effect {
+export interface Effect extends Timestamps {
   id: string;
   name: string;
   premium: boolean;
 }
 
-export interface Role {
+// Role can be created and updated by users.
+export interface Role extends Timestamps {
   id: string;
   name: string;
   theme: Theme;
   attributes: string[];
 }
 
-export interface Theme {
+// Themes can be created and updated by users.
+export interface Theme extends Timestamps {
   id: string;
   name: string;
   roles: Role[];

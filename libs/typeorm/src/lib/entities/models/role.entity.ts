@@ -1,10 +1,10 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
 import { ThemeEntity } from './theme.entity';
 import { Role } from '../../core/models.types';
-import { BaseEntity } from '../_common.entity';
+import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Role')
-export class RoleEntity extends BaseEntity implements Role {
+export class RoleEntity extends TimestampsEntityColumns implements Role {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

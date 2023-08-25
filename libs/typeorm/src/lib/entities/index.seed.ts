@@ -2,7 +2,7 @@ import { v4 as uuid } from 'uuid';
 
 import { RolePreferenceEnum } from '../core/value-objects.types';
 
-import { BaseEntity, BaseEntityWithSoftDelete } from './_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
 
 import { PointEntity } from './aggregates/point.entity';
 import { SessionEntity } from './aggregates/session.entity';
@@ -16,28 +16,27 @@ import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
 import { SessionStatusEnum } from '../core/aggregates.types';
 
-type OmitBaseEntity<T> = Omit<T, keyof BaseEntity | 'version'>;
-type OmitBaseEntityWithSoftDelete<T> = Omit<
+type OmitBaseEntityColumns<T> = Omit<
   T,
-  keyof BaseEntityWithSoftDelete | 'version'
+  keyof TimestampsAndSoftDeletionEntityColumns | 'version'
 >;
 
-export const themes: OmitBaseEntity<ThemeEntity>[] = [
+export const themes: OmitBaseEntityColumns<ThemeEntity>[] = [
   { id: uuid(), name: 'Adventure', premium: false, roles: [] },
   { id: uuid(), name: 'Mystery', premium: true, roles: [] },
 ];
 
-export const effects: OmitBaseEntity<EffectEntity>[] = [
+export const effects: OmitBaseEntityColumns<EffectEntity>[] = [
   { id: uuid(), name: 'Fire', premium: false },
   { id: uuid(), name: 'Ice', premium: true },
 ];
 
-export const sharedLinks: OmitBaseEntity<SharedLinkEntity>[] = [
+export const sharedLinks: OmitBaseEntityColumns<SharedLinkEntity>[] = [
   { id: uuid(), url: 'https://example.com/link1', isActive: true },
   { id: uuid(), url: 'https://example.com/link2', isActive: false },
 ];
 
-export const roles: OmitBaseEntity<RoleEntity>[] = [
+export const roles: OmitBaseEntityColumns<RoleEntity>[] = [
   {
     id: uuid(),
     name: 'Warrior',
@@ -52,7 +51,7 @@ export const roles: OmitBaseEntity<RoleEntity>[] = [
   },
 ];
 
-export const users: OmitBaseEntityWithSoftDelete<UserEntity>[] = [
+export const users: OmitBaseEntityColumns<UserEntity>[] = [
   {
     id: uuid(),
     name: 'Alice',
@@ -79,7 +78,7 @@ export const users: OmitBaseEntityWithSoftDelete<UserEntity>[] = [
   },
 ];
 
-export const achievements: OmitBaseEntity<AchievementEntity>[] = [
+export const achievements: OmitBaseEntityColumns<AchievementEntity>[] = [
   {
     id: uuid(),
     achievementType: 'First Win',
@@ -94,7 +93,7 @@ export const achievements: OmitBaseEntity<AchievementEntity>[] = [
   },
 ];
 
-export const badges: OmitBaseEntity<BadgeEntity>[] = [
+export const badges: OmitBaseEntityColumns<BadgeEntity>[] = [
   {
     id: uuid(),
     badgeType: 'Gold',
@@ -109,7 +108,7 @@ export const badges: OmitBaseEntity<BadgeEntity>[] = [
   },
 ];
 
-export const sessions: OmitBaseEntity<SessionEntity>[] = [
+export const sessions: OmitBaseEntityColumns<SessionEntity>[] = [
   {
     id: uuid(),
     status: SessionStatusEnum.STARTED,
@@ -120,7 +119,7 @@ export const sessions: OmitBaseEntity<SessionEntity>[] = [
   },
 ];
 
-export const points: OmitBaseEntity<PointEntity>[] = [
+export const points: OmitBaseEntityColumns<PointEntity>[] = [
   {
     id: uuid(),
     user: users[0] as UserEntity,

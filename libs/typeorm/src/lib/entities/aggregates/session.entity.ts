@@ -13,12 +13,15 @@ import { Session, SessionStatusEnum } from '../../core/aggregates.types';
 import { UserEntity } from './user.entity';
 import { RoleEntity } from '../models/role.entity';
 import { ThemeEntity } from '../models/theme.entity';
-import { BaseEntityWithSoftDelete } from '../_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from '../_common.entity';
 
 @Entity('Session')
 @Index('session_status_index', ['status']) // NOTE: query sessions by status.
 // NOTE: soft delete: analyzing past sessions (important interactions or events).
-export class SessionEntity extends BaseEntityWithSoftDelete implements Session {
+export class SessionEntity
+  extends TimestampsAndSoftDeletionEntityColumns
+  implements Session
+{
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

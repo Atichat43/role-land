@@ -7,11 +7,11 @@ import {
 } from 'typeorm';
 import { RoleEntity } from './role.entity';
 import { Theme } from '../../core/models.types';
-import { BaseEntity } from '../_common.entity';
+import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Theme')
 @Index('theme_premium_index', ['premium']) // NOTE: query themes by premium
-export class ThemeEntity extends BaseEntity implements Theme {
+export class ThemeEntity extends TimestampsEntityColumns implements Theme {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
