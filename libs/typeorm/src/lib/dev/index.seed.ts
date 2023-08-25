@@ -12,7 +12,7 @@ import { SharedLinkEntity } from '../entities/shared-link.entity';
 import { ThemeEntity } from '../entities/theme.entity';
 import { UserEntity } from '../entities/user.entity';
 
-type OmitBaseEntityColumns<T> = Omit<
+export type OmitBaseEntityColumns<T> = Omit<
   T,
   keyof TimestampsAndSoftDeletionEntityColumns | 'version'
 >;

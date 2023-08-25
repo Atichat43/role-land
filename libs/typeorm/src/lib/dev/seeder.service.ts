@@ -1,6 +1,7 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
+import { v4 as uuid } from 'uuid';
 
 import { AchievementEntity } from '../entities/achievement.entity';
 import { BadgeEntity } from '../entities/badge.entity';
@@ -12,6 +13,7 @@ import { SharedLinkEntity } from '../entities/shared-link.entity';
 import { ThemeEntity } from '../entities/theme.entity';
 import { UserEntity } from '../entities/user.entity';
 import * as SEED from './index.seed';
+import { OmitBaseEntityColumns } from './index.seed';
 
 @Injectable()
 export class SeederService {
@@ -66,6 +68,55 @@ export class SeederService {
     await this.seedPoints();
 
     Logger.log('✅ Seeding complete!');
+  }
+
+  async demoEventSubscribers() {
+    Logger.log('▶ Demonstrating event subscribers...');
+    // Earn Achievement (Triggers AchievementEarned Event)
+    const newAchievement: OmitBaseEntityColumns<AchievementEntity> = {
+      id: uuid(),
+      achievementType: 'Master Player',
+      user: SEED.users[1] as UserEntity,
+    };
+    Logger.verbose('Creating achievement...');
+    await this.achievementRepository.save(newAchievement);
+
+    // Earn Badge (Triggers BadgeEarned Event)
+    const newBadge: OmitBaseEntityColumns<BadgeEntity> = {
+      id: uuid(),
+      badgeType: 'Platinum',
+      user: SEED.users[1] as UserEntity,
+    };
+    Logger.verbose('Creating badge...');
+    await this.badgeRepository.save(newBadge);
+
+    // Update Theme (Triggers ThemeUpdated Event)
+    const updatedTheme: Partial<ThemeEntity> = {
+      name: 'Epic Adventure',
+      premium: true,
+    };
+    Logger.verbose('Updating theme...');
+    await this.themeRepository.update(SEED.themes[0].id, updatedTheme);
+
+    // Earn Points (Triggers PointsEarned Event)
+    const pointsEarned: OmitBaseEntityColumns<PointEntity> = {
+      ...SEED.points[0],
+      pointsEarned: SEED.points[0].pointsEarned + 20,
+      pointsBalance: SEED.points[0].pointsBalance + 20,
+    };
+    Logger.verbose('Updating points... (earned)');
+    await this.pointRepository.update(SEED.points[0].id, pointsEarned);
+
+    // Spend Points (Triggers PointsSpent Event)
+    const pointsSpent: OmitBaseEntityColumns<PointEntity> = {
+      ...SEED.points[0],
+      pointsSpent: SEED.points[0].pointsSpent + 10,
+      pointsBalance: SEED.points[0].pointsBalance - 10,
+    };
+    Logger.verbose('Updating points... (spent)');
+    await this.pointRepository.update(SEED.points[0].id, pointsSpent);
+
+    Logger.log('✅ Demonstration complete!');
   }
 
   private async seedThemes() {

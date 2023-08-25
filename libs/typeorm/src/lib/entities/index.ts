@@ -5,11 +5,10 @@ import { PointEntity } from './point.entity';
 import { RoleEntity } from './role.entity';
 import { SessionEntity } from './session.entity';
 import { SharedLinkEntity } from './shared-link.entity';
-import { UserSubscriber } from './subscriber/user.entity.subscriber';
 import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
 
-export const entities = [
+export const Entities = [
   // aggregates
   PointEntity,
   SessionEntity,
@@ -24,4 +23,4 @@ export const entities = [
   ThemeEntity,
 ];
 
-export const subscribers = [UserSubscriber];
+export default Entities;
