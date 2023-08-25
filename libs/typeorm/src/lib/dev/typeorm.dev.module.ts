@@ -15,6 +15,6 @@ export class TypeOrmDevModule implements OnModuleInit {
   async onModuleInit() {
     await this.seederService.clearAll();
     await this.seederService.seedAll();
-    // await this.seederService.demoEventSubscribers();
+    await this.seederService.demoEventSubscribers();
   }
 }

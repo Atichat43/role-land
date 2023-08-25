@@ -27,7 +27,7 @@ export class UserPointsChangedSubscriber
         points: event.entity?.['pointsEarned'],
         entityId,
       };
-      Logger.log(pointsEarnedEvent);
+      Logger.verbose(pointsEarnedEvent);
     }
 
     if (event.entity?.['pointsSpent'] !== event.databaseEntity?.pointsSpent) {
@@ -37,7 +37,7 @@ export class UserPointsChangedSubscriber
         points: event.entity?.['pointsSpent'],
         entityId,
       };
-      Logger.log(pointsSpentEvent);
+      Logger.verbose(pointsSpentEvent);
     }
   }
 }
