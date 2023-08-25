@@ -6,7 +6,7 @@ import {
   Index,
 } from 'typeorm';
 import { RoleEntity } from './role.entity';
-import { Theme } from '../../core/models.types';
+import { Theme } from '../../core-domain/models.types';
 import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Theme')

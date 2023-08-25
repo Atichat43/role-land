@@ -1,6 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
-import { RolePreferenceEnum } from '../core/value-objects.types';
+import { RolePreferenceEnum } from '../core-domain/value-objects.types';
 
 import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
 
@@ -14,7 +14,7 @@ import { EffectEntity } from './models/effect.entity';
 import { RoleEntity } from './models/role.entity';
 import { SharedLinkEntity } from './models/shared-link.entity';
 import { ThemeEntity } from './models/theme.entity';
-import { SessionStatusEnum } from '../core/aggregates.types';
+import { SessionStatusEnum } from '../core-domain/aggregates.types';
 
 type OmitBaseEntityColumns<T> = Omit<
   T,

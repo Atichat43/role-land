@@ -1,7 +1,7 @@
 import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
 import { UserEntity } from './user.entity';
 import { SessionEntity } from './session.entity';
-import { Point } from '../../core/aggregates.types';
+import { Point } from '../../core-domain/aggregates.types';
 import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Point')

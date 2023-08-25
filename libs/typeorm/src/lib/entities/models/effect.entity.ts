@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Index } from 'typeorm';
-import { Effect } from '../../core/models.types';
+import { Effect } from '../../core-domain/models.types';
 import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Effect')

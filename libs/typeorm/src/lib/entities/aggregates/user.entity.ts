@@ -11,7 +11,7 @@ import { RolePreferenceEmbeded } from './user.role-preference.embed';
 
 import { AchievementEntity } from '../models/achievement.entity';
 import { BadgeEntity } from '../models/badge.entity';
-import { User } from '../../core/aggregates.types';
+import { User } from '../../core-domain/aggregates.types';
 import { TimestampsAndSoftDeletionEntityColumns } from '../_common.entity';
 
 @Entity('User')

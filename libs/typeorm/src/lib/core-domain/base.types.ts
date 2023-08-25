@@ -5,5 +5,5 @@ export interface Timestamps {
 
 export interface SoftDeletion {
   isDeleted: boolean;
-  deletedDate?: Date;
+  deletedDate: Date;
 }

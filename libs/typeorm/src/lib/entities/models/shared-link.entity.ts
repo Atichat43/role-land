@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, Unique, Index } from 'typeorm';
-import { SharedLink } from '../../core/models.types';
+import { SharedLink } from '../../core-domain/models.types';
 
 @Entity('SharedLink')
 @Index('sharedLink_url_index', ['url']) // NOTE: query shared links by url

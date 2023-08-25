@@ -9,7 +9,7 @@ import {
   Index,
 } from 'typeorm';
 import { SharedLinkEntity } from '../models/shared-link.entity';
-import { Session, SessionStatusEnum } from '../../core/aggregates.types';
+import { Session, SessionStatusEnum } from '../../core-domain/aggregates.types';
 import { UserEntity } from './user.entity';
 import { RoleEntity } from '../models/role.entity';
 import { ThemeEntity } from '../models/theme.entity';

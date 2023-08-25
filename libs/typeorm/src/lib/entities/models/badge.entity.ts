@@ -1,5 +1,5 @@
 import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Badge } from '../../core/models.types';
+import { Badge } from '../../core-domain/models.types';
 import { UserEntity } from '../aggregates/user.entity';
 import { TimestampsEntityColumns } from '../_common.entity';
 
