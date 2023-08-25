@@ -2,27 +2,22 @@ import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
 import { Repository } from 'typeorm';
 
-import { PointEntity } from '../entities/aggregates/point.entity';
-import { RoleRecordEntity } from '../entities/aggregates/role-record.entity';
-import { SessionEntity } from '../entities/aggregates/session.entity';
-import { UserEntity } from '../entities/aggregates/user.entity';
-
-import { AchievementEntity } from '../entities/models/achievement.entity';
-import { BadgeEntity } from '../entities/models/badge.entity';
-import { EffectEntity } from '../entities/models/effect.entity';
-import { RoleEntity } from '../entities/models/role.entity';
-import { SharedLinkEntity } from '../entities/models/shared-link.entity';
-import { ThemeEntity } from '../entities/models/theme.entity';
-
-import * as SEED from '../entities/index.seed';
+import { AchievementEntity } from '../entities/achievement.entity';
+import { BadgeEntity } from '../entities/badge.entity';
+import { EffectEntity } from '../entities/effect.entity';
+import { PointEntity } from '../entities/point.entity';
+import { RoleEntity } from '../entities/role.entity';
+import { SessionEntity } from '../entities/session.entity';
+import { SharedLinkEntity } from '../entities/shared-link.entity';
+import { ThemeEntity } from '../entities/theme.entity';
+import { UserEntity } from '../entities/user.entity';
+import * as SEED from './index.seed';
 
 @Injectable()
 export class SeederService {
   constructor(
     @InjectRepository(PointEntity)
     private readonly pointRepository: Repository<PointEntity>,
-    @InjectRepository(RoleRecordEntity)
-    private readonly roleRecordRepository: Repository<RoleRecordEntity>,
     @InjectRepository(SessionEntity)
     private readonly sessionRepository: Repository<SessionEntity>,
     @InjectRepository(UserEntity)
@@ -44,7 +39,6 @@ export class SeederService {
   async clearAll() {
     Logger.log('▶ Clearing database...');
 
-    await this.clearRoleRecords();
     await this.clearPoints();
     await this.clearSessions();
     await this.clearBadges();
@@ -70,7 +64,6 @@ export class SeederService {
     await this.seedBadges();
     await this.seedSessions();
     await this.seedPoints();
-    await this.seedRoleRecords();
 
     Logger.log('✅ Seeding complete!');
   }
@@ -163,15 +156,5 @@ export class SeederService {
   private async clearPoints() {
     Logger.verbose('Clearing points...');
     await this.pointRepository.delete({});
-  }
-
-  private async seedRoleRecords() {
-    Logger.verbose('Seeding role records...');
-    await this.roleRecordRepository.save(SEED.roleRecords);
-  }
-
-  private async clearRoleRecords() {
-    Logger.verbose('Clearing role records...');
-    await this.roleRecordRepository.delete({});
   }
 }

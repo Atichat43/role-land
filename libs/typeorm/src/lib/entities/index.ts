@@ -1,15 +1,13 @@
-import { PointEntity } from './aggregates/point.entity';
-import { SessionEntity } from './aggregates/session.entity';
-import { UserEntity } from './aggregates/user.entity';
-
-import { AchievementEntity } from './models/achievement.entity';
-import { BadgeEntity } from './models/badge.entity';
-import { EffectEntity } from './models/effect.entity';
-import { RoleEntity } from './models/role.entity';
-import { SharedLinkEntity } from './models/shared-link.entity';
-import { ThemeEntity } from './models/theme.entity';
-
+import { AchievementEntity } from './achievement.entity';
+import { BadgeEntity } from './badge.entity';
+import { EffectEntity } from './effect.entity';
+import { PointEntity } from './point.entity';
+import { RoleEntity } from './role.entity';
+import { SessionEntity } from './session.entity';
+import { SharedLinkEntity } from './shared-link.entity';
 import { UserSubscriber } from './subscriber/user.entity.subscriber';
+import { ThemeEntity } from './theme.entity';
+import { UserEntity } from './user.entity';
 
 export const entities = [
   // aggregates

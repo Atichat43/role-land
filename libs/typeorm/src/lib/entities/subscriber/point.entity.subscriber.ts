@@ -3,7 +3,8 @@ import {
   EventSubscriber,
   InsertEvent,
 } from 'typeorm';
-import { PointEntity } from '../aggregates/point.entity';
+
+import { PointEntity } from '../point.entity';
 
 @EventSubscriber()
 export class PointSubscriber implements EntitySubscriberInterface<PointEntity> {
@@ -14,7 +15,7 @@ export class PointSubscriber implements EntitySubscriberInterface<PointEntity> {
   beforeInsert(event: InsertEvent<PointEntity>) {
     // Validate points balance
     if (
-      event.entity.balance !==
+      event.entity.pointsBalance !==
       event.entity.pointsEarned - event.entity.pointsSpent
     ) {
       console.log('Points balance is inconsistent.');

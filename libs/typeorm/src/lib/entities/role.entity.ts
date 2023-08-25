@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
+import { Role } from '@role-land/domain';
+import { Column, Entity, ManyToOne,PrimaryGeneratedColumn } from 'typeorm';
+
+import { TimestampsEntityColumns } from './_common.entity';
 import { ThemeEntity } from './theme.entity';
-import { Role } from '../../core-domain/models.types';
-import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Role')
 export class RoleEntity extends TimestampsEntityColumns implements Role {

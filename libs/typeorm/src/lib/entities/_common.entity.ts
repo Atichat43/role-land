@@ -1,10 +1,10 @@
+import { SoftDeletion, Timestamps } from '@role-land/domain';
 import {
-  CreateDateColumn,
-  UpdateDateColumn,
-  DeleteDateColumn,
   Column,
+  CreateDateColumn,
+  DeleteDateColumn,
+  UpdateDateColumn,
 } from 'typeorm';
-import { SoftDeletion, Timestamps } from '../core-domain/base.types';
 
 export abstract class TimestampsEntityColumns implements Timestamps {
   @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP' })

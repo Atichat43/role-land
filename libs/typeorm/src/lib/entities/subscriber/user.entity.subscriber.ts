@@ -1,10 +1,11 @@
+import { Logger } from '@nestjs/common';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
   UpdateEvent,
 } from 'typeorm';
-import { UserEntity } from '../aggregates/user.entity';
-import { Logger } from '@nestjs/common';
+
+import { UserEntity } from '../user.entity';
 
 @EventSubscriber()
 export class UserSubscriber implements EntitySubscriberInterface<UserEntity> {

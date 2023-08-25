@@ -1,8 +1,9 @@
-import { Entity, PrimaryGeneratedColumn, ManyToOne, Column } from 'typeorm';
-import { UserEntity } from './user.entity';
+import { Point } from '@role-land/domain';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+
+import { TimestampsEntityColumns } from './_common.entity';
 import { SessionEntity } from './session.entity';
-import { Point } from '../../core-domain/aggregates.types';
-import { TimestampsEntityColumns } from '../_common.entity';
+import { UserEntity } from './user.entity';
 
 @Entity('Point')
 export class PointEntity extends TimestampsEntityColumns implements Point {

@@ -1,19 +1,20 @@
+import { Session, SessionStatusEnum } from '@role-land/domain';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  ManyToMany,
-  JoinTable,
-  JoinColumn,
-  OneToOne,
+  Entity,
   Index,
+  JoinColumn,
+  JoinTable,
+  ManyToMany,
+  OneToOne,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
-import { SharedLinkEntity } from '../models/shared-link.entity';
-import { Session, SessionStatusEnum } from '../../core-domain/aggregates.types';
+
+import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { RoleEntity } from './role.entity';
+import { SharedLinkEntity } from './shared-link.entity';
+import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
-import { RoleEntity } from '../models/role.entity';
-import { ThemeEntity } from '../models/theme.entity';
-import { TimestampsAndSoftDeletionEntityColumns } from '../_common.entity';
 
 @Entity('Session')
 @Index('session_status_index', ['status']) // NOTE: query sessions by status.

@@ -1,18 +1,17 @@
+import { User } from '@role-land/domain';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
+  Entity,
   OneToMany,
+  PrimaryGeneratedColumn,
   VersionColumn,
 } from 'typeorm';
 
+import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { AchievementEntity } from './achievement.entity';
+import { BadgeEntity } from './badge.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 import { RolePreferenceEmbeded } from './user.role-preference.embed';
-
-import { AchievementEntity } from '../models/achievement.entity';
-import { BadgeEntity } from '../models/badge.entity';
-import { User } from '../../core-domain/aggregates.types';
-import { TimestampsAndSoftDeletionEntityColumns } from '../_common.entity';
 
 @Entity('User')
 // @Index('email_index', ['email'])

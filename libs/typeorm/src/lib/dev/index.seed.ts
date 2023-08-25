@@ -1,20 +1,16 @@
+import { RolePreferenceEnum, SessionStatusEnum } from '@role-land/domain';
 import { v4 as uuid } from 'uuid';
 
-import { RolePreferenceEnum } from '../core-domain/value-objects.types';
-
-import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
-
-import { PointEntity } from './aggregates/point.entity';
-import { SessionEntity } from './aggregates/session.entity';
-import { UserEntity } from './aggregates/user.entity';
-
-import { AchievementEntity } from './models/achievement.entity';
-import { BadgeEntity } from './models/badge.entity';
-import { EffectEntity } from './models/effect.entity';
-import { RoleEntity } from './models/role.entity';
-import { SharedLinkEntity } from './models/shared-link.entity';
-import { ThemeEntity } from './models/theme.entity';
-import { SessionStatusEnum } from '../core-domain/aggregates.types';
+import { TimestampsAndSoftDeletionEntityColumns } from '../entities/_common.entity';
+import { AchievementEntity } from '../entities/achievement.entity';
+import { BadgeEntity } from '../entities/badge.entity';
+import { EffectEntity } from '../entities/effect.entity';
+import { PointEntity } from '../entities/point.entity';
+import { RoleEntity } from '../entities/role.entity';
+import { SessionEntity } from '../entities/session.entity';
+import { SharedLinkEntity } from '../entities/shared-link.entity';
+import { ThemeEntity } from '../entities/theme.entity';
+import { UserEntity } from '../entities/user.entity';
 
 type OmitBaseEntityColumns<T> = Omit<
   T,

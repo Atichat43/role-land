@@ -1,7 +1,8 @@
-import { Entity, PrimaryGeneratedColumn, Column, ManyToOne } from 'typeorm';
-import { Badge } from '../../core-domain/models.types';
-import { UserEntity } from '../aggregates/user.entity';
-import { TimestampsEntityColumns } from '../_common.entity';
+import { Badge } from '@role-land/domain';
+import { Column, Entity, ManyToOne,PrimaryGeneratedColumn } from 'typeorm';
+
+import { TimestampsEntityColumns } from './_common.entity';
+import { UserEntity } from './user.entity';
 
 @Entity('Badge')
 export class BadgeEntity extends TimestampsEntityColumns implements Badge {

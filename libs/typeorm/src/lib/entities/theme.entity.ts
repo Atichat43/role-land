@@ -1,13 +1,14 @@
+import { Theme } from '@role-land/domain';
 import {
-  Entity,
-  PrimaryGeneratedColumn,
   Column,
-  OneToMany,
+  Entity,
   Index,
+  OneToMany,
+  PrimaryGeneratedColumn,
 } from 'typeorm';
+
+import { TimestampsEntityColumns } from './_common.entity';
 import { RoleEntity } from './role.entity';
-import { Theme } from '../../core-domain/models.types';
-import { TimestampsEntityColumns } from '../_common.entity';
 
 @Entity('Theme')
 @Index('theme_premium_index', ['premium']) // NOTE: query themes by premium

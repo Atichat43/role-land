@@ -1,7 +1,8 @@
-import { Badge, Achievement, SharedLink, Theme, Role } from './models.types';
+import { SoftDeletion, Timestamps } from './_base.types';
+import { Achievement, Badge, Role,SharedLink, Theme } from './models.types';
 import { Profile, RolePreference } from './value-objects.types';
-import { SoftDeletion, Timestamps } from './base.types';
 
+// NOTE: Groups related entities and value objects.
 export interface User extends Timestamps, SoftDeletion {
   id: string;
   name: string;

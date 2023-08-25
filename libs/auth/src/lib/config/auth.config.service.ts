@@ -1,7 +1,8 @@
 import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
-import { AuthEnvConfig } from './auth.env.config';
 import { Algorithm } from 'jsonwebtoken';
+
+import { AuthEnvConfig } from './auth.env.config';
 
 @Injectable()
 export class AuthConfigService {

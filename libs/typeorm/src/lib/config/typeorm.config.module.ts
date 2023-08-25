@@ -1,4 +1,5 @@
 import { Module } from '@nestjs/common';
+
 import { TypeOrmConfigService } from './typeorm.config.service';
 
 @Module({

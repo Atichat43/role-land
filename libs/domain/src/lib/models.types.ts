@@ -1,5 +1,6 @@
-import { Timestamps } from './base.types';
+import { Timestamps } from './_base.types';
 
+// NOTE: Core business models and interfaces.
 export interface Achievement extends Timestamps {
   id: string;
   achievementType: string;

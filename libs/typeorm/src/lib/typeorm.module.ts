@@ -1,5 +1,6 @@
 import { Module } from '@nestjs/common';
 import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
+
 import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
 import { entities, subscribers } from './entities';
 
