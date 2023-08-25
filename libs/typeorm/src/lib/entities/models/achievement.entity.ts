@@ -14,9 +14,6 @@ export class AchievementEntity
   @Column()
   achievementType: string;
 
-  @Column()
-  timestamp: Date;
-
   @ManyToOne(() => UserEntity, (user) => user.achievements)
   user: UserEntity;
 }

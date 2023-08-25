@@ -11,9 +11,6 @@ export class BadgeEntity extends TimestampsEntityColumns implements Badge {
   @Column()
   badgeType: string;
 
-  @Column()
-  timestamp: Date;
-
   @ManyToOne(() => UserEntity, (user) => user.badges)
   user: UserEntity;
 }

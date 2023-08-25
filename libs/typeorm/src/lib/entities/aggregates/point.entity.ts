@@ -10,9 +10,6 @@ export class PointEntity extends TimestampsEntityColumns implements Point {
   id: string;
 
   @Column()
-  timestamp: Date;
-
-  @Column()
   pointsEarned: number;
 
   @Column()

@@ -82,13 +82,11 @@ export const achievements: OmitBaseEntityColumns<AchievementEntity>[] = [
   {
     id: uuid(),
     achievementType: 'First Win',
-    timestamp: new Date(),
     user: users[0] as UserEntity,
   },
   {
     id: uuid(),
     achievementType: 'Top Scorer',
-    timestamp: new Date(),
     user: users[1] as UserEntity,
   },
 ];
@@ -97,13 +95,11 @@ export const badges: OmitBaseEntityColumns<BadgeEntity>[] = [
   {
     id: uuid(),
     badgeType: 'Gold',
-    timestamp: new Date(),
     user: users[0] as UserEntity,
   },
   {
     id: uuid(),
     badgeType: 'Silver',
-    timestamp: new Date(),
     user: users[1] as UserEntity,
   },
 ];
@@ -124,7 +120,6 @@ export const points: OmitBaseEntityColumns<PointEntity>[] = [
     id: uuid(),
     user: users[0] as UserEntity,
     session: sessions[0] as SessionEntity,
-    timestamp: new Date(),
     pointsEarned: 10,
     pointsSpent: 5,
     pointsBalance: 5,
