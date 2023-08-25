@@ -1,11 +1,10 @@
 import { v4 as uuid } from 'uuid';
 
-import { RolePreferenceEnum } from '../core/value-objects';
+import { RolePreferenceEnum } from '../core/value-objects.types';
 
 import { BaseEntity, BaseEntityWithSoftDelete } from './_common.entity';
 
 import { PointEntity } from './aggregates/point.entity';
-import { RoleRecordEntity } from './aggregates/role-record.entity';
 import { SessionEntity } from './aggregates/session.entity';
 import { UserEntity } from './aggregates/user.entity';
 
@@ -130,15 +129,5 @@ export const points: OmitBaseEntity<PointEntity>[] = [
     pointsEarned: 10,
     pointsSpent: 5,
     pointsBalance: 5,
-  },
-];
-
-export const roleRecords: OmitBaseEntity<RoleRecordEntity>[] = [
-  {
-    id: uuid(),
-    user: users[0] as UserEntity,
-    role: roles[0] as RoleEntity,
-    session: sessions[0] as SessionEntity,
-    timestamp: new Date(),
   },
 ];

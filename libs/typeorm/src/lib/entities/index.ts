@@ -1,5 +1,4 @@
 import { PointEntity } from './aggregates/point.entity';
-import { RoleRecordEntity } from './aggregates/role-record.entity';
 import { SessionEntity } from './aggregates/session.entity';
 import { UserEntity } from './aggregates/user.entity';
 
@@ -15,7 +14,6 @@ import { UserSubscriber } from './subscriber/user.entity.subscriber';
 export const entities = [
   // aggregates
   PointEntity,
-  RoleRecordEntity,
   SessionEntity,
   UserEntity,
 

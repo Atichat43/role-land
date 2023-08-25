@@ -1,5 +1,5 @@
 import { Column } from 'typeorm';
-import { Profile } from '../../core/value-objects';
+import { Profile } from '../../core/value-objects.types';
 
 export class ProfileEmbeded implements Profile {
   @Column()

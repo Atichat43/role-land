@@ -1,7 +1,7 @@
 import {
   RolePreference,
   RolePreferenceEnum,
-} from 'libs/typeorm/src/lib/core/value-objects';
+} from 'libs/typeorm/src/lib/core/value-objects.types';
 import { Column, ManyToOne } from 'typeorm';
 import { RoleEntity } from '../models/role.entity';
 

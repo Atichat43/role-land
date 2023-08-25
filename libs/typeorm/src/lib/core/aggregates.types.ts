@@ -1,5 +1,5 @@
 import { Badge, Achievement, SharedLink, Theme, Role } from './models.types';
-import { Profile, RolePreference } from './value-objects';
+import { Profile, RolePreference } from './value-objects.types';
 
 export interface User {
   id: string;
@@ -33,18 +33,6 @@ export interface Session {
   // models
   sharedLink: SharedLink;
   theme: Theme;
-}
-
-export interface RoleRecord {
-  id: string;
-  timestamp: Date;
-
-  // aggregates
-  user: User;
-  session: Session;
-
-  // models
-  role: Role;
 }
 
 export interface Point {
