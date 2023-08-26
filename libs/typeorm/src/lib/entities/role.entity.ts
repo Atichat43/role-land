@@ -1,6 +1,6 @@
 import { Role } from '@role-land/domain';
 import { Type } from 'class-transformer';
-import { Length, ValidateNested } from 'class-validator';
+import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
@@ -17,6 +17,10 @@ export class RoleEntity extends TimestampsEntityColumns implements Role {
 
   @Column('text', { array: true })
   attributes: string[];
+
+  @Column({ nullable: true })
+  @IsUrl()
+  defaultImage?: string;
 
   @ManyToOne(() => ThemeEntity, (theme) => theme.roles)
   @ValidateNested()
