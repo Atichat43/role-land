@@ -9,6 +9,19 @@ import { SharedLinkEntity } from './shared-link.entity';
 import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
 
+export {
+  AchievementEntity,
+  BadgeEntity,
+  EffectEntity,
+  PointEntity,
+  RoleEntity,
+  RolePreferenceEntity,
+  SessionEntity,
+  SharedLinkEntity,
+  ThemeEntity,
+  UserEntity,
+};
+
 export const Entities = [
   // aggregates
   PointEntity,
