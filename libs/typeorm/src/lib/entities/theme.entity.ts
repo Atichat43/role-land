@@ -12,7 +12,7 @@ import { TimestampsEntityColumns } from './_common.entity';
 import { RoleEntity } from './role.entity';
 
 @Entity('Theme')
-@Index('theme_premium_index', ['premium']) // NOTE: query themes by premium
+@Index('theme_premium_index', ['premium'])
 export class ThemeEntity extends TimestampsEntityColumns implements Theme {
   @PrimaryGeneratedColumn('uuid')
   id: string;

@@ -17,6 +17,8 @@ import { Profile, RolePreference } from './value-objects.types';
  * ---
  * `extends TimestampFields, SoftDeletionFields`
  */
+// Note:
+// - Utilizes soft delete for analyzing user trends and maintaining historical data.
 export interface User extends TimestampFields, SoftDeletionFields {
   id: string;
   name: string;
@@ -35,7 +37,7 @@ export interface User extends TimestampFields, SoftDeletionFields {
 /**
  * Session Domain Interface
  * - id: UUID
- * - status: SessionStatusEnum *(default: PENDING)*
+ * - status: SessionStatusEnum *(default: PENDING)* #Indexed
  * - sharedLink: OneToOne with validation
  * - theme: OneToOne with validation
  * - rolesAssigned[]: **ManyToMany** with NO validation
@@ -43,7 +45,9 @@ export interface User extends TimestampFields, SoftDeletionFields {
  * ---
  * `extends TimestampFields`
  */
-export interface Session extends TimestampFields {
+//  Note:
+//  - Utilizes soft delete for analyzing past sessions (important interactions or events).
+export interface Session extends TimestampFields, SoftDeletionFields {
   id: string;
   status: SessionStatusEnum;
 

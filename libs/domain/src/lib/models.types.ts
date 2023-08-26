@@ -73,7 +73,7 @@ export interface Role extends TimestampFields {
  * Theme Domain Interface
  * - id: UUID
  * - name: **<= 25 chars, non-empty**
- * - premium: boolean *(default: false)*
+ * - premium: boolean *(default: false)* #Indexed
  * - roles[]: **OneToMany** with NO validation
  * ---
  * `extends TimestampFields`
@@ -91,7 +91,7 @@ export interface Theme extends TimestampFields {
 /**
  * SharedLink Domain Interface
  * - id: UUID
- * - url: **url**
+ * - url: **url** #Unique #Indexed
  * - isActive: boolean *(default: false)*
  * ---
  * `extends TimestampFields`

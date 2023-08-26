@@ -19,8 +19,7 @@ import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
 
 @Entity('Session')
-@Index('session_status_index', ['status']) // NOTE: query sessions by status.
-// NOTE: soft delete: analyzing past sessions (important interactions or events).
+@Index('session_status_index', ['status'])
 export class SessionEntity
   extends TimestampsAndSoftDeletionEntityColumns
   implements Session

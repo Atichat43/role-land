@@ -16,8 +16,6 @@ import { RolePreferenceEntity } from './role-preference.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 
 @Entity('User')
-// @Index('email_index', ['email'])
-// NOTE: soft delete: analyzing user trends and maintaining historical data.
 export class UserEntity
   extends TimestampsAndSoftDeletionEntityColumns
   implements User
