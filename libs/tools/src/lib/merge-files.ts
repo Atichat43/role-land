@@ -23,6 +23,7 @@ const mergeFiles = (dir: string, outputFile: fs.PathOrFileDescriptor) => {
       } else if (
         filePath.endsWith('.ts') &&
         !filePath.endsWith('index.ts') &&
+        !filePath.endsWith('.local.ts') &&
         !filePath.endsWith('.notes')
       ) {
         let content = fs.readFileSync(filePath, 'utf8');
