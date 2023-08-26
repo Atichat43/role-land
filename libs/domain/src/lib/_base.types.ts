@@ -1,9 +1,9 @@
-export interface Timestamps {
+export interface TimestampFields {
   createdDate: Date;
   updatedDate: Date;
 }
 
-export interface SoftDeletion {
+export interface SoftDeletionFields {
   isDeleted: boolean;
   deletedDate: Date;
 }

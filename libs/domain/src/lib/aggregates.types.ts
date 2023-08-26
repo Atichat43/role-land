@@ -1,4 +1,4 @@
-import { SoftDeletion, Timestamps } from './_base.types';
+import { SoftDeletionFields, TimestampFields } from './_base.types';
 import { SessionStatusEnum } from './_enum.types';
 import { Achievement, Badge, Role, SharedLink, Theme } from './models.types';
 import { Profile, RolePreference } from './value-objects.types';
@@ -15,9 +15,9 @@ import { Profile, RolePreference } from './value-objects.types';
  * - badges[]: **OneToMany** with NO validation
  * - achievements[]: **OneToMany** with NO validation
  * ---
- * `extends Timestamps, SoftDeletion`
+ * `extends TimestampFields, SoftDeletionFields`
  */
-export interface User extends Timestamps, SoftDeletion {
+export interface User extends TimestampFields, SoftDeletionFields {
   id: string;
   name: string;
   premiumStatus: boolean;
@@ -41,9 +41,9 @@ export interface User extends Timestamps, SoftDeletion {
  * - rolesAssigned[]: **ManyToMany** with NO validation
  * - participants[]: **ManyToMany** with NO validation
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface Session extends Timestamps {
+export interface Session extends TimestampFields {
   id: string;
   status: SessionStatusEnum;
 
@@ -65,9 +65,9 @@ export interface Session extends Timestamps {
  * - user: ManyToOne with validation
  * - session: ManyToOne with validation
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface Point extends Timestamps {
+export interface Point extends TimestampFields {
   id: string;
   pointsEarned: number;
   pointsSpent: number;

@@ -1,4 +1,4 @@
-import { Timestamps } from './_base.types';
+import { TimestampFields } from './_base.types';
 import { User } from './aggregates.types';
 
 // NOTE: Core business models and interfaces.
@@ -9,9 +9,9 @@ import { User } from './aggregates.types';
  * - achievementType: string, *non-empty*
  * - user: ManyToOne with validation
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface Achievement extends Timestamps {
+export interface Achievement extends TimestampFields {
   id: string;
   achievementType: string;
 
@@ -25,9 +25,9 @@ export interface Achievement extends Timestamps {
  * - badgeType: string, *non-empty*
  * - user: ManyToOne with validation
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface Badge extends Timestamps {
+export interface Badge extends TimestampFields {
   id: string;
   badgeType: string;
 
@@ -41,9 +41,9 @@ export interface Badge extends Timestamps {
  * - name: **<= 25 chars, non-empty**
  * - premium: boolean *(default: false)*
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface Effect extends Timestamps {
+export interface Effect extends TimestampFields {
   id: string;
   name: string;
   premium: boolean;
@@ -56,10 +56,10 @@ export interface Effect extends Timestamps {
  * - theme: ManyToOne with validation
  * - attributes[]: Array of strings
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
 // Role can be created and updated by users.
-export interface Role extends Timestamps {
+export interface Role extends TimestampFields {
   id: string;
   name: string;
   theme: Theme;
@@ -73,10 +73,10 @@ export interface Role extends Timestamps {
  * - premium: boolean *(default: false)*
  * - roles[]: **OneToMany** with NO validation
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
 // Themes can be created and updated by users.
-export interface Theme extends Timestamps {
+export interface Theme extends TimestampFields {
   id: string;
   name: string;
   premium: boolean;
@@ -91,9 +91,9 @@ export interface Theme extends Timestamps {
  * - url: **url**
  * - isActive: boolean *(default: false)*
  * ---
- * `extends Timestamps`
+ * `extends TimestampFields`
  */
-export interface SharedLink extends Timestamps {
+export interface SharedLink extends TimestampFields {
   id: string;
   url: string;
   isActive: boolean;
