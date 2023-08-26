@@ -53,8 +53,8 @@ export interface Effect extends TimestampFields {
  * Role Domain Interface
  * - id: UUID
  * - name: **<= 25 chars, non-empty**
- * - theme: ManyToOne with validation
  * - attributes[]: Array of strings
+ * - theme: ManyToOne with validation
  * ---
  * `extends TimestampFields`
  */
@@ -62,8 +62,8 @@ export interface Effect extends TimestampFields {
 export interface Role extends TimestampFields {
   id: string;
   name: string;
-  theme: Theme;
   attributes: string[];
+  theme: Theme;
 }
 
 /**

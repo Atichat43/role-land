@@ -1,5 +1,7 @@
 import { Achievement } from '@role-land/domain';
-import { Column, Entity, ManyToOne,PrimaryGeneratedColumn } from 'typeorm';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, ValidateNested } from 'class-validator';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
 import { UserEntity } from './user.entity';
@@ -13,8 +15,11 @@ export class AchievementEntity
   id: string;
 
   @Column()
+  @IsNotEmpty()
   achievementType: string;
 
   @ManyToOne(() => UserEntity, (user) => user.achievements)
+  @ValidateNested()
+  @Type(() => UserEntity)
   user: UserEntity;
 }

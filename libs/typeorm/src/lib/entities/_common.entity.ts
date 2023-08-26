@@ -1,4 +1,4 @@
-import { SoftDeletion, Timestamps } from '@role-land/domain';
+import { SoftDeletionFields, TimestampFields } from '@role-land/domain';
 import {
   Column,
   CreateDateColumn,
@@ -6,7 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
-export abstract class TimestampsEntityColumns implements Timestamps {
+export abstract class TimestampsEntityColumns implements TimestampFields {
   @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;
 
@@ -14,7 +14,7 @@ export abstract class TimestampsEntityColumns implements Timestamps {
   updatedDate: Date;
 }
 
-export abstract class SoftDeletionEntityColumns implements SoftDeletion {
+export abstract class SoftDeletionEntityColumns implements SoftDeletionFields {
   @Column({ default: false })
   isDeleted: boolean;
 

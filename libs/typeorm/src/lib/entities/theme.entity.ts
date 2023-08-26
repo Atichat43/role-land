@@ -1,4 +1,5 @@
 import { Theme } from '@role-land/domain';
+import { IsBoolean, Length } from 'class-validator';
 import {
   Column,
   Entity,
@@ -17,11 +18,13 @@ export class ThemeEntity extends TimestampsEntityColumns implements Theme {
   id: string;
 
   @Column()
+  @Length(1, 25)
   name: string;
+
+  @Column({ default: false })
+  @IsBoolean()
+  premium: boolean;
 
   @OneToMany(() => RoleEntity, (role) => role.theme)
   roles: RoleEntity[];
-
-  @Column()
-  premium: boolean;
 }

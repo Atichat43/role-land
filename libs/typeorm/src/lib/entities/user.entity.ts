@@ -1,4 +1,6 @@
 import { User } from '@role-land/domain';
+import { Type } from 'class-transformer';
+import { IsBoolean, IsInt, Length, ValidateNested } from 'class-validator';
 import {
   Column,
   Entity,
@@ -24,15 +26,16 @@ export class UserEntity
   id: string;
 
   @Column()
+  @Length(1, 25)
   name: string;
 
-  @Column()
-  points: number;
-
-  @Column()
+  @Column({ default: false })
+  @IsBoolean()
   premiumStatus: boolean;
 
   @Column(() => ProfileEmbeded)
+  @ValidateNested()
+  @Type(() => ProfileEmbeded)
   profile: ProfileEmbeded;
 
   @Column(() => RolePreferenceEmbeded, { array: true })
@@ -44,6 +47,7 @@ export class UserEntity
   @OneToMany(() => AchievementEntity, (achievement) => achievement.user)
   achievements: AchievementEntity[];
 
+  // NOTE: optimistic concurrency control
   @VersionColumn({ default: 0 })
   version: number;
 }

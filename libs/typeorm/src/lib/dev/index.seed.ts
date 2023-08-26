@@ -51,7 +51,6 @@ export const users: OmitBaseEntityColumns<UserEntity>[] = [
   {
     id: uuid(),
     name: 'Alice',
-    points: 100,
     premiumStatus: true,
     profile: { bio: 'Loves adventure', interests: ['Hiking', 'Reading'] },
     rolePreferences: [
@@ -63,7 +62,6 @@ export const users: OmitBaseEntityColumns<UserEntity>[] = [
   {
     id: uuid(),
     name: 'Bob',
-    points: 50,
     premiumStatus: false,
     profile: { bio: 'Mystery lover', interests: ['Puzzles', 'Movies'] },
     rolePreferences: [

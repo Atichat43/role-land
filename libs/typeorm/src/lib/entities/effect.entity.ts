@@ -1,4 +1,5 @@
 import { Effect } from '@role-land/domain';
+import { IsBoolean, Length } from 'class-validator';
 import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
@@ -10,8 +11,10 @@ export class EffectEntity extends TimestampsEntityColumns implements Effect {
   id: string;
 
   @Column()
+  @Length(1, 25)
   name: string;
 
-  @Column()
+  @Column({ default: false })
+  @IsBoolean()
   premium: boolean;
 }

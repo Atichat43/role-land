@@ -1,4 +1,6 @@
 import { Point } from '@role-land/domain';
+import { Type } from 'class-transformer';
+import { IsInt, Min, ValidateIf, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
@@ -10,19 +12,30 @@ export class PointEntity extends TimestampsEntityColumns implements Point {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column()
+  @Column({ default: 0 })
+  @IsInt()
+  @Min(0)
   pointsEarned: number;
 
-  @Column()
+  @Column({ default: 0 })
+  @IsInt()
+  @Min(0)
   pointsSpent: number;
 
-  @Column()
+  @Column({ default: 0 })
+  @IsInt()
+  @Min(0)
+  @ValidateIf((o) => o.pointsBalance === o.pointsEarned - o.pointsSpent)
   pointsBalance: number;
 
   // aggregates
   @ManyToOne(() => UserEntity)
+  @ValidateNested()
+  @Type(() => UserEntity)
   user: UserEntity;
 
   @ManyToOne(() => SessionEntity)
+  @ValidateNested()
+  @Type(() => UserEntity)
   session: SessionEntity;
 }

@@ -1,5 +1,7 @@
 import { Badge } from '@role-land/domain';
-import { Column, Entity, ManyToOne,PrimaryGeneratedColumn } from 'typeorm';
+import { Type } from 'class-transformer';
+import { IsNotEmpty, ValidateNested } from 'class-validator';
+import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
 import { UserEntity } from './user.entity';
@@ -10,8 +12,11 @@ export class BadgeEntity extends TimestampsEntityColumns implements Badge {
   id: string;
 
   @Column()
+  @IsNotEmpty()
   badgeType: string;
 
   @ManyToOne(() => UserEntity, (user) => user.badges)
+  @ValidateNested()
+  @Type(() => UserEntity)
   user: UserEntity;
 }

@@ -1,0 +1,6 @@
+Criteria for Using @ValidateNested and @Type:
+1. Complexity: Use @ValidateNested if the object has nested objects that also require validation.
+2. Validation Rules: Use @ValidateNested if the object itself has validation rules that need to be checked.
+3. Relationship Type:
+    - For OneToMany or ManyToMany relationships, avoid using @ValidateNested due to potential circular dependencies or performance issues. Handle validation in the service layer.
+    - For ManyToOne and OneToOne, it's generally safer to use @ValidateNested.

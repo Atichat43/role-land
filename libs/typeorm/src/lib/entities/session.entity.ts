@@ -1,4 +1,6 @@
 import { Session, SessionStatusEnum } from '@role-land/domain';
+import { Type } from 'class-transformer';
+import { IsEnum, ValidateNested } from 'class-validator';
 import {
   Column,
   Entity,
@@ -30,7 +32,21 @@ export class SessionEntity
     enum: SessionStatusEnum,
     default: SessionStatusEnum.PENDING,
   })
+  @IsEnum(SessionStatusEnum)
   status: SessionStatusEnum;
+
+  // models
+  @OneToOne(() => SharedLinkEntity)
+  @JoinColumn()
+  @ValidateNested()
+  @Type(() => SharedLinkEntity)
+  sharedLink: SharedLinkEntity;
+
+  @OneToOne(() => ThemeEntity)
+  @JoinColumn()
+  @ValidateNested()
+  @Type(() => ThemeEntity)
+  theme: ThemeEntity;
 
   // aggregates
   @ManyToMany(() => RoleEntity)
@@ -40,13 +56,4 @@ export class SessionEntity
   @ManyToMany(() => UserEntity)
   @JoinTable()
   participants: UserEntity[];
-
-  // models
-  @OneToOne(() => SharedLinkEntity)
-  @JoinColumn()
-  sharedLink: SharedLinkEntity;
-
-  @OneToOne(() => ThemeEntity)
-  @JoinColumn()
-  theme: ThemeEntity;
 }

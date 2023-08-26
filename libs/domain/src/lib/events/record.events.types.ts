@@ -1,23 +1,6 @@
 import { BaseEvent } from './_base.events.types';
 
 /**
- * RoleLifecycle Event Interface
- * - type: 'RoleCreated' | 'RoleDeleted'
- * - roleId: string, *non-empty*
- * ---
- * use cases:
- * - RoleCreated - Log the creation of a new role.
- * - RoleCreated - Notify administrators or other stakeholders.
- * - RoleCreated - Update available roles list.
- * - RoleDeleted - Log the deletion of a role.
- * - RoleDeleted - Update available roles list.
- */
-export interface RoleLifecycleEvent extends BaseEvent {
-  type: 'RoleCreated' | 'RoleDeleted';
-  roleId: string;
-}
-
-/**
  * BadgeEarned Event Interface
  * - type: 'BadgeEarned'
  * - userId: string, *non-empty*
