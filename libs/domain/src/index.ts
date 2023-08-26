@@ -1,4 +1,5 @@
 export * from './lib/_base.types';
+export * from './lib/_enum.types';
 export * from './lib/aggregates.types';
 export * from './lib/events/changed.events.types';
 export * from './lib/events/lifecycle.events.types';
