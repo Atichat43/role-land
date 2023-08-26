@@ -31,6 +31,9 @@
       "@role-land/plugin": [
         "libs/plugin/src/index.ts"
       ],
+      "@role-land/tools": [
+        "libs/tools/src/index.ts"
+      ],
       "@role-land/typeorm": [
         "libs/typeorm/src/index.ts"
       ]
