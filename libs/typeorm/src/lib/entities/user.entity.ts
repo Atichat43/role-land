@@ -12,6 +12,7 @@ import {
 import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
 import { AchievementEntity } from './achievement.entity';
 import { BadgeEntity } from './badge.entity';
+import { RolePreferenceEntity } from './role-preference.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 import { RolePreferenceEmbeded } from './user.role-preference.embed';
 
@@ -38,8 +39,11 @@ export class UserEntity
   @Type(() => ProfileEmbeded)
   profile: ProfileEmbeded;
 
-  @Column(() => RolePreferenceEmbeded, { array: true })
-  rolePreferences: RolePreferenceEmbeded[];
+  @OneToMany(
+    () => RolePreferenceEntity,
+    (rolePreference) => rolePreference.user,
+  )
+  rolePreferences: RolePreferenceEntity[];
 
   @OneToMany(() => BadgeEntity, (badge) => badge.user)
   badges: BadgeEntity[];

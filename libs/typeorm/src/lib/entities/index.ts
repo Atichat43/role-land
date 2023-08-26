@@ -3,6 +3,7 @@ import { BadgeEntity } from './badge.entity';
 import { EffectEntity } from './effect.entity';
 import { PointEntity } from './point.entity';
 import { RoleEntity } from './role.entity';
+import { RolePreferenceEntity } from './role-preference.entity';
 import { SessionEntity } from './session.entity';
 import { SharedLinkEntity } from './shared-link.entity';
 import { ThemeEntity } from './theme.entity';
@@ -21,6 +22,9 @@ export const Entities = [
   RoleEntity,
   SharedLinkEntity,
   ThemeEntity,
+
+  // embeds
+  RolePreferenceEntity,
 ];
 
 export default Entities;

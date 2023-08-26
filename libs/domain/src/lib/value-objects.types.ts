@@ -1,4 +1,5 @@
 import { RolePreferenceEnum } from './_enum.types';
+import { User } from './aggregates.types';
 import { Role } from './models.types';
 
 // NOTE:
@@ -20,14 +21,20 @@ export interface Profile {
  * - preference: RolePreferenceEnum
  * - customImage: **url, can be empty**
  * - role: ManyToOne with validation
+ * - user: ManyToOne with validation
  *
  * Note: This value object includes a ManyToOne relationship with Role.
  * 1. RolePreference can override certain attributes of Role (e.g., customImage).
  * 2. The integrity and operations on RolePreference are tightly coupled with Role.
+ * 3. In PostgreSQL, this is represented as a separate entity.
  */
 export interface RolePreference {
   preference: RolePreferenceEnum;
-
   customImage?: string;
+
+  // models
   role: Role;
+
+  // aggregates
+  user: User;
 }

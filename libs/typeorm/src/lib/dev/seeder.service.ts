@@ -8,6 +8,7 @@ import { BadgeEntity } from '../entities/badge.entity';
 import { EffectEntity } from '../entities/effect.entity';
 import { PointEntity } from '../entities/point.entity';
 import { RoleEntity } from '../entities/role.entity';
+import { RolePreferenceEntity } from '../entities/role-preference.entity';
 import { SessionEntity } from '../entities/session.entity';
 import { SharedLinkEntity } from '../entities/shared-link.entity';
 import { ThemeEntity } from '../entities/theme.entity';
@@ -36,6 +37,8 @@ export class SeederService {
     private readonly sharedLinkRepository: Repository<SharedLinkEntity>,
     @InjectRepository(ThemeEntity)
     private readonly themeRepository: Repository<ThemeEntity>,
+    @InjectRepository(RolePreferenceEntity)
+    private readonly rolePreferenceRepository: Repository<RolePreferenceEntity>,
   ) {}
 
   async clearAll() {
@@ -45,6 +48,7 @@ export class SeederService {
     await this.clearSessions();
     await this.clearBadges();
     await this.clearAchievements();
+    await this.clearRolePreferences();
     await this.clearUsers();
     await this.clearRoles();
     await this.clearSharedLinks();
@@ -62,6 +66,7 @@ export class SeederService {
     await this.seedSharedLinks();
     await this.seedRoles();
     await this.seedUsers();
+    await this.seedRolePreferences();
     await this.seedAchievements();
     await this.seedBadges();
     await this.seedSessions();
@@ -167,6 +172,16 @@ export class SeederService {
   private async clearUsers() {
     Logger.verbose('Clearing users...');
     await this.userRepository.delete({});
+  }
+
+  private async seedRolePreferences() {
+    Logger.verbose('Seeding role preferences...');
+    await this.rolePreferenceRepository.save(SEED.rolePreferences);
+  }
+
+  private async clearRolePreferences() {
+    Logger.verbose('Clearing role preferences...');
+    await this.rolePreferenceRepository.delete({});
   }
 
   private async seedAchievements() {

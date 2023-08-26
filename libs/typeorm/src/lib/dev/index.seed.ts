@@ -7,6 +7,7 @@ import { BadgeEntity } from '../entities/badge.entity';
 import { EffectEntity } from '../entities/effect.entity';
 import { PointEntity } from '../entities/point.entity';
 import { RoleEntity } from '../entities/role.entity';
+import { RolePreferenceEntity } from '../entities/role-preference.entity';
 import { SessionEntity } from '../entities/session.entity';
 import { SharedLinkEntity } from '../entities/shared-link.entity';
 import { ThemeEntity } from '../entities/theme.entity';
@@ -45,6 +46,12 @@ export const roles: OmitBaseEntityColumns<RoleEntity>[] = [
     theme: themes[1] as ThemeEntity,
     attributes: ['Intelligence', 'Observation'],
   },
+  {
+    id: uuid(),
+    name: 'Mage',
+    theme: themes[0] as ThemeEntity,
+    attributes: [],
+  },
 ];
 
 export const users: OmitBaseEntityColumns<UserEntity>[] = [
@@ -53,9 +60,7 @@ export const users: OmitBaseEntityColumns<UserEntity>[] = [
     name: 'Alice',
     premiumStatus: true,
     profile: { bio: 'Loves adventure', interests: ['Hiking', 'Reading'] },
-    rolePreferences: [
-      { role: roles[0] as RoleEntity, preference: RolePreferenceEnum.HIGH },
-    ],
+    rolePreferences: [],
     badges: [],
     achievements: [],
   },
@@ -64,11 +69,18 @@ export const users: OmitBaseEntityColumns<UserEntity>[] = [
     name: 'Bob',
     premiumStatus: false,
     profile: { bio: 'Mystery lover', interests: ['Puzzles', 'Movies'] },
-    rolePreferences: [
-      { role: roles[1] as RoleEntity, preference: RolePreferenceEnum.LOW },
-    ],
+    rolePreferences: [],
     badges: [],
     achievements: [],
+  },
+];
+
+export const rolePreferences: OmitBaseEntityColumns<RolePreferenceEntity>[] = [
+  {
+    id: uuid(),
+    preference: RolePreferenceEnum.LOW,
+    role: roles[0] as RoleEntity,
+    user: users[0] as UserEntity,
   },
 ];
 
