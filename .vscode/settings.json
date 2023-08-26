@@ -6,6 +6,7 @@
     "cmds",
     "Embeded",
     "necord",
+    "nocheck",
     "typeorm"
   ]
 }
