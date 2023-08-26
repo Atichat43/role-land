@@ -1,4 +1,23 @@
-Domain Interface Documentation:
+Event Interface Instruction:
+1. Identify Fields:
+  - List all the fields in the event interface.
+2. Data Types and Constraints:
+  - Use **Bold** to highlight important constraints like data length or value limitations.
+  - Use *Italic* to indicate default values or optional fields.
+3. Use Cases:
+  - Use --- to separate the fields from the use cases.
+  - Use `use cases:` in Inline Code to indicate the use cases of the event.
+  - Use `-` in Inline Code to indicate the use cases of the event.
+  - Explains the use cases of the event.
+
+Enum Type Instruction:
+1. Identify Fields:
+    - List all the fields in the enum type. explains its purpose and the meaning of each value.
+2. Default Value:
+    - Use --- to separate the fields from the default value.
+    - Use `default: ...` in Inline Code to indicate the default value of the enum type.
+
+Domain Interface Instruction:
 1. Identify Fields: 
   - List all the fields in the domain interface.
 2. Data Types and Constraints:
@@ -16,9 +35,6 @@ Domain Interface Documentation:
 6. Comments:
   - Use `//` to add inline comments for categorizing fields like `// value objects`, `// models` and `// aggregates`
 
-Enum Type Documentation:
-1. Identify Fields:
-    - List all the fields in the enum type. explains its purpose and the meaning of each value.
-2. Default Value:
-    - Use --- to separate the fields from the default value.
-    - Use `default: ...` in Inline Code to indicate the default value of the enum type.
+
+
+
