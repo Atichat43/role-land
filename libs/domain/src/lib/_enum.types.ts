@@ -3,6 +3,8 @@
  * - PENDING: Session is pending and has not yet started
  * - STARTED: Session is currently in progress
  * - ENDED: Session has ended
+ * ---
+ * `default: PENDING`
  */
 export enum SessionStatusEnum {
   PENDING = 'pending',

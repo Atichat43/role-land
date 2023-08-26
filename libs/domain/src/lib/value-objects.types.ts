@@ -7,7 +7,7 @@ import { Role } from './models.types';
 
 /**
  * Profile Value Object
- * - bio: <= 1000 chars, can be empty
+ * - bio: *<= 1000 chars*, can be empty
  * - interests[]: Array of strings
  */
 export interface Profile {
