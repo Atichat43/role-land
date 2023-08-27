@@ -20,7 +20,7 @@ export class RoleEntity extends TimestampsEntityColumns implements Role {
 
   @Column({ nullable: true })
   @IsUrl()
-  defaultImage?: string;
+  defaultImage: string | null;
 
   @ManyToOne(() => ThemeEntity, (theme) => theme.roles)
   @ValidateNested()

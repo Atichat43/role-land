@@ -54,7 +54,7 @@ export interface Effect extends TimestampFields {
  * - id: UUID
  * - name: **<= 25 chars, non-empty**
  * - attributes[]: Array of strings
- * - defaultImage: **url, can be empty**
+ * - defaultImage: **url, can be null**
  * - theme: ManyToOne with validation
  * ---
  * `extends TimestampFields`
@@ -65,7 +65,7 @@ export interface Role extends TimestampFields {
   name: string;
   attributes: string[];
 
-  defaultImage?: string;
+  defaultImage: string | null;
   theme: Theme;
 }
 

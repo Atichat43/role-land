@@ -16,7 +16,7 @@ export class RolePreferenceEntity implements RolePreference {
 
   @Column({ nullable: true })
   @IsUrl()
-  customImage?: string;
+  customImage: string | null;
 
   @ManyToOne(() => RoleEntity)
   @ValidateNested()

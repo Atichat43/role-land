@@ -19,7 +19,7 @@ export interface Profile {
 /**
  * RolePreference Value Object
  * - preference: RolePreferenceEnum
- * - customImage: **url, can be empty**
+ * - customImage: **url, can be null**
  * - role: ManyToOne with validation
  * - user: ManyToOne with validation
  *
@@ -30,7 +30,7 @@ export interface Profile {
  */
 export interface RolePreference {
   preference: RolePreferenceEnum;
-  customImage?: string;
+  customImage: string | null;
 
   // models
   role: Role;
