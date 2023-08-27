@@ -45,6 +45,10 @@
         {
           "target": "compose",
           "projects": "typeorm"
+        },
+        {
+          "target": "merge-files",
+          "projects": "tools"
         }
       ]
     },
