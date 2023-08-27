@@ -21,6 +21,8 @@ export class SeederService {
     SharedLinkEntity: Repository<Entities.SharedLinkEntity>;
     ThemeEntity: Repository<Entities.ThemeEntity>;
     RolePreferenceEntity: Repository<Entities.RolePreferenceEntity>;
+    TeamEntity?: Repository<Entities.TeamEntity>;
+    TeamMemberEntity?: Repository<Entities.TeamMemberEntity>;
   };
 
   constructor(
@@ -44,6 +46,10 @@ export class SeederService {
     private readonly themeRepository: Repository<Entities.ThemeEntity>,
     @InjectRepository(Entities.RolePreferenceEntity)
     private readonly rolePreferenceRepository: Repository<Entities.RolePreferenceEntity>,
+    @InjectRepository(Entities.TeamEntity)
+    private readonly teamRepository: Repository<Entities.TeamEntity>,
+    @InjectRepository(Entities.TeamMemberEntity)
+    private readonly teamMemberRepository: Repository<Entities.TeamMemberEntity>,
   ) {
     this.repositories = {
       PointEntity: this.pointRepository,
@@ -56,6 +62,8 @@ export class SeederService {
       SharedLinkEntity: this.sharedLinkRepository,
       ThemeEntity: this.themeRepository,
       RolePreferenceEntity: this.rolePreferenceRepository,
+      TeamEntity: this.teamRepository,
+      TeamMemberEntity: this.teamMemberRepository,
     };
   }
 
@@ -83,6 +91,8 @@ export class SeederService {
       SharedLinkEntity: SEED.sharedLinks,
       RoleEntity: SEED.roles,
       UserEntity: SEED.users,
+      TeamEntity: SEED.teams,
+      TeamMemberEntity: SEED.teamMembers,
       RolePreferenceEntity: SEED.rolePreferences,
       AchievementEntity: SEED.achievements,
       BadgeEntity: SEED.badges,
@@ -111,6 +121,8 @@ export class SeederService {
       'AchievementEntity',
       'RolePreferenceEntity',
       'UserEntity',
+      'TeamEntity',
+      'TeamMemberEntity',
       'RoleEntity',
       'SharedLinkEntity',
       'EffectEntity',

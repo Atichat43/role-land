@@ -1,5 +1,8 @@
 import { SoftDeletionFields, TimestampFields } from './_base.types';
-import { SessionStatusEnum } from './_enum.types';
+import {
+  SessionStatusEnum,
+  TeamMemberMembershipStateEnum,
+} from './_enum.types';
 import { Achievement, Badge, Role, SharedLink, Theme } from './models.types';
 import { Profile, RolePreference } from './value-objects.types';
 
@@ -8,12 +11,15 @@ import { Profile, RolePreference } from './value-objects.types';
 /**
  * User Domain Interface
  * - id: UUID
- * - name: **<= 25 chars, non-empty**
+ * - username: **<= 25 chars, non-empty**
+ * - globalName: **<= 25 chars, non-empty**
+ * - avatar: **url, can be empty**
  * - premiumStatus: boolean *(default: false)*
  * - profile: *validated* value object
  * - rolePreferences[]: *validated* value object
  * - badges[]: **OneToMany** with NO validation
  * - achievements[]: **OneToMany** with NO validation
+ * - teamMemberships[]: **OneToMany** with NO validation
  * ---
  * `extends TimestampFields, SoftDeletionFields`
  */
@@ -21,8 +27,10 @@ import { Profile, RolePreference } from './value-objects.types';
 // - Utilizes soft delete for analyzing user trends and maintaining historical data.
 export interface User extends TimestampFields, SoftDeletionFields {
   id: string;
-  name: string;
+  username: string;
+  globalName: string;
   premiumStatus: boolean;
+  avatar: string | null;
 
   // value objects
   profile: Profile;
@@ -31,9 +39,51 @@ export interface User extends TimestampFields, SoftDeletionFields {
   // models
   badges: Badge[];
   achievements: Achievement[];
+
+  // aggregates
+  teamMemberships: TeamMember[];
 }
 
-// generate document interface for session
+/**
+ * TeamMember Domain Interface
+ * - id: UUID
+ * - teamMemberMembershipState: TeamMemberMembershipStateEnum
+ * - permissions[]: Array of strings
+ * - user: ManyToOne with validation
+ * - team: ManyToOne with validation
+ */
+export interface TeamMember extends TimestampFields {
+  id: string;
+  teamMemberMembershipState: TeamMemberMembershipStateEnum;
+  permissions: string[];
+
+  // aggregates
+  user: User;
+  team: Team;
+}
+
+/**
+ * Team Domain Interface
+ * - id: UUID
+ * - name: **<= 25 chars, non-empty**
+ * - icon: **url, can be empty**
+ * - owner: OneToOne with validation
+ * - members[]: **OneToMany** with NO validation
+ *
+ * ---
+ * `extends TimestampFields, SoftDeletionFields`
+ */
+export interface Team extends TimestampFields, SoftDeletionFields {
+  id: string;
+
+  name: string;
+  icon: string | null;
+
+  // aggregates
+  owner: User;
+  members: TeamMember[];
+}
+
 /**
  * Session Domain Interface
  * - id: UUID

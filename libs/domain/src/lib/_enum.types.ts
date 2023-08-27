@@ -23,3 +23,13 @@ export enum RolePreferenceEnum {
   MEDIUM = 'medium',
   LOW = 'low',
 }
+
+/**
+ * TeamMemberMembershipStateEnum
+ * - INVITED: Indicates that the user has been invited to the team
+ * - ACCEPTED: Indicates that the user has accepted the invitation to the team
+ */
+export enum TeamMemberMembershipStateEnum {
+  INVITED = 'invited',
+  ACCEPTED = 'accepted',
+}

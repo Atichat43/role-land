@@ -1,6 +1,11 @@
-import { RolePreferenceEnum, SessionStatusEnum } from '@role-land/domain';
+import {
+  RolePreferenceEnum,
+  SessionStatusEnum,
+  TeamMemberMembershipStateEnum,
+} from '@role-land/domain';
 import { v4 as uuid } from 'uuid';
 
+import { TeamEntity, TeamMemberEntity } from '../entities';
 import { TimestampsAndSoftDeletionEntityColumns } from '../entities/_common.entity';
 import { AchievementEntity } from '../entities/achievement.entity';
 import { BadgeEntity } from '../entities/badge.entity';
@@ -57,21 +62,68 @@ export const roles: OmitBaseEntityColumns<RoleEntity>[] = [
 export const users: OmitBaseEntityColumns<UserEntity>[] = [
   {
     id: uuid(),
-    name: 'Alice',
+    globalName: 'Alice',
+    username: 'alice',
+    avatar: 'https://example.com/avatar1',
     premiumStatus: true,
     profile: { bio: 'Loves adventure', interests: ['Hiking', 'Reading'] },
     rolePreferences: [],
     badges: [],
     achievements: [],
+    teamMemberships: [],
   },
   {
     id: uuid(),
-    name: 'Bob',
+    globalName: 'Bob',
+    username: 'bob',
+    avatar: 'https://example.com/avatar2',
     premiumStatus: false,
     profile: { bio: 'Mystery lover', interests: ['Puzzles', 'Movies'] },
     rolePreferences: [],
     badges: [],
     achievements: [],
+    teamMemberships: [],
+  },
+];
+
+export const teams: OmitBaseEntityColumns<TeamEntity>[] = [
+  {
+    id: uuid(),
+    name: 'Team 1',
+    icon: 'https://example.com/icon1',
+    owner: users[0] as UserEntity,
+    members: [],
+  },
+  {
+    id: uuid(),
+    name: 'Team 2',
+    icon: 'https://example.com/icon2',
+    owner: users[1] as UserEntity,
+    members: [],
+  },
+];
+
+export const teamMembers: OmitBaseEntityColumns<TeamMemberEntity>[] = [
+  {
+    id: uuid(),
+    teamMemberMembershipState: TeamMemberMembershipStateEnum.INVITED,
+    permissions: ['READ', 'WRITE'],
+    user: users[0] as UserEntity,
+    team: teams[0] as TeamEntity,
+  },
+  {
+    id: uuid(),
+    teamMemberMembershipState: TeamMemberMembershipStateEnum.ACCEPTED,
+    permissions: ['READ'],
+    user: users[0] as UserEntity,
+    team: teams[1] as TeamEntity,
+  },
+  {
+    id: uuid(),
+    teamMemberMembershipState: TeamMemberMembershipStateEnum.INVITED,
+    permissions: ['READ'],
+    user: users[1] as UserEntity,
+    team: teams[1] as TeamEntity,
   },
 ];
 

@@ -6,6 +6,8 @@ import { RoleEntity } from './role.entity';
 import { RolePreferenceEntity } from './role-preference.entity';
 import { SessionEntity } from './session.entity';
 import { SharedLinkEntity } from './shared-link.entity';
+import { TeamEntity } from './team.entity';
+import { TeamMemberEntity } from './team-member.entity';
 import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
 
@@ -18,6 +20,8 @@ export {
   RolePreferenceEntity,
   SessionEntity,
   SharedLinkEntity,
+  TeamEntity,
+  TeamMemberEntity,
   ThemeEntity,
   UserEntity,
 };
@@ -27,6 +31,8 @@ export const Entities = [
   PointEntity,
   SessionEntity,
   UserEntity,
+  TeamEntity,
+  TeamMemberEntity,
 
   // models
   AchievementEntity,
