@@ -15,7 +15,6 @@ common:
 
 // strategic actions
 - Swap: swap-role
-- Rewind: rewind-action
 - Veto: veto
 
 ### Timer Actions
@@ -33,7 +32,7 @@ common:
 
 - **Gift Time** // BASE_ACTION
   - effect-key: `gift-time`
-  - desc: Give 15 seconds of your speaking time to another participant.
+  - desc: Give 15 seconds to another participant.
 
 - **Steal Time**
   - effect-key: `steal-time`
@@ -70,10 +69,6 @@ common:
   - desc: Swap roles with another participant.
 
 ### Strategic Actions
-- **Deflect**
-  - effect-key: `deflect`
-  - desc: Redirect an incoming skill to another player.
-
 - **Fast Forward**
   - effect-key: `fast-forward`
   - desc: Skip your turn, ignoring any actions in between.
@@ -98,13 +93,9 @@ common:
   - effect-key: `pick-pocket`
   - desc: Steal a random skill from another participant.
 
-- **Rewind** // BASE_ACTION
-  - effect-key: `rewind-action`
-  - desc: Reverse the last action taken.
-
 - **Silencer**
   - effect-key: `silencer`
-  - desc: Mute a participant for their next turn.
+  - desc: skip the target's next turn.
 
 - **Veto** // BASE_ACTION
   - effect-key: `veto`
@@ -127,7 +118,7 @@ Roles:
   - Product Owner: "Coffee Break": freeze-time x 2, "Setup new Meeting": randomize-oreder x 2, "Change Requirements": veto x 1
   - Backend Developer: "Debug": skip-turn x 2, "Hidden Feature": extra/steal-time x 2
   - Frontend Developer: "Debug": skip-turn x 2, "Hidden Feature": extra/steal-time x 2
-  - DevOps: "Debug": skip-turn x 2, "Deploy": reverse-order x 1, "Lint&Test Error": rewind-action x 1, 
+  - DevOps: "Debug": skip-turn x 2, "Deploy": reverse-order x 1, "Lint&Test Error": echo x 1, 
   - QA: "Run Automation Tests": skip-turn x 1, "Testing": extra-time x 2, "Move to Backlog": reverse-order x 1
   - Client: "Change Requirements": veto x 1, "Reduce Budget": time-bomb x 1, "Raise Budget": gift-time x 2
 Mapper:
@@ -148,7 +139,7 @@ Mapper:
   - "Reduce Budget": time-bomb x 1
 
   // strategic actions
-  - "Lint&Test Error": rewind-action x 1
+  - "Lint&Test Error": echo x 1
   - "Change Requirements": veto x 2
 
 
@@ -158,7 +149,7 @@ Roles:
   - Principal: "Break": freeze-time x 2, "Grant Writing": wildcard x 1, "Teacher Evaluation": swap-role x 1
   - Student: "Ask Question": joker x 2, "Do Homework": hide x 2, "Quick Learner": pick-pocket x 2
   - School Nurse: "Emergency Drill": skip-turn x 2, "First Aid": extra/steal-time x 2
-  - Janitorial Staff: "Clean Up": skip-turn x 2, "Emergency Cleanup": time-bomb x 1, "Maintenance": rewind-action x 1, 
+  - Janitorial Staff: "Clean Up": skip-turn x 2, "Emergency Cleanup": time-bomb x 1, "Maintenance": fast-forward x 1, 
   - Teacher: "Cancel Class": veto x 1, "Pop Quiz": time-bomb x 1, "Extra Credit": gift-time x 2
 Mapper:
   // timer actions
@@ -181,7 +172,7 @@ Mapper:
   - "Ask Question": joker x 2
   - "Do Homework": hide x 2
   - "Quick Learner": pick-pocket x 2
-  - "Maintenance": rewind-action x 1
+  - "Maintenance": fast-forward x 1
 
 // This is an example of a theme that users just use role-assigned features
 ### Wereworlf

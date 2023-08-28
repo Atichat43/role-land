@@ -1,0 +1,143 @@
+# General
+## As a User, I want to create an account so that I can save my progress and settings.
+- Email verification process
+- Password strength check
+## As a User, I want to reset my password in case I forget it.
+- Password reset through email link
+- Temporary password option
+## As a User, I want to join a team so that I can collaborate with my colleagues.
+- Accept an invite to a team
+## As a User, I want to leave a team so that I am not part of it anymore.
+- Option to leave a team from the settings
+- Confirmation prompt to prevent accidental leaves
+## As a User, I want to customize my profile so that my teammates can recognize me.
+- Upload a profile picture
+- Add a bio
+
+# Dynamic Team Leadership
+## As a team leader, I want to transfer leadership to another team member so that the session can continue if I have to leave.
+- Option to transfer 'Team Leader' role is available in session settings
+
+
+# Theme and Role Customization
+## As a team leader, I want to choose from predefined themes so that I can quickly set up a brainstorming session.
+- List of predefined themes is displayed
+- the team leader can select one to populate default roles and settings
+
+## As a Team Member, I want to suggest roles/themes to the team leader so that the session can be more engaging.
+- 'Suggest' button next to roles and themes
+- Team leader receives suggestions in a dedicated section
+
+## As a team leader, I want to customize themes and roles so that the session aligns with my team's specific needs.
+- Editing options are available for themes and roles 
+- changes are saved for the session
+
+## As a team leader, I want to save my custom themes for future sessions so that I don't have to redo the settings each time.
+- Option to save custom themes is available 
+- saved themes are listed in a dedicated section for future selection
+
+
+# Session Creation and Invitation
+## As a team leader, I want to generate a shareable link for the session so that I can easily invite my team members.
+- A unique shareable link is generated and displayed for the team leader once the session is created
+## As a team leader, I want to have a 'ready check' to ensure all team members are prepared before starting the session.
+- A 'Ready' button is available for team members; the session starts only when everyone indicates they are ready.
+
+
+# Role Assignment and Session Start
+## As a team member, I want to be able to choose my role when role randomization is turned off so that I can participate in a role that I'm comfortable with.
+- Roles are displayed for selection
+- selected roles are confirmed before session start
+## As a Team Member, I want to see the role description and related skills when assigned a role in any theme.
+- Detailed role descriptions, along with any linked skills or 'Blank' placeholders, are displayed when a role is assigned in any theme.
+## As a team member, I want roles to be auto-assigned when role randomization is turned on so that the session can start quickly.
+- Roles are automatically assigned
+- team members are notified of their roles before the session starts.
+
+# Skill and Action Pool
+## As a team leader, I want to customize the skill/action pool so that I can tailor the session's interactive elements.
+- Editing options for skills/actions are available
+- changes are saved for the session
+## As a Team Leader, I want to set limits on how many times a skill/action can be used in a session so that the game remains balanced.
+- Skill/Action limit setting during customization
+- Real-time display of remaining uses for each skill/action during the session
+
+# Session Customization
+## As a Team Leader, I want the flexibility to disable auto-ordering, turn-taking, and speaker highlighting for any theme.
+- Option to disable auto-ordering, turn-taking, and speaker highlighting is available for all themes, not just role-based ones.
+- A warning is displayed to inform the team leader that disabling these features will also disable the use of skills/actions during the session.
+
+# Session
+## As a Team Member, I want to pause the session in case of interruptions so that we can resume from where we left off.
+- 'Pause Session' button available for all team members
+- Session state is saved and can be resumed
+## As a Team Leader, I want to resume a paused or interrupted session so that we can continue from where we left off.
+- 'Resume Session' button available for the team leader
+- Session state is restored to the point where it was paused
+## As a Team Member, I want to see a timer that counts down the remaining time for the current round.
+- Timer is visible to all team members during the session
+## As a Team Leader, I want to extend or reduce the session time based on team needs.
+- 'Extend/Reduce Time' option available to the team leader
+## As a Team Member, I want to see who is currently speaking and who will be next.
+- 'Current Speaker' and 'Up Next' labels visible to all team members
+## As a Team Member, I want to be notified when it's my turn to speak.
+- Visual and audio notifications alert the next speaker
+- Option to disable notifications in settings
+## As a Team Leader, I want to end the session when objectives are met so that the team can review and debrief.
+- 'End Session' button available
+- Summary and statistics are displayed at the end of the session
+
+# Skill and Action Utilization During Session
+## As a Team Member, I want to understand my role's specific instructions when assigned any skill, including 'Blank'.
+- A description of each skill's functionality, including 'Blank', is displayed when a role is assigned.
+- For skills like 'Blank', no interactive actions are triggered; users are expected to follow the role description for gameplay.
+## As a Team Member, I want to know the cooldown period for each skill/action so that I can use them strategically.
+- Cooldown timers are displayed next to each skill/action
+## As a Team Member, I want to use 'Extra Time' to extend my speaking time during the session.
+- Extra Time action is available when it's the user's turn
+- User can extend their speaking time by 30 seconds by activating this action
+## As a Team Member, I want to use 'Freeze Time' to pause the timer during crucial discussions.
+- Timer is paused for 5 minutes when this action is activated
+## As a Team Member, I want to 'Gift Time' to another participant.
+- Gift Time action is available when it's the target's turn (speaker)
+- User can give 15 seconds to another participant
+## As a Team Member, I want to use 'Randomize' to shuffle the speaking order.
+- Speaking order is shuffled when activated
+## As a Team Member, I want to use 'Skip' to pass my turn.
+- Skip action is available when it's the user's turn
+- Turn is passed to the next person in the queue when activated
+## As a Team Member, I want to use 'Swap' to exchange roles with another participant.
+- User can exchange roles with another participant
+## As a Team Member, I want to use 'Veto' to cancel another player's action.
+- Veto action is available to all users
+- Can be used to cancel any other action activated by another player
+## As a Team Member, I want to use 'Wildcard' to choose any available skill or action immediately.
+- User can activate any available skill or action immediately
+## As a Team Member, I want to use 'Hide' to become invisible during the session.
+- User becomes invisible and their turn is skipped without notice when this action is activated
+## As a Team Member, I want to use 'Pick Pocket' to steal a random skill from another participant.
+- User can steal a random skill from another participant when this action is activated
+## As a Team Member, I want to use 'Mirror Skill' to copy the last skill used by another participant.
+- User can copy the last skill that another participant used when this action is activated
+
+
+# Points
+## As a user, I want to earn points for joining a session so that my participation is rewarded.
+- Points are awarded upon joining a session
+## As a user, I want to earn points for inviting new users so that there's an incentive to grow the community.
+- Points are awarded for each successful invite; the point count is updated in real-time.
+## As a user, I want to earn points for making in-app purchases so that I'm rewarded for supporting the app.
+- Points are awarded upon successful transaction; the point count is updated in real-time.
+
+# Achievements
+## As a user, I want to earn achievements for being a team leader so that my leadership skills are acknowledged.
+- Achievements are unlocked based on the number of sessions led
+## As a user, I want to earn achievements for fulfilling specific roles multiple times so that my versatility is rewarded.
+- Achievements are unlocked based on the number of times a specific role is fulfilled
+## As a user, I want to earn achievements for being the most active speaker in a session so that my contributions are recognized.
+- Achievements are unlocked for leading in air time during sessions
+## As a user, I want to earn achievements for using strategic actions multiple times so that my tactical skills are acknowledged.
+- Achievements are unlocked based on the number of strategic actions used
+## As a user, I want to view my earned points and achievements in a dedicated section so that I can track my progress.
+- A dedicated section displays all earned points and achievements; includes option to share achievements on social media.
+
