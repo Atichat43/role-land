@@ -1,32 +1,30 @@
-
 ### RoleLand Project Summary
-- **Purpose**: To facilitate and enhance the brainstorming process in teams using daily scrum on platforms such as Discord, Slack, etc.
-- **Problem to Solve**: To facilitate the process of role assignment and ensure balanced assignments.
-- **Key Features**: Role assignment, record-keeping, shared link generation, interactive features, point system, custom themes and roles, badges/achievements, etc.
-- **Tech Stack**: Utilizes Nx, NestJS, TypeORM, and Postgres, and adheres to DDD and Hexagonal patterns. Employs Kafka for Event Sourcing.
-- **Core Entities**: Achievement, Badge, Effect, Point, Role, RolePreference, Session, Theme, SharedLink, and User.
+- Purpose: To facilitate and enhance the brainstorming process in teams using daily scrum on platforms such as Discord, Slack, etc.
+- Problem to Solve: To facilitate the process of role assignment and ensure balanced assignments.
+- Key Features: Role assignment, record-keeping, shared link generation, interactive features, point system, custom themes and roles, badges/achievements, etc.
+- Tech Stack: Utilizes Nx, NestJS, TypeORM, and Postgres, and adheres to DDD and Hexagonal patterns. Employs Kafka for Event Sourcing.
 
-Phase 0 - Bot Development Phase:
+Phase 0 - Bot Development:
 - Role Assignment: Assign roles randomly based on a theme, avoiding consecutive assignment of the same role.
 - Role Record Keeping: Keep a record of role assignments to ensure balance.
 - Shared Link Generation: Generate a shared link displaying members and assigned roles.
 - Interactive Features: Include timer, effects, and raise hand option.
 
-Phase 1 - Foundation Phase:
+Phase 1 - Foundation:
 - Personal Profiles: Creation and management of profiles with basic information.
 - Role Attributes: Manage attributes like name, description, and tasks.
 - Role Assignment Preferences: Set preferences for role assignment.
 - Points System: Earn points for participation and role performance.
 
-Phase 2 - Expansion Phase:
+Phase 2 - Expansion:
 - Custom Themes and Roles: Create and share custom themes and roles.
 - Badges/Achievements: Earn badges based on participation and performance.
 - Progress Bars and Challenges: Track progress towards goals and challenges.
 
-Phase 3 - Enhancement Phase:
+Phase 3 - Enhancement:
 - Leaderboards: Display leaderboards based on various metrics.
 - Social Features: Share achievements and interact with other users.
 - Custom Sounds Visuals and Effects: Customize and share sounds, visuals, and effects.
 
-Phase 4 - Monetization Phase:
+Phase 4 - Monetization:
 - Subscription Model: Offer subscription for access to premium features like exclusive themes or roles, additional customization.
