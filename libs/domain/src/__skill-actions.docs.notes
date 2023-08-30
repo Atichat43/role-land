@@ -1,3 +1,5 @@
+// 'BASE_ACTION': identifies basic actions that are easy for new users to understand.
+
 ### Timer Actions
 - Echo
   - key: echo
@@ -53,14 +55,17 @@
 - Fast Forward
   - key: fast-forward
   - desc: Skip your turn, ignoring any actions in between.
+  - long-desc: If the first person uses this action, the next four people cannot use any actions until it's the first person's turn again.
 
 - Hide
   - key: hide
   - desc: Become invisible; your turn is skipped without notice.
+  - long-desc: The user becomes invisible on the web application interface until it's their turn again.
 
 - Instant Replay
   - key: instant-replay
   - desc: Repeats the last 30 seconds of discussion.
+  - long-desc: The current speaker receives extra time, separate from their current time.
 
 - Joker
   - key: joker

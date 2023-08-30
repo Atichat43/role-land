@@ -44,6 +44,7 @@
 - New Session: Team leader starts a new session.
 - Theme Selection: A list of predefined themes appears.
 - Apply Theme: Team leader selects a theme, populating default roles and settings.
+- Customization: Team leader has the flexibility to modify these, such as removing a role or adding new actions.
 
 2. Suggest Roles/Themes
 - Suggestion Box: Team members see a "Suggest" button next to roles and themes.
@@ -73,6 +74,8 @@
 
 2. Auto-Assign Roles
 - Randomization: If role randomization is on, roles are auto-assigned.
+- Randomization: If role randomization is turned off, team members can freely select roles on a first-come, first-served basis. 
+  For example, if a team member initially selects Role A and then switches to Role C, Role A becomes available for others.
 - Notification: Team members are notified of their roles.
 
 ---
@@ -92,6 +95,7 @@
 - Interruption: Any team member can pause the session.
 - Pause Button: A 'Pause Session' button is available for all.
 - State Saved: The session state is saved.
+- Resume Button: Button switches to 'Resume Session.' button.
 
 2. Resume Session
 - Resume Button: Team leader clicks 'Resume Session.'

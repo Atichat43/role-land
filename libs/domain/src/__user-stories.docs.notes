@@ -128,6 +128,8 @@
 - Points are awarded for each successful invite; the point count is updated in real-time.
 ## As a user, I want to earn points for making in-app purchases so that I'm rewarded for supporting the app.
 - Points are awarded upon successful transaction; the point count is updated in real-time.
+## As a user, I want to use points to unlock premium themes, emojis, and other features so that I can customize my experience.
+- Points can be used to unlock premium themes, emojis, and other features
 
 # Achievements
 ## As a user, I want to earn achievements for being a team leader so that my leadership skills are acknowledged.
