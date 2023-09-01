@@ -18,6 +18,7 @@ import { SharedLinkEntity } from './shared-link.entity';
 import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
 
+// SessionEntity: Manages the session status, shared links, and participants.
 @Entity('Session')
 @Index('session_status_index', ['status'])
 export class SessionEntity

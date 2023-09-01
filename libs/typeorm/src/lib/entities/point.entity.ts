@@ -7,6 +7,7 @@ import { TimestampsEntityColumns } from './_common.entity';
 import { SessionEntity } from './session.entity';
 import { UserEntity } from './user.entity';
 
+// PointEntity: Manages points earned, spent, and balance within a session.
 @Entity('Point')
 export class PointEntity extends TimestampsEntityColumns implements Point {
   @PrimaryGeneratedColumn('uuid')

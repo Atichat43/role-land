@@ -4,6 +4,7 @@ import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
 
+// SharedLinkEntity: Manages the URLs shared within a session.
 @Entity('SharedLink')
 @Index('sharedLink_url_index', ['url'])
 @Index('sharedLink_isActive_index', ['isActive'])

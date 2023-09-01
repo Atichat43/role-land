@@ -6,6 +6,7 @@ import {
   UpdateDateColumn,
 } from 'typeorm';
 
+// TimestampsEntityColumns: Contains createdDate and updatedDate for tracking entity lifecycle.
 export abstract class TimestampsEntityColumns implements TimestampFields {
   @CreateDateColumn({ default: () => 'CURRENT_TIMESTAMP' })
   createdDate: Date;
@@ -14,6 +15,7 @@ export abstract class TimestampsEntityColumns implements TimestampFields {
   updatedDate: Date;
 }
 
+// SoftDeletionEntityColumns: Includes isDeleted and deletedDate for soft deletion logic.
 export abstract class SoftDeletionEntityColumns implements SoftDeletionFields {
   @Column({ default: false })
   isDeleted: boolean;

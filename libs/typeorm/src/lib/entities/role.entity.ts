@@ -6,6 +6,7 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampsEntityColumns } from './_common.entity';
 import { ThemeEntity } from './theme.entity';
 
+// RoleEntity: Manages the roles within a theme.
 @Entity('Role')
 export class RoleEntity extends TimestampsEntityColumns implements Role {
   @PrimaryGeneratedColumn('uuid')

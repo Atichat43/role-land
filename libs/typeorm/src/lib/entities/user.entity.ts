@@ -16,6 +16,7 @@ import { RolePreferenceEntity } from './role-preference.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 
+// UserEntity: Central entity for user management. Includes fields like username, globalName, and premiumStatus.
 @Entity('User')
 export class UserEntity
   extends TimestampsAndSoftDeletionEntityColumns

@@ -11,6 +11,7 @@ import {
 import { TimestampsEntityColumns } from './_common.entity';
 import { RoleEntity } from './role.entity';
 
+// ThemeEntity: Manages the themes available in the application.
 @Entity('Theme')
 @Index('theme_premium_index', ['premium'])
 export class ThemeEntity extends TimestampsEntityColumns implements Theme {
