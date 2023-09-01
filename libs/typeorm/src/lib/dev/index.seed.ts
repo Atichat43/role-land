@@ -42,18 +42,21 @@ export const roles: OmitBaseEntityColumns<RoleEntity>[] = [
   {
     id: uuid(),
     name: 'Warrior',
+    defaultImage: 'https://example.com/image1',
     theme: themes[0] as ThemeEntity,
     attributes: ['Strength', 'Courage'],
   },
   {
     id: uuid(),
     name: 'Detective',
+    defaultImage: 'https://example.com/image2',
     theme: themes[1] as ThemeEntity,
     attributes: ['Intelligence', 'Observation'],
   },
   {
     id: uuid(),
     name: 'Mage',
+    defaultImage: 'https://example.com/image3',
     theme: themes[0] as ThemeEntity,
     attributes: [],
   },
@@ -130,6 +133,7 @@ export const teamMembers: OmitBaseEntityColumns<TeamMemberEntity>[] = [
 export const rolePreferences: OmitBaseEntityColumns<RolePreferenceEntity>[] = [
   {
     id: uuid(),
+    customImage: null,
     preference: RolePreferenceEnum.LOW,
     role: roles[0] as RoleEntity,
     user: users[0] as UserEntity,
