@@ -1,4 +1,4 @@
-import { User } from '@role-land/domain';
+import { IUser } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsBoolean, IsUrl, Length, ValidateNested } from 'class-validator';
 import {
@@ -20,7 +20,7 @@ import { ProfileEmbeded } from './user.profile.embed';
 @Entity('User')
 export class UserEntity
   extends TimestampsAndSoftDeletionEntityColumns
-  implements User
+  implements IUser
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;

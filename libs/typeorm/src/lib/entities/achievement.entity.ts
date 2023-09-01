@@ -1,4 +1,4 @@
-import { Achievement } from '@role-land/domain';
+import { IAchievement } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsNotEmpty, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -9,7 +9,7 @@ import { UserEntity } from './user.entity';
 @Entity('Achievement')
 export class AchievementEntity
   extends TimestampsEntityColumns
-  implements Achievement
+  implements IAchievement
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;

@@ -1,4 +1,4 @@
-import { BaseEvent } from './_base.events.types';
+import { IBaseEvent } from './_base.events.types';
 
 /**
  * BadgeEarned Event Interface
@@ -12,7 +12,7 @@ import { BaseEvent } from './_base.events.types';
  * - BadgeEarned - Update user's profile with the new badge.
  * - BadgeEarned - Log the badge earning event.
  */
-export interface BadgeEarnedEvent extends BaseEvent {
+export interface IBadgeEarnedEvent extends IBaseEvent {
   type: 'BadgeEarned';
   userId: string;
   badgeId: string;
@@ -30,7 +30,7 @@ export interface BadgeEarnedEvent extends BaseEvent {
  * - AchievementEarned - Update user's profile with the new achievement.
  * - AchievementEarned - Log the achievement earning event.
  */
-export interface AchievementEarnedEvent extends BaseEvent {
+export interface IAchievementEarnedEvent extends IBaseEvent {
   type: 'AchievementEarned';
   userId: string;
   achievementId: string;
@@ -47,7 +47,7 @@ export interface AchievementEarnedEvent extends BaseEvent {
  * - RoleAssigned - Notify users of their assigned role.
  * - RoleAssigned - Trigger any effects or visuals related to the role.
  */
-export interface RoleAssignedEvent extends BaseEvent {
+export interface IRoleAssignedEvent extends IBaseEvent {
   type: 'RoleAssigned';
   roleId: string;
   userId: string;

@@ -1,7 +1,7 @@
 import {
-  RolePreferenceEnum,
-  SessionStatusEnum,
-  TeamMemberMembershipStateEnum,
+  ERolePreference,
+  ESessionStatus,
+  ETeamMemberMembershipState,
 } from '@role-land/domain';
 import { v4 as uuid } from 'uuid';
 
@@ -109,21 +109,21 @@ export const teams: OmitBaseEntityColumns<TeamEntity>[] = [
 export const teamMembers: OmitBaseEntityColumns<TeamMemberEntity>[] = [
   {
     id: uuid(),
-    teamMemberMembershipState: TeamMemberMembershipStateEnum.INVITED,
+    teamMemberMembershipState: ETeamMemberMembershipState.INVITED,
     permissions: ['READ', 'WRITE'],
     user: users[0] as UserEntity,
     team: teams[0] as TeamEntity,
   },
   {
     id: uuid(),
-    teamMemberMembershipState: TeamMemberMembershipStateEnum.ACCEPTED,
+    teamMemberMembershipState: ETeamMemberMembershipState.ACCEPTED,
     permissions: ['READ'],
     user: users[0] as UserEntity,
     team: teams[1] as TeamEntity,
   },
   {
     id: uuid(),
-    teamMemberMembershipState: TeamMemberMembershipStateEnum.INVITED,
+    teamMemberMembershipState: ETeamMemberMembershipState.INVITED,
     permissions: ['READ'],
     user: users[1] as UserEntity,
     team: teams[1] as TeamEntity,
@@ -134,7 +134,7 @@ export const rolePreferences: OmitBaseEntityColumns<RolePreferenceEntity>[] = [
   {
     id: uuid(),
     customImage: null,
-    preference: RolePreferenceEnum.LOW,
+    preference: ERolePreference.LOW,
     role: roles[0] as RoleEntity,
     user: users[0] as UserEntity,
   },
@@ -169,7 +169,7 @@ export const badges: OmitBaseEntityColumns<BadgeEntity>[] = [
 export const sessions: OmitBaseEntityColumns<SessionEntity>[] = [
   {
     id: uuid(),
-    status: SessionStatusEnum.STARTED,
+    status: ESessionStatus.STARTED,
     participants: [users[0], users[1]] as UserEntity[],
     sharedLink: sharedLinks[0] as SharedLinkEntity,
     rolesAssigned: [roles[0]] as RoleEntity[],

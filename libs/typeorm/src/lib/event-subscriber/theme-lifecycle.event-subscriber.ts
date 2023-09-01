@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { ThemeLifecycleEvent } from '@role-land/domain';
+import { IThemeLifecycleEvent } from '@role-land/domain';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -22,7 +22,7 @@ export class ThemeLifecycleSubscriber
   afterInsert(event: InsertEvent<ThemeEntity>) {
     const entityId = getEventEntityId(event);
 
-    const themeCreatedEvent: ThemeLifecycleEvent = {
+    const themeCreatedEvent: IThemeLifecycleEvent = {
       type: 'ThemeCreated',
       themeId: entityId,
       entityId,
@@ -33,7 +33,7 @@ export class ThemeLifecycleSubscriber
   afterUpdate(event: UpdateEvent<ThemeEntity>) {
     const entityId = getEventEntityId(event);
 
-    const themeUpdatedEvent: ThemeLifecycleEvent = {
+    const themeUpdatedEvent: IThemeLifecycleEvent = {
       type: 'ThemeUpdated',
       themeId: entityId,
       entityId,
@@ -44,7 +44,7 @@ export class ThemeLifecycleSubscriber
   afterRemove(event: RemoveEvent<ThemeEntity>) {
     const entityId = getEventEntityId(event);
 
-    const themeDeletedEvent: ThemeLifecycleEvent = {
+    const themeDeletedEvent: IThemeLifecycleEvent = {
       type: 'ThemeDeleted',
       themeId: entityId,
       entityId,

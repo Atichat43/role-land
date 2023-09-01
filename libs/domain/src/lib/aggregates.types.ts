@@ -1,10 +1,13 @@
-import { SoftDeletionFields, TimestampFields } from './_base.types';
+import { ISoftDeletionFields, ITimestampFields } from './_base.types';
+import { ESessionStatus, ETeamMemberMembershipState } from './_enum.types';
 import {
-  SessionStatusEnum,
-  TeamMemberMembershipStateEnum,
-} from './_enum.types';
-import { Achievement, Badge, Role, SharedLink, Theme } from './models.types';
-import { Profile, RolePreference } from './value-objects.types';
+  IAchievement,
+  IBadge,
+  IRole,
+  ISharedLink,
+  ITheme,
+} from './models.types';
+import { IProfile, IRolePreference } from './value-objects.types';
 
 // NOTE: Groups related entities and value objects.
 
@@ -21,11 +24,11 @@ import { Profile, RolePreference } from './value-objects.types';
  * - achievements[]: **OneToMany** with NO validation
  * - teamMemberships[]: **OneToMany** with NO validation
  * ---
- * `extends TimestampFields, SoftDeletionFields`
+ * `extends ITimestampFields, ISoftDeletionFields`
  */
 // Note:
 // - Utilizes soft delete for analyzing user trends and maintaining historical data.
-export interface User extends TimestampFields, SoftDeletionFields {
+export interface IUser extends ITimestampFields, ISoftDeletionFields {
   id: string;
   username: string;
   globalName: string;
@@ -33,33 +36,33 @@ export interface User extends TimestampFields, SoftDeletionFields {
   avatar: string | null;
 
   // value objects
-  profile: Profile;
-  rolePreferences: RolePreference[];
+  profile: IProfile;
+  rolePreferences: IRolePreference[];
 
   // models
-  badges: Badge[];
-  achievements: Achievement[];
+  badges: IBadge[];
+  achievements: IAchievement[];
 
   // aggregates
-  teamMemberships: TeamMember[];
+  teamMemberships: ITeamMember[];
 }
 
 /**
  * TeamMember Domain Interface
  * - id: UUID
- * - teamMemberMembershipState: TeamMemberMembershipStateEnum
+ * - teamMemberMembershipState: ETeamMemberMembershipState
  * - permissions[]: Array of strings
  * - user: ManyToOne with validation
  * - team: ManyToOne with validation
  */
-export interface TeamMember extends TimestampFields {
+export interface ITeamMember extends ITimestampFields {
   id: string;
-  teamMemberMembershipState: TeamMemberMembershipStateEnum;
+  teamMemberMembershipState: ETeamMemberMembershipState;
   permissions: string[];
 
   // aggregates
-  user: User;
-  team: Team;
+  user: IUser;
+  team: ITeam;
 }
 
 /**
@@ -71,43 +74,43 @@ export interface TeamMember extends TimestampFields {
  * - members[]: **OneToMany** with NO validation
  *
  * ---
- * `extends TimestampFields, SoftDeletionFields`
+ * `extends ITimestampFields, ISoftDeletionFields`
  */
-export interface Team extends TimestampFields, SoftDeletionFields {
+export interface ITeam extends ITimestampFields, ISoftDeletionFields {
   id: string;
 
   name: string;
   icon: string | null;
 
   // aggregates
-  owner: User;
-  members: TeamMember[];
+  owner: IUser;
+  members: ITeamMember[];
 }
 
 /**
  * Session Domain Interface
  * - id: UUID
- * - status: SessionStatusEnum *(default: PENDING)* #Indexed
+ * - status: ESessionStatus *(default: PENDING)* #Indexed
  * - sharedLink: OneToOne with validation
  * - theme: OneToOne with validation
  * - rolesAssigned[]: **ManyToMany** with NO validation
  * - participants[]: **ManyToMany** with NO validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
 //  Note:
 //  - Utilizes soft delete for analyzing past sessions (important interactions or events).
-export interface Session extends TimestampFields, SoftDeletionFields {
+export interface ISession extends ITimestampFields, ISoftDeletionFields {
   id: string;
-  status: SessionStatusEnum;
+  status: ESessionStatus;
 
   // models
-  sharedLink: SharedLink;
-  theme: Theme;
+  sharedLink: ISharedLink;
+  theme: ITheme;
 
   // aggregates
-  rolesAssigned: Role[];
-  participants: User[];
+  rolesAssigned: IRole[];
+  participants: IUser[];
 }
 
 /**
@@ -119,15 +122,15 @@ export interface Session extends TimestampFields, SoftDeletionFields {
  * - user: ManyToOne with validation
  * - session: ManyToOne with validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
-export interface Point extends TimestampFields {
+export interface IPoint extends ITimestampFields {
   id: string;
   pointsEarned: number;
   pointsSpent: number;
   pointsBalance: number;
 
   // aggregates
-  user: User;
-  session: Session;
+  user: IUser;
+  session: ISession;
 }

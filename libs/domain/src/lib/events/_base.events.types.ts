@@ -3,7 +3,7 @@
  * - type: string, *non-empty*
  * - entityId: string, *non-empty*
  */
-export interface BaseEvent {
+export interface IBaseEvent {
   type: string;
   entityId: string;
 }

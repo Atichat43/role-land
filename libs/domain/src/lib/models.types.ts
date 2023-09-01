@@ -1,5 +1,5 @@
-import { TimestampFields } from './_base.types';
-import { User } from './aggregates.types';
+import { ITimestampFields } from './_base.types';
+import { IUser } from './aggregates.types';
 
 // NOTE: Core business models and interfaces.
 
@@ -9,14 +9,14 @@ import { User } from './aggregates.types';
  * - achievementType: string, *non-empty*
  * - user: ManyToOne with validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
-export interface Achievement extends TimestampFields {
+export interface IAchievement extends ITimestampFields {
   id: string;
   achievementType: string;
 
   // aggregates
-  user: User;
+  user: IUser;
 }
 
 /**
@@ -25,14 +25,14 @@ export interface Achievement extends TimestampFields {
  * - badgeType: string, *non-empty*
  * - user: ManyToOne with validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
-export interface Badge extends TimestampFields {
+export interface IBadge extends ITimestampFields {
   id: string;
   badgeType: string;
 
   // aggregates
-  user: User;
+  user: IUser;
 }
 
 /**
@@ -41,9 +41,9 @@ export interface Badge extends TimestampFields {
  * - name: **<= 25 chars, non-empty**
  * - premium: boolean *(default: false)*
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
-export interface Effect extends TimestampFields {
+export interface IEffect extends ITimestampFields {
   id: string;
   name: string;
   premium: boolean;
@@ -57,16 +57,16 @@ export interface Effect extends TimestampFields {
  * - defaultImage: **url, can be null**
  * - theme: ManyToOne with validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
 // Role can be created and updated by users.
-export interface Role extends TimestampFields {
+export interface IRole extends ITimestampFields {
   id: string;
   name: string;
   attributes: string[];
 
   defaultImage: string | null;
-  theme: Theme;
+  theme: ITheme;
 }
 
 /**
@@ -76,16 +76,16 @@ export interface Role extends TimestampFields {
  * - premium: boolean *(default: false)* #Indexed
  * - roles[]: **OneToMany** with NO validation
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
 // Themes can be created and updated by users.
-export interface Theme extends TimestampFields {
+export interface ITheme extends ITimestampFields {
   id: string;
   name: string;
   premium: boolean;
 
   // models
-  roles: Role[];
+  roles: IRole[];
 }
 
 /**
@@ -94,9 +94,9 @@ export interface Theme extends TimestampFields {
  * - url: **url** #Unique #Indexed
  * - isActive: boolean *(default: false)*
  * ---
- * `extends TimestampFields`
+ * `extends ITimestampFields`
  */
-export interface SharedLink extends TimestampFields {
+export interface ISharedLink extends ITimestampFields {
   id: string;
   url: string;
   isActive: boolean;

@@ -1,4 +1,4 @@
-import { Role } from '@role-land/domain';
+import { IRole } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -8,7 +8,7 @@ import { ThemeEntity } from './theme.entity';
 
 // RoleEntity: Manages the roles within a theme.
 @Entity('Role')
-export class RoleEntity extends TimestampsEntityColumns implements Role {
+export class RoleEntity extends TimestampsEntityColumns implements IRole {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

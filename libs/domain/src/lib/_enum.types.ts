@@ -1,35 +1,35 @@
 /**
- * SessionStatusEnum
+ * SessionStatus Enum
  * - PENDING: Session is pending and has not yet started
  * - STARTED: Session is currently in progress
  * - ENDED: Session has ended
  * ---
  * `default: PENDING`
  */
-export enum SessionStatusEnum {
+export enum ESessionStatus {
   PENDING = 'pending',
   STARTED = 'started',
   ENDED = 'ended',
 }
 
 /**
- * RolePreferenceEnum
+ * IRolePreference Enum
  * - HIGH: Indicates a high preference for a role
  * - MEDIUM: Indicates a medium preference for a role
  * - LOW: Indicates a low preference for a role
  */
-export enum RolePreferenceEnum {
+export enum ERolePreference {
   HIGH = 'high',
   MEDIUM = 'medium',
   LOW = 'low',
 }
 
 /**
- * TeamMemberMembershipStateEnum
+ * TeamMemberMembershipState Enum
  * - INVITED: Indicates that the user has been invited to the team
  * - ACCEPTED: Indicates that the user has accepted the invitation to the team
  */
-export enum TeamMemberMembershipStateEnum {
+export enum ETeamMemberMembershipState {
   INVITED = 'invited',
   ACCEPTED = 'accepted',
 }

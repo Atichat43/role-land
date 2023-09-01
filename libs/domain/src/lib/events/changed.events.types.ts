@@ -1,4 +1,4 @@
-import { BaseEvent } from './_base.events.types';
+import { IBaseEvent } from './_base.events.types';
 
 /**
  * UserPointsChanged Event Interface
@@ -14,7 +14,7 @@ import { BaseEvent } from './_base.events.types';
  * - PointsSpent - Notify user of points spent.
  * - PointsSpent - Log the transaction for future reference.
  */
-export interface UserPointsChangedEvent extends BaseEvent {
+export interface IUserPointsChangedEvent extends IBaseEvent {
   type: 'PointsEarned' | 'PointsSpent';
   userId: string;
   points: number;

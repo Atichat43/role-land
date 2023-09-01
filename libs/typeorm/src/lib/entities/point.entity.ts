@@ -1,4 +1,4 @@
-import { Point } from '@role-land/domain';
+import { IPoint } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsInt, Min, ValidateIf, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -9,7 +9,7 @@ import { UserEntity } from './user.entity';
 
 // PointEntity: Manages points earned, spent, and balance within a session.
 @Entity('Point')
-export class PointEntity extends TimestampsEntityColumns implements Point {
+export class PointEntity extends TimestampsEntityColumns implements IPoint {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

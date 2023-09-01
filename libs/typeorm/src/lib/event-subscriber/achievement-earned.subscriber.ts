@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { AchievementEarnedEvent } from '@role-land/domain';
+import { IAchievementEarnedEvent } from '@role-land/domain';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -20,7 +20,7 @@ export class AchievementEarnedSubscriber
   afterInsert(event: InsertEvent<AchievementEntity>) {
     const entityId = getEventEntityId(event);
 
-    const achievementEarnedEvent: AchievementEarnedEvent = {
+    const achievementEarnedEvent: IAchievementEarnedEvent = {
       type: 'AchievementEarned',
       userId: event.entity.user.id,
       achievementId: entityId,

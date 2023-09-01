@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { BadgeEarnedEvent } from '@role-land/domain';
+import { IBadgeEarnedEvent } from '@role-land/domain';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -20,7 +20,7 @@ export class BadgeEarnedSubscriber
   afterInsert(event: InsertEvent<BadgeEntity>) {
     const entityId = getEventEntityId(event);
 
-    const badgeEarnedEvent: BadgeEarnedEvent = {
+    const badgeEarnedEvent: IBadgeEarnedEvent = {
       type: 'BadgeEarned',
       userId: event.entity.user.id,
       badgeId: entityId,

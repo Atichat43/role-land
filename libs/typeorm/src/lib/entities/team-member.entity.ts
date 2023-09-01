@@ -1,4 +1,4 @@
-import { TeamMember, TeamMemberMembershipStateEnum } from '@role-land/domain';
+import { ETeamMemberMembershipState, ITeamMember } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsArray, IsEnum, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -10,17 +10,17 @@ import { UserEntity } from './user.entity';
 @Entity('TeamMember')
 export class TeamMemberEntity
   extends TimestampsAndSoftDeletionEntityColumns
-  implements TeamMember
+  implements ITeamMember
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column('enum', {
-    enum: TeamMemberMembershipStateEnum,
-    default: TeamMemberMembershipStateEnum.INVITED,
+    enum: ETeamMemberMembershipState,
+    default: ETeamMemberMembershipState.INVITED,
   })
-  @IsEnum(TeamMemberMembershipStateEnum)
-  teamMemberMembershipState: TeamMemberMembershipStateEnum;
+  @IsEnum(ETeamMemberMembershipState)
+  teamMemberMembershipState: ETeamMemberMembershipState;
 
   @Column('text', { array: true })
   @IsArray()

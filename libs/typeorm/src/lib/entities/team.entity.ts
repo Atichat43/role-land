@@ -1,4 +1,4 @@
-import { Team } from '@role-land/domain';
+import { ITeam } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsEmpty, IsUrl, Length, ValidateNested } from 'class-validator';
 import {
@@ -17,7 +17,7 @@ import { UserEntity } from './user.entity';
 @Entity('Team')
 export class TeamEntity
   extends TimestampsAndSoftDeletionEntityColumns
-  implements Team
+  implements ITeam
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;

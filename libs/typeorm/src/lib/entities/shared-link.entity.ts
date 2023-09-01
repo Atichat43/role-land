@@ -1,4 +1,4 @@
-import { SharedLink } from '@role-land/domain';
+import { ISharedLink } from '@role-land/domain';
 import { IsBoolean, IsUrl } from 'class-validator';
 import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from 'typeorm';
 
@@ -11,7 +11,7 @@ import { TimestampsEntityColumns } from './_common.entity';
 @Unique(['url'])
 export class SharedLinkEntity
   extends TimestampsEntityColumns
-  implements SharedLink
+  implements ISharedLink
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;

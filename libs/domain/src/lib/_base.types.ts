@@ -3,7 +3,7 @@
  * - createdDate: Date *(default: current date time)*
  * - updatedDate: Date *(default: current date time)*
  */
-export interface TimestampFields {
+export interface ITimestampFields {
   createdDate: Date;
   updatedDate: Date;
 }
@@ -13,7 +13,7 @@ export interface TimestampFields {
  * - isDeleted: boolean *(default: false)*
  * - deletedDate: Date *(default: deleted date time)*
  */
-export interface SoftDeletionFields {
+export interface ISoftDeletionFields {
   isDeleted: boolean;
   deletedDate: Date;
 }

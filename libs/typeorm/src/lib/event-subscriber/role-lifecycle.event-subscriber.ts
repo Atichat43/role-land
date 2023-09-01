@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { RoleLifecycleEvent } from '@role-land/domain';
+import { IRoleLifecycleEvent } from '@role-land/domain';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -21,7 +21,7 @@ export class RoleLifecycleSubscriber
   afterInsert(event: InsertEvent<RoleEntity>) {
     const entityId = getEventEntityId(event);
 
-    const roleCreatedEvent: RoleLifecycleEvent = {
+    const roleCreatedEvent: IRoleLifecycleEvent = {
       type: 'RoleCreated',
       roleId: event.entity.id,
       entityId,
@@ -34,7 +34,7 @@ export class RoleLifecycleSubscriber
   afterRemove(event: RemoveEvent<RoleEntity>) {
     const entityId = getEventEntityId(event);
 
-    const roleDeletedEvent: RoleLifecycleEvent = {
+    const roleDeletedEvent: IRoleLifecycleEvent = {
       type: 'RoleDeleted',
       roleId: entityId,
       entityId,

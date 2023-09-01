@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { UserPointsChangedEvent } from '@role-land/domain';
+import { IUserPointsChangedEvent } from '@role-land/domain';
 import {
   EntitySubscriberInterface,
   EventSubscriber,
@@ -21,7 +21,7 @@ export class UserPointsChangedSubscriber
     const entityId = getEventEntityId(event);
 
     if (event.entity?.['pointsEarned'] !== event.databaseEntity?.pointsEarned) {
-      const pointsEarnedEvent: UserPointsChangedEvent = {
+      const pointsEarnedEvent: IUserPointsChangedEvent = {
         type: 'PointsEarned',
         userId: event.entity?.['user'].id,
         points: event.entity?.['pointsEarned'],
@@ -31,7 +31,7 @@ export class UserPointsChangedSubscriber
     }
 
     if (event.entity?.['pointsSpent'] !== event.databaseEntity?.pointsSpent) {
-      const pointsSpentEvent: UserPointsChangedEvent = {
+      const pointsSpentEvent: IUserPointsChangedEvent = {
         type: 'PointsSpent',
         userId: event.entity?.['user'].id,
         points: event.entity?.['pointsSpent'],

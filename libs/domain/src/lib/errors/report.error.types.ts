@@ -5,7 +5,7 @@
  * - userId: UUID **can be empty**
  * - sessionId: UUID **can be empty**
  */
-interface BasicInfo {
+interface IBasicInfo {
   // Unique identifier for the report
   reportId: string;
 
@@ -25,7 +25,7 @@ interface BasicInfo {
  * - errCode: string
  * - errMessage: string
  */
-interface ErrorDetails {
+interface IErrorDetails {
   // Error Category: Backend, Frontend, Database
   errCategory: 'BE' | 'FE' | 'DB';
   errCode: string;
@@ -38,7 +38,7 @@ interface ErrorDetails {
  * - pageOrScreen: string
  * - inputData: unknown | null
  */
-interface Context {
+interface IContext {
   // Action Taken: What the user was trying to do when the error occurred
   act: string;
 
@@ -55,7 +55,7 @@ interface Context {
  * - apiEndpoints: string[] | null
  * - dbQueries: string[] | null
  */
-interface TechInfo {
+interface ITechInfo {
   stackTrace: string;
 
   // Any API endpoints hit during the occurrence of the error (Optional)
@@ -70,7 +70,7 @@ interface TechInfo {
  * - numUsersAffected: number
  * - severityLvl: 'Low' | 'Medium' | 'High'
  */
-interface Impact {
+interface IImpact {
   // How many users have experienced this error
   numUsersAffected: number;
 
@@ -84,7 +84,7 @@ interface Impact {
  * - assignedTo: string
  * - eta: Date | null
  */
-interface ResolutionStatus {
+interface IResolutionStatus {
   // Is the error resolved, pending, or under investigation?
   status: 'Resolved' | 'Pending' | 'Under Investigation';
 
@@ -96,10 +96,10 @@ interface ResolutionStatus {
 }
 
 export interface ErrorReport {
-  basicInfo: BasicInfo;
-  errDetails: ErrorDetails;
-  ctx: Context;
-  techInfo: TechInfo;
-  impact: Impact;
-  resStatus: ResolutionStatus;
+  basicInfo: IBasicInfo;
+  errDetails: IErrorDetails;
+  ctx: IContext;
+  techInfo: ITechInfo;
+  impact: IImpact;
+  resStatus: IResolutionStatus;
 }

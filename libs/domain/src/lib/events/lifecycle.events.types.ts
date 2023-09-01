@@ -1,4 +1,4 @@
-import { BaseEvent } from './_base.events.types';
+import { IBaseEvent } from './_base.events.types';
 
 /**
  * RoleLifecycle Event Interface
@@ -12,7 +12,7 @@ import { BaseEvent } from './_base.events.types';
  * - RoleDeleted - Log the deletion of a role.
  * - RoleDeleted - Update available roles list.
  */
-export interface RoleLifecycleEvent extends BaseEvent {
+export interface IRoleLifecycleEvent extends IBaseEvent {
   type: 'RoleCreated' | 'RoleDeleted';
   roleId: string;
 }
@@ -30,7 +30,7 @@ export interface RoleLifecycleEvent extends BaseEvent {
  * - ThemeDeleted - Log the deletion of a theme.
  * - ThemeDeleted - Update available themes list.
  */
-export interface ThemeLifecycleEvent extends BaseEvent {
+export interface IThemeLifecycleEvent extends IBaseEvent {
   type: 'ThemeCreated' | 'ThemeUpdated' | 'ThemeDeleted';
   themeId: string;
 }

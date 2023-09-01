@@ -1,4 +1,4 @@
-import { Theme } from '@role-land/domain';
+import { ITheme } from '@role-land/domain';
 import { IsBoolean, Length } from 'class-validator';
 import {
   Column,
@@ -14,7 +14,7 @@ import { RoleEntity } from './role.entity';
 // ThemeEntity: Manages the themes available in the application.
 @Entity('Theme')
 @Index('theme_premium_index', ['premium'])
-export class ThemeEntity extends TimestampsEntityColumns implements Theme {
+export class ThemeEntity extends TimestampsEntityColumns implements ITheme {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 

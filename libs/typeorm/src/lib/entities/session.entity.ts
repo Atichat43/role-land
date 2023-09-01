@@ -1,4 +1,4 @@
-import { Session, SessionStatusEnum } from '@role-land/domain';
+import { ESessionStatus, ISession } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsEnum, ValidateNested } from 'class-validator';
 import {
@@ -23,17 +23,17 @@ import { UserEntity } from './user.entity';
 @Index('session_status_index', ['status'])
 export class SessionEntity
   extends TimestampsAndSoftDeletionEntityColumns
-  implements Session
+  implements ISession
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
   @Column('enum', {
-    enum: SessionStatusEnum,
-    default: SessionStatusEnum.PENDING,
+    enum: ESessionStatus,
+    default: ESessionStatus.PENDING,
   })
-  @IsEnum(SessionStatusEnum)
-  status: SessionStatusEnum;
+  @IsEnum(ESessionStatus)
+  status: ESessionStatus;
 
   // models
   @OneToOne(() => SharedLinkEntity)

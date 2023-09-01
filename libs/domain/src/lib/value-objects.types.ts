@@ -1,6 +1,6 @@
-import { RolePreferenceEnum } from './_enum.types';
-import { User } from './aggregates.types';
-import { Role } from './models.types';
+import { ERolePreference } from './_enum.types';
+import { IUser } from './aggregates.types';
+import { IRole } from './models.types';
 
 // NOTE:
 // Value objects are immutable and are identified by their properties.
@@ -11,14 +11,14 @@ import { Role } from './models.types';
  * - bio: *<= 1000 chars*, can be empty
  * - interests[]: Array of strings
  */
-export interface Profile {
+export interface IProfile {
   bio: string;
   interests: string[];
 }
 
 /**
  * RolePreference Value Object
- * - preference: RolePreferenceEnum
+ * - preference: RolePreference Enum
  * - customImage: **url, can be null**
  * - role: ManyToOne with validation
  * - user: ManyToOne with validation
@@ -28,13 +28,13 @@ export interface Profile {
  * 2. The integrity and operations on RolePreference are tightly coupled with Role.
  * 3. In PostgreSQL, this is represented as a separate entity.
  */
-export interface RolePreference {
-  preference: RolePreferenceEnum;
+export interface IRolePreference {
+  preference: ERolePreference;
   customImage: string | null;
 
   // models
-  role: Role;
+  role: IRole;
 
   // aggregates
-  user: User;
+  user: IUser;
 }
