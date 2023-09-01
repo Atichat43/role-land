@@ -1,7 +1,9 @@
+// --- Base Event Interface ---
 /**
- * Base event interface
- * - type: string, *non-empty*
- * - entityId: string, *non-empty*
+ * @desc Holds the base event-related domain information.
+ * @attributes
+ * - type: String, non-empty
+ * - entityId: String, non-empty
  */
 export interface IBaseEvent {
   type: string;

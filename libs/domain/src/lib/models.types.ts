@@ -1,15 +1,14 @@
 import { ITimestampFields } from './_base.types';
 import { IUser } from './aggregates.types';
 
-// NOTE: Core business models and interfaces.
-
+// --- Achievement Interface ---
 /**
- * Achievement Domain Interface
+ * @desc Holds the achievement-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - achievementType: string, *non-empty*
- * - user: ManyToOne with validation
- * ---
- * `extends ITimestampFields`
+ * - achievementType: String, non-empty
+ * - user: IUser (ManyToOne)
  */
 export interface IAchievement extends ITimestampFields {
   id: string;
@@ -19,13 +18,14 @@ export interface IAchievement extends ITimestampFields {
   user: IUser;
 }
 
+// --- Badge Interface ---
 /**
- * Badge Domain Interface
+ * @desc Holds the badge-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - badgeType: string, *non-empty*
- * - user: ManyToOne with validation
- * ---
- * `extends ITimestampFields`
+ * - badgeType: String, non-empty
+ * - user: IUser (ManyToOne)
  */
 export interface IBadge extends ITimestampFields {
   id: string;
@@ -35,13 +35,14 @@ export interface IBadge extends ITimestampFields {
   user: IUser;
 }
 
+// --- Effect Interface ---
 /**
- * Effect Domain Interface
+ * @desc Holds the effect-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - name: **<= 25 chars, non-empty**
- * - premium: boolean *(default: false)*
- * ---
- * `extends ITimestampFields`
+ * - name: String, max 25 characters, non-empty
+ * - premium: boolean, default false
  */
 export interface IEffect extends ITimestampFields {
   id: string;
@@ -49,17 +50,19 @@ export interface IEffect extends ITimestampFields {
   premium: boolean;
 }
 
+// --- Role Interface ---
 /**
- * Role Domain Interface
+ * @desc Holds the role-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - name: **<= 25 chars, non-empty**
- * - attributes[]: Array of strings
- * - defaultImage: **url, can be null**
- * - theme: ManyToOne with validation
- * ---
- * `extends ITimestampFields`
+ * - name: String, max 25 characters, non-empty
+ * - attributes: Array of strings
+ * - defaultImage: URL or null
+ * - theme: ITheme (ManyToOne)
+ * @notes
+ * - Roles can be created and updated by users.
  */
-// Role can be created and updated by users.
 export interface IRole extends ITimestampFields {
   id: string;
   name: string;
@@ -69,16 +72,18 @@ export interface IRole extends ITimestampFields {
   theme: ITheme;
 }
 
+// --- Theme Interface ---
 /**
- * Theme Domain Interface
+ * @desc Holds the theme-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - name: **<= 25 chars, non-empty**
- * - premium: boolean *(default: false)* #Indexed
- * - roles[]: **OneToMany** with NO validation
- * ---
- * `extends ITimestampFields`
+ * - name: String, max 25 characters, non-empty
+ * - premium: Boolean, default false, Indexed
+ * - roles: Array of IRole (OneToMany)
+ * @notes
+ * - Themes can be created and updated by users.
  */
-// Themes can be created and updated by users.
 export interface ITheme extends ITimestampFields {
   id: string;
   name: string;
@@ -88,13 +93,14 @@ export interface ITheme extends ITimestampFields {
   roles: IRole[];
 }
 
+// --- Shared Link Interface ---
 /**
- * SharedLink Domain Interface
+ * @desc Holds the shared link-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - url: **url** #Unique #Indexed
- * - isActive: boolean *(default: false)*
- * ---
- * `extends ITimestampFields`
+ * - url: URL, unique, indexed
+ * - isActive: boolean, default false
  */
 export interface ISharedLink extends ITimestampFields {
   id: string;

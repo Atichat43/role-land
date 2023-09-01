@@ -6,27 +6,31 @@ import { IRole } from './models.types';
 // Value objects are immutable and are identified by their properties.
 // They are not identified by an id field.
 
+// --- Profile (Value Object) Interface ---
 /**
- * Profile Value Object
- * - bio: *<= 1000 chars*, can be empty
- * - interests[]: Array of strings
+ * @desc Holds the profile-related domain information.
+ * @attributes
+ * - bio: String, max 1000 characters, can be empty
+ * - interests: Array of strings
  */
 export interface IProfile {
   bio: string;
   interests: string[];
 }
 
+// --- Role Preference (Value Object) Interface ---
 /**
- * RolePreference Value Object
- * - preference: RolePreference Enum
- * - customImage: **url, can be null**
- * - role: ManyToOne with validation
- * - user: ManyToOne with validation
- *
- * Note: This value object includes a ManyToOne relationship with Role.
- * 1. RolePreference can override certain attributes of Role (e.g., customImage).
- * 2. The integrity and operations on RolePreference are tightly coupled with Role.
- * 3. In PostgreSQL, this is represented as a separate entity.
+ * @desc Holds the role preference-related domain information.
+ * @attributes
+ * - preference: ERolePreference
+ * - customImage: URL or null
+ * - role: IRole (ManyToOne)
+ * - user: IUser (ManyToOne)
+ * @notes
+ * - This value object includes a ManyToOne relationship with Role.
+ * - RolePreference can override certain attributes of Role (e.g., customImage).
+ * - The integrity and operations on RolePreference are tightly coupled with Role.
+ * - In PostgreSQL, this is represented as a separate entity.
  */
 export interface IRolePreference {
   preference: ERolePreference;

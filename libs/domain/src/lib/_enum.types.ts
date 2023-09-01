@@ -1,10 +1,11 @@
+// --- Session Status Enum ---
 /**
- * SessionStatus Enum
- * - PENDING: Session is pending and has not yet started
- * - STARTED: Session is currently in progress
- * - ENDED: Session has ended
- * ---
- * `default: PENDING`
+ * @desc Enum representing session statuses.
+ * @values
+ *  - PENDING: Session is pending and has not yet started
+ *  - STARTED: Session is currently in progress
+ *  - ENDED: Session has ended
+ * @default PENDING
  */
 export enum ESessionStatus {
   PENDING = 'pending',
@@ -12,11 +13,13 @@ export enum ESessionStatus {
   ENDED = 'ended',
 }
 
+// --- Role Preference Enum ---
 /**
- * IRolePreference Enum
- * - HIGH: Indicates a high preference for a role
- * - MEDIUM: Indicates a medium preference for a role
- * - LOW: Indicates a low preference for a role
+ * @desc Enum representing role preferences.
+ * @values
+ *  - HIGH: Indicates a high preference for a role
+ *  - MEDIUM: Indicates a medium preference for a role
+ *  - LOW: Indicates a low preference for a role
  */
 export enum ERolePreference {
   HIGH = 'high',
@@ -24,10 +27,12 @@ export enum ERolePreference {
   LOW = 'low',
 }
 
+// --- Team Member Membership State Enum ---
 /**
- * TeamMemberMembershipState Enum
- * - INVITED: Indicates that the user has been invited to the team
- * - ACCEPTED: Indicates that the user has accepted the invitation to the team
+ * @desc Enum representing team member membership states.
+ * @values
+ *  - INVITED: Indicates that the user has been invited to the team
+ *  - ACCEPTED: Indicates that the user has accepted the invitation to the team
  */
 export enum ETeamMemberMembershipState {
   INVITED = 'invited',

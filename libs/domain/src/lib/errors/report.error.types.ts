@@ -1,9 +1,11 @@
+// --- Basic Information Interface ---
 /**
- * BasicInformation Interface
+ * @desc Holds the basic information related to the error.
+ * @attributes
  * - reportId: UUID
- * - ts: Date *(default: current date time)*
- * - userId: UUID **can be empty**
- * - sessionId: UUID **can be empty**
+ * - ts: Date, default current date time
+ * - userId: UUID or null
+ * - sessionId: UUID or null
  */
 interface IBasicInfo {
   // Unique identifier for the report
@@ -19,11 +21,13 @@ interface IBasicInfo {
   sessionId: string | null;
 }
 
+// --- Error Details Interface ---
 /**
- * ErrorDetails Interface
+ * @desc Holds the error details related to the error.
+ * @attributes
  * - errCategory: 'BE' | 'FE' | 'DB'
- * - errCode: string
- * - errMessage: string
+ * - errCode: String
+ * - errMessage: String
  */
 interface IErrorDetails {
   // Error Category: Backend, Frontend, Database
@@ -32,11 +36,13 @@ interface IErrorDetails {
   errMessage: string;
 }
 
+// --- Context Interface ---
 /**
- * Context Interface
- * - act: string
- * - pageOrScreen: string
- * - inputData: unknown | null
+ * @desc Holds the context related to the error.
+ * @attributes
+ * - act: String, non-empty
+ * - pageOrScreen: String, non-empty
+ * - inputData: Unknown or null
  */
 interface IContext {
   // Action Taken: What the user was trying to do when the error occurred
@@ -49,11 +55,13 @@ interface IContext {
   inputData: unknown | null;
 }
 
+// --- Tech Info Interface ---
 /**
- * TechInfo Interface
- * - stackTrace: string
- * - apiEndpoints: string[] | null
- * - dbQueries: string[] | null
+ * @desc Holds the technical information related to the error.
+ * @attributes
+ * - stackTrace: String
+ * - apiEndpoints: Array of strings or null
+ * - dbQueries: Array of strings or null
  */
 interface ITechInfo {
   stackTrace: string;
@@ -65,9 +73,11 @@ interface ITechInfo {
   dbQueries: string[] | null;
 }
 
+// --- Impact Interface ---
 /**
- * Impact Interface
- * - numUsersAffected: number
+ * @desc Holds the impact related to the error.
+ * @attributes
+ * - numUsersAffected: Number
  * - severityLvl: 'Low' | 'Medium' | 'High'
  */
 interface IImpact {
@@ -78,11 +88,13 @@ interface IImpact {
   severityLvl: 'Low' | 'Medium' | 'High';
 }
 
+// --- Resolution Status Interface ---
 /**
- * ResolutionStatus Interface
+ * @desc Holds the resolution status related to the error.
+ * @attributes
  * - status: 'Resolved' | 'Pending' | 'Under Investigation'
- * - assignedTo: string
- * - eta: Date | null
+ * - assignedTo: String
+ * - eta: Date or null
  */
 interface IResolutionStatus {
   // Is the error resolved, pending, or under investigation?
@@ -95,6 +107,17 @@ interface IResolutionStatus {
   eta: Date | null;
 }
 
+// --- Error Report Interface ---
+/**
+ * @desc Holds the error report-related domain information.
+ * @attributes
+ * - basicInfo: IBasicInfo
+ * - errDetails: IErrorDetails
+ * - ctx: IContext
+ * - techInfo: ITechInfo
+ * - impact: IImpact
+ * - resStatus: IResolutionStatus
+ */
 export interface ErrorReport {
   basicInfo: IBasicInfo;
   errDetails: IErrorDetails;

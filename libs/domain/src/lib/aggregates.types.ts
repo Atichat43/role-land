@@ -9,25 +9,25 @@ import {
 } from './models.types';
 import { IProfile, IRolePreference } from './value-objects.types';
 
-// NOTE: Groups related entities and value objects.
-
+// --- User Interface ---
 /**
- * User Domain Interface
- * - id: UUID
- * - username: **<= 25 chars, non-empty**
- * - globalName: **<= 25 chars, non-empty**
- * - avatar: **url, can be empty**
- * - premiumStatus: boolean *(default: false)*
- * - profile: *validated* value object
- * - rolePreferences[]: *validated* value object
- * - badges[]: **OneToMany** with NO validation
- * - achievements[]: **OneToMany** with NO validation
- * - teamMemberships[]: **OneToMany** with NO validation
- * ---
- * `extends ITimestampFields, ISoftDeletionFields`
+ * @desc Holds the user-related domain information.
+ * @extend ITimestampFields, ISoftDeletionFields
+ * @attributes
+ *  - id: UUID
+ *  - username: String, max 25 characters, non-empty
+ *  - globalName: String, max 25 characters, non-empty
+ *  - avatar: URL or null
+ *  - premiumStatus: Boolean, default false
+ *  - profile: IProfile (Value Object)
+ *  - rolePreferences: Array of IRolePreference (Value Object)
+ *  - badges: Array of IBadge (OneToMany)
+ *  - achievements: Array of IAchievement (OneToMany)
+ *  - teamMemberships: Array of ITeamMember (OneToMany)
+ * @notes
+ * - Utilizes soft delete for analyzing user trends and maintaining historical data.
+ * -
  */
-// Note:
-// - Utilizes soft delete for analyzing user trends and maintaining historical data.
 export interface IUser extends ITimestampFields, ISoftDeletionFields {
   id: string;
   username: string;
@@ -47,13 +47,16 @@ export interface IUser extends ITimestampFields, ISoftDeletionFields {
   teamMemberships: ITeamMember[];
 }
 
+// --- Team Member Interface ---
 /**
- * TeamMember Domain Interface
+ * @desc Holds the team member-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
  * - teamMemberMembershipState: ETeamMemberMembershipState
- * - permissions[]: Array of strings
- * - user: ManyToOne with validation
- * - team: ManyToOne with validation
+ * - permissions: Array of strings
+ * - user: IUser (ManyToOne)
+ * - team: ITeam (ManyToOne)
  */
 export interface ITeamMember extends ITimestampFields {
   id: string;
@@ -65,16 +68,16 @@ export interface ITeamMember extends ITimestampFields {
   team: ITeam;
 }
 
+// --- Team Interface ---
 /**
- * Team Domain Interface
+ * @desc Holds the team-related domain information.
+ * @extend ITimestampFields, ISoftDeletionFields
+ * @attributes
  * - id: UUID
- * - name: **<= 25 chars, non-empty**
- * - icon: **url, can be empty**
- * - owner: OneToOne with validation
- * - members[]: **OneToMany** with NO validation
- *
- * ---
- * `extends ITimestampFields, ISoftDeletionFields`
+ * - name: String, max 25 characters, non-empty
+ * - icon: URL or null
+ * - owner: IUser (OneToOne)
+ * - members: Array of ITeamMember (OneToMany)
  */
 export interface ITeam extends ITimestampFields, ISoftDeletionFields {
   id: string;
@@ -87,19 +90,20 @@ export interface ITeam extends ITimestampFields, ISoftDeletionFields {
   members: ITeamMember[];
 }
 
+// --- Session Interface ---
 /**
- * Session Domain Interface
+ * @desc Holds the session-related domain information.
+ * @extend ITimestampFields, ISoftDeletionFields
+ * @attributes
  * - id: UUID
- * - status: ESessionStatus *(default: PENDING)* #Indexed
- * - sharedLink: OneToOne with validation
- * - theme: OneToOne with validation
- * - rolesAssigned[]: **ManyToMany** with NO validation
- * - participants[]: **ManyToMany** with NO validation
- * ---
- * `extends ITimestampFields`
+ * - status: ESessionStatus, default PENDING , Indexed
+ * - sharedLink: ISharedLink (OneToOne)
+ * - theme: ITheme (OneToOne)
+ * - rolesAssigned: Array of IRole (ManyToMany)
+ * - participants: Array of IUser (ManyToMany)
+ * @notes
+ * - Utilizes soft delete for analyzing past sessions (important interactions or events).
  */
-//  Note:
-//  - Utilizes soft delete for analyzing past sessions (important interactions or events).
 export interface ISession extends ITimestampFields, ISoftDeletionFields {
   id: string;
   status: ESessionStatus;
@@ -113,16 +117,17 @@ export interface ISession extends ITimestampFields, ISoftDeletionFields {
   participants: IUser[];
 }
 
+// --- Point Interface ---
 /**
- * Point Domain Interface
+ * @desc Holds the point-related domain information.
+ * @extend ITimestampFields
+ * @attributes
  * - id: UUID
- * - pointsEarned: >= 0 *(default: 0)*
- * - pointsSpent: >= 0 *(default: 0)*
- * - pointsBalance: >= 0 *(default: 0)*
- * - user: ManyToOne with validation
- * - session: ManyToOne with validation
- * ---
- * `extends ITimestampFields`
+ * - pointsEarned: Number, >=0, default 0
+ * - pointsSpent: Number, >=0, default 0
+ * - pointsBalance: Number, >=0, default 0
+ * - user: IUser (ManyToOne)
+ * - session: ISession (ManyToOne)
  */
 export interface IPoint extends ITimestampFields {
   id: string;
