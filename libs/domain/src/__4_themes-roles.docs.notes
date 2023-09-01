@@ -1,5 +1,8 @@
-// 'blank x infinity': indicates that the skill does nothing. This theme does not utilize any skills or actions and only serves to explain the role description.
-// Mapper: Used for calculation purposes to determine the number of actions within a theme.
+#### Glossary
+
+- **Mapper**: The algorithm responsible for assigning roles based on certain rules or criteria.
+- **blank x infinity**: A placeholder term used to indicate that a field can accept an unlimited number of entries.
+
 // Skills are based on characters, and multiple skills can map to the same action. For example, 'Debug', 'Run Automation Tests', and 'Clean Up' all map to 'skip-turn'.
 
 // This is an example of a theme using basic actions
