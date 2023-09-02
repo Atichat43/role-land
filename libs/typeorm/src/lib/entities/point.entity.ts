@@ -1,7 +1,14 @@
 import { IPoint } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsInt, Min, ValidateIf, ValidateNested } from 'class-validator';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import {
+  BeforeInsert,
+  BeforeUpdate,
+  Column,
+  Entity,
+  ManyToOne,
+  PrimaryGeneratedColumn,
+} from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
 import { SessionEntity } from './session.entity';
@@ -39,4 +46,10 @@ export class PointEntity extends TimestampsEntityColumns implements IPoint {
   @ValidateNested()
   @Type(() => UserEntity)
   session: SessionEntity;
+
+  @BeforeInsert()
+  @BeforeUpdate()
+  calculatePointsBalance() {
+    this.pointsBalance = this.pointsEarned - this.pointsSpent;
+  }
 }
