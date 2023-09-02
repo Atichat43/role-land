@@ -1,7 +1,46 @@
 import fs = require('fs');
 import path = require('path');
 
-const mergeFiles = (dir: string, outputFile: fs.PathOrFileDescriptor) => {
+import tokenizer from 'gpt-tokenizer';
+
+const writeMergedContentToFiles = (
+  mergedContent: string,
+  baseFileName: string,
+) => {
+  const tokens = tokenizer.encode(mergedContent);
+  let currentTokenCount = 0;
+  let currentFileIndex = 1;
+  let currentFileContent = '';
+
+  const getNewFileName = (index: number, originalName: string) => {
+    const dir = path.dirname(originalName);
+    const baseName = path.basename(originalName);
+    return `${dir}/z_${index}_${baseName}`;
+  };
+
+  for (const token of tokens) {
+    const decodedToken = tokenizer.decode([token]);
+
+    if (currentTokenCount + 1 > 3000) {
+      const newFileName = getNewFileName(currentFileIndex, baseFileName);
+      fs.writeFileSync(newFileName, currentFileContent);
+      currentFileContent = '';
+      currentTokenCount = 0;
+      currentFileIndex++;
+    }
+
+    currentFileContent += decodedToken;
+    currentTokenCount++;
+  }
+
+  // Write remaining content to file
+  if (currentFileContent) {
+    const newFileName = getNewFileName(currentFileIndex, baseFileName);
+    fs.writeFileSync(newFileName, currentFileContent);
+  }
+};
+
+const mergeFiles = (dir: string, baseFileName: string) => {
   let mergedContent = '';
 
   // Add ESLint and TypeScript ignore comments
@@ -21,9 +60,12 @@ const mergeFiles = (dir: string, outputFile: fs.PathOrFileDescriptor) => {
       if (stats.isDirectory()) {
         readFiles(filePath);
       } else if (
-        filePath.endsWith('.ts') &&
+        (filePath.endsWith('.ts') || filePath.endsWith('.md')) &&
         !filePath.endsWith('index.ts') &&
+        !filePath.endsWith('.merged.local.ts') &&
+        !filePath.endsWith('.merged.local.md') &&
         !filePath.endsWith('.local.ts') &&
+        !filePath.endsWith('.local.md') &&
         !filePath.endsWith('.notes')
       ) {
         let content = fs.readFileSync(filePath, 'utf8');
@@ -46,7 +88,7 @@ const mergeFiles = (dir: string, outputFile: fs.PathOrFileDescriptor) => {
   };
 
   readFiles(dir);
-  fs.writeFileSync(outputFile, mergedContent);
+  writeMergedContentToFiles(mergedContent, baseFileName);
 };
 
 const args = process.argv.slice(2);
