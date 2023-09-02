@@ -8,9 +8,12 @@
       "executor": "nx:run-commands",
       "options": {
         "commands": [
-          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/lib/' 'libs/domain/src/lib/__domain__.merged.local.ts'",
-          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/docs/' 'libs/domain/src/docs/__docs__.merged.local.md'",
-          "ts-node libs/tools/src/lib/merge-files.ts 'libs/typeorm/src/lib/entities/' 'libs/typeorm/src/lib/entities/__typeorm-entities__.merged.local.ts'"
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/lib/' 'libs/domain/src/lib/__domain__.merged.local.ts'",
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/docs/' 'libs/domain/src/docs/__docs__.merged.local.md'",
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/typeorm/src/lib/entities/' 'libs/typeorm/src/lib/entities/__typeorm-entities__.merged.local.ts'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/lib/' 'merged/domain/__domain__.merged.local.ts'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/docs/' 'merged/docs/__docs__.merged.local.md'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/typeorm/src/lib/entities/' 'merged/entities/__typeorm-entities__.merged.local.ts'"
         ],
         "cwd": "."
       }
