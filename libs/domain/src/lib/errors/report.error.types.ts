@@ -1,3 +1,9 @@
+import {
+  EErrorCategory,
+  EErrorResolutionStatus,
+  EErrorSeverityLevel,
+} from './_enum.error.types';
+
 // --- Basic Information Interface ---
 /**
  * @desc Holds the basic information related to the error.
@@ -25,13 +31,12 @@ interface IBasicInfo {
 /**
  * @desc Holds the error details related to the error.
  * @attributes
- * - errCategory: 'BE' | 'FE' | 'DB'
+ * - errCategory: EErrorCategory
  * - errCode: String
  * - errMessage: String
  */
 interface IErrorDetails {
-  // Error Category: Backend, Frontend, Database
-  errCategory: 'BE' | 'FE' | 'DB';
+  errCategory: EErrorCategory;
   errCode: string;
   errMessage: string;
 }
@@ -78,27 +83,26 @@ interface ITechInfo {
  * @desc Holds the impact related to the error.
  * @attributes
  * - numUsersAffected: Number
- * - severityLvl: 'Low' | 'Medium' | 'High'
+ * - severityLvl: EErrorSeverityLevel
  */
 interface IImpact {
   // How many users have experienced this error
   numUsersAffected: number;
 
   // How critical is this error
-  severityLvl: 'Low' | 'Medium' | 'High';
+  severityLvl: EErrorSeverityLevel;
 }
 
 // --- Resolution Status Interface ---
 /**
  * @desc Holds the resolution status related to the error.
  * @attributes
- * - status: 'Resolved' | 'Pending' | 'Under Investigation'
+ * - status: EErrorResolutionStatus
  * - assignedTo: String
  * - eta: Date or null
  */
 interface IResolutionStatus {
-  // Is the error resolved, pending, or under investigation?
-  status: 'Resolved' | 'Pending' | 'Under Investigation';
+  status: EErrorResolutionStatus;
 
   // Who is responsible for fixing this error
   assignedTo: string;
