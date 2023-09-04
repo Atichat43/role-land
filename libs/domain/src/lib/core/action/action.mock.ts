@@ -7,12 +7,13 @@ import {
   ETargetEnum,
   ETimerActionOperation,
 } from './action.enum';
-import { IAction } from './action.types';
+import { IActionMock } from './action.types';
 
-const actionSeedData: Omit<IAction, 'id'>[] = [
+const actionSeedData: IActionMock[] = [
   {
     name: 'Echo',
     des: 'Allows the current speaker to speak again immediately after their turn ends.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.Echo,
     config: [
@@ -27,6 +28,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Extra Time',
     des: 'Adds an extra 30 seconds to your speaking time.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.ExtraTime,
     config: [
@@ -41,6 +43,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Freeze Time',
     des: 'Pauses the timer for 5 minutes.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.FreezeTime,
     config: [
@@ -55,6 +58,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Gift Time',
     des: 'Gives 15 seconds to current speaker.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.GiftTime,
 
@@ -70,6 +74,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Steal Time',
     des: "Steals 15 seconds from another participants's speaking time.",
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.StealTime,
     config: [
@@ -90,6 +95,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Time Cut',
     des: "Cut the next person's speaking time by half.",
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.TimeCut,
     config: [
@@ -104,6 +110,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Time Bomb',
     des: 'Set a timer for 1 minute; random role, random order.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.TimeBomb,
     config: [
@@ -115,11 +122,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
       },
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Randomize,
         target: ETargetEnum.AllParticipants,
       },
       {
         type: EActionType.Role,
+        duration: null,
         operation: ERoleActionOperation.Randomize,
         target: ETargetEnum.AllParticipants,
       },
@@ -128,6 +137,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Hot Potato',
     des: 'The current speaker must immediately stop, and a new random speaker is chosen.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.HotPotato,
     config: [
@@ -139,6 +149,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
       },
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Randomize,
         target: ETargetEnum.CurrentSpeaker,
       },
@@ -147,11 +158,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Randomize',
     des: 'Shuffle the speaking order.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.RandomizeOrder,
     config: [
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Randomize,
         target: ETargetEnum.AllParticipants,
       },
@@ -160,11 +173,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Reverse',
     des: 'Reverses the order of speaking.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.ReverseOrder,
     config: [
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Reverse,
         target: ETargetEnum.AllParticipants,
       },
@@ -173,11 +188,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Skip',
     des: 'Skip your turn and pass it to the next person.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.SkipTurn,
     config: [
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Skip,
         target: ETargetEnum.Self,
       },
@@ -186,11 +203,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Swap',
     des: 'Swap roles with another participant.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.SwapRole,
     config: [
       {
         type: EActionType.Role,
+        duration: null,
         operation: ERoleActionOperation.Swap,
         target: ETargetEnum.TargetParticipant,
       },
@@ -206,11 +225,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
     config: [
       {
         type: EActionType.Ordering,
+        duration: null,
         operation: EOrderingActionOperation.Skip,
         target: ETargetEnum.Self,
       },
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.FastForward,
         target: ETargetEnum.AllParticipants,
       },
@@ -226,6 +247,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.Hide,
         target: ETargetEnum.Self,
       },
@@ -247,6 +269,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
       },
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.InstantReplay,
         target: ETargetEnum.CurrentSpeaker,
       },
@@ -255,11 +278,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Joker',
     des: 'Introduce a new, random topic to the discussion.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.Joker,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.Joker,
         target: null,
       },
@@ -268,11 +293,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Mirror',
     des: 'Copy the last skill used by another participant.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.MirrorSkill,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.MirrorSkill,
         target: ETargetEnum.Custom,
       },
@@ -281,11 +308,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Pick Pocket',
     des: 'Steal a random skill from another participant.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.PickPocket,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.PickPocket,
         target: ETargetEnum.OtherParticipants,
       },
@@ -294,11 +323,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Silencer',
     des: "Skip the target's next turn.",
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.Silencer,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.Silencer,
         target: ETargetEnum.TargetParticipant,
       },
@@ -307,11 +338,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Veto',
     des: 'Cancel another player’s action.',
+    longDesc: null,
     isBaseAction: true,
     key: EActionKey.Veto,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.Veto,
         target: ETargetEnum.Custom,
       },
@@ -320,11 +353,13 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Wildcard',
     des: 'Choose any skills to use immediately.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.Wildcard,
     config: [
       {
         type: EActionType.Strategic,
+        duration: null,
         operation: EStrategicActionOperation.Wildcard,
         target: ETargetEnum.AllParticipants,
       },
@@ -333,6 +368,7 @@ const actionSeedData: Omit<IAction, 'id'>[] = [
   {
     name: 'Blank',
     des: 'Do nothing.',
+    longDesc: null,
     isBaseAction: false,
     key: EActionKey.Blank,
     config: [],

@@ -1,4 +1,5 @@
 import { AchievementEntity } from './achievement.entity';
+import { ActionEntity } from './action.entity';
 import { BadgeEntity } from './badge.entity';
 import { EffectEntity } from './effect.entity';
 import { PointEntity } from './point.entity';
@@ -13,6 +14,7 @@ import { UserEntity } from './user.entity';
 
 export {
   AchievementEntity,
+  ActionEntity,
   BadgeEntity,
   EffectEntity,
   PointEntity,
@@ -36,6 +38,7 @@ export const Entities = [
 
   // models
   AchievementEntity,
+  ActionEntity,
   BadgeEntity,
   EffectEntity,
   RoleEntity,

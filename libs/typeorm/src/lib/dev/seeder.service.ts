@@ -1,16 +1,19 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectRepository } from '@nestjs/typeorm';
+import { SEED as SEED_DOMAIN } from '@role-land/domain';
 import { ObjectLiteral, Repository } from 'typeorm';
 import { v4 as uuid } from 'uuid';
 
 import * as Entities from '../entities';
 import * as SEED from './index.seed';
 import { OmitBaseEntityColumns } from './index.seed';
+import { ActionDemoUserStoriesService } from './seed/action.demo.service';
 
 @Injectable()
 export class SeederService {
   repositories: {
+    ActionEntity?: Repository<Entities.ActionEntity>;
     PointEntity: Repository<Entities.PointEntity>;
     SessionEntity: Repository<Entities.SessionEntity>;
     UserEntity: Repository<Entities.UserEntity>;
@@ -26,6 +29,8 @@ export class SeederService {
   };
 
   constructor(
+    @InjectRepository(Entities.ActionEntity)
+    private readonly actionRepository: Repository<Entities.ActionEntity>,
     @InjectRepository(Entities.PointEntity)
     private readonly pointRepository: Repository<Entities.PointEntity>,
     @InjectRepository(Entities.SessionEntity)
@@ -50,8 +55,10 @@ export class SeederService {
     private readonly teamRepository: Repository<Entities.TeamEntity>,
     @InjectRepository(Entities.TeamMemberEntity)
     private readonly teamMemberRepository: Repository<Entities.TeamMemberEntity>,
+    private readonly actionDemoUserStoriesService: ActionDemoUserStoriesService,
   ) {
     this.repositories = {
+      ActionEntity: this.actionRepository,
       PointEntity: this.pointRepository,
       SessionEntity: this.sessionRepository,
       UserEntity: this.userRepository,
@@ -86,6 +93,7 @@ export class SeederService {
     Logger.log('▶ Seeding database...');
 
     const seedMap = {
+      ActionEntity: SEED_DOMAIN.action,
       ThemeEntity: SEED.themes,
       EffectEntity: SEED.effects,
       SharedLinkEntity: SEED.sharedLinks,
@@ -127,6 +135,7 @@ export class SeederService {
       'SharedLinkEntity',
       'EffectEntity',
       'ThemeEntity',
+      'ActionEntity',
     ];
 
     for (const entityName of clearEntities) {
@@ -137,6 +146,12 @@ export class SeederService {
     }
 
     Logger.log('✅ Clearing complete!');
+  }
+
+  async demoAll() {
+    Logger.log('▶ Demonstrating all user stories...');
+    await this.actionDemoUserStoriesService.execute();
+    Logger.log('✅ Demonstration complete!');
   }
 
   async demoEventSubscribers() {
@@ -168,7 +183,10 @@ export class SeederService {
     await this.themeRepository.update(SEED.themes[0].id, updatedTheme);
 
     // Earn Points (Triggers PointsEarned Event)
-    const pointsEarned: OmitBaseEntityColumns<Entities.PointEntity> = {
+    const pointsEarned: Omit<
+      OmitBaseEntityColumns<Entities.PointEntity>,
+      'calculatePointsBalance'
+    > = {
       ...SEED.points[0],
       pointsEarned: SEED.points[0].pointsEarned + 20,
       pointsBalance: SEED.points[0].pointsBalance + 20,
@@ -177,7 +195,10 @@ export class SeederService {
     await this.pointRepository.update(SEED.points[0].id, pointsEarned);
 
     // Spend Points (Triggers PointsSpent Event)
-    const pointsSpent: OmitBaseEntityColumns<Entities.PointEntity> = {
+    const pointsSpent: Omit<
+      OmitBaseEntityColumns<Entities.PointEntity>,
+      'calculatePointsBalance'
+    > = {
       ...SEED.points[0],
       pointsSpent: SEED.points[0].pointsSpent + 10,
       pointsBalance: SEED.points[0].pointsBalance - 10,
