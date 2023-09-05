@@ -71,7 +71,6 @@ export interface IAction extends ITimestampFields {
   name: string;
   des: string;
   isBaseAction: boolean;
-  // config: IActionConfig[];
   config:
     | (
         | ITimerActionConfig
