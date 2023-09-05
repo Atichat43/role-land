@@ -50,49 +50,6 @@ export interface IEffect extends ITimestampFields {
   premium: boolean;
 }
 
-// --- Role Interface ---
-/**
- * @desc Holds the role-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - name: String, max 25 characters, non-empty
- * - attributes: Array of strings
- * - defaultImage: URL or null
- * - theme: ITheme (ManyToOne)
- * @notes
- * - Roles can be created and updated by users.
- */
-export interface IRole extends ITimestampFields {
-  id: string;
-  name: string;
-  attributes: string[];
-
-  defaultImage: string | null;
-  theme: ITheme;
-}
-
-// --- Theme Interface ---
-/**
- * @desc Holds the theme-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - name: String, max 25 characters, non-empty
- * - premium: Boolean, default false, Indexed
- * - roles: Array of IRole (OneToMany)
- * @notes
- * - Themes can be created and updated by users.
- */
-export interface ITheme extends ITimestampFields {
-  id: string;
-  name: string;
-  premium: boolean;
-
-  // models
-  roles: IRole[];
-}
-
 // --- Shared Link Interface ---
 /**
  * @desc Holds the shared link-related domain information.

@@ -1,6 +1,6 @@
 import { ERolePreference } from './_enum.types';
 import { IUser } from './aggregates.types';
-import { IRole } from './models.types';
+import { IRole } from './core/role';
 
 // NOTE:
 // Value objects are immutable and are identified by their properties.

@@ -93,19 +93,19 @@ export class SeederService {
     Logger.log('▶ Seeding database...');
 
     const seedMap = {
-      ActionEntity: SEED_DOMAIN.action,
-      ThemeEntity: SEED.themes,
-      EffectEntity: SEED.effects,
-      SharedLinkEntity: SEED.sharedLinks,
-      RoleEntity: SEED.roles,
-      UserEntity: SEED.users,
-      TeamEntity: SEED.teams,
-      TeamMemberEntity: SEED.teamMembers,
-      RolePreferenceEntity: SEED.rolePreferences,
-      AchievementEntity: SEED.achievements,
-      BadgeEntity: SEED.badges,
-      SessionEntity: SEED.sessions,
-      PointEntity: SEED.points,
+      ActionEntity: SEED_DOMAIN.actionMock.getAllActions(),
+      RoleEntity: SEED_DOMAIN.roleMock.getAllRoles(),
+      ThemeEntity: SEED_DOMAIN.themeMock.getAllThemes(),
+      // EffectEntity: SEED.effects,
+      // SharedLinkEntity: SEED.sharedLinks,
+      // UserEntity: SEED.users,
+      // TeamEntity: SEED.teams,
+      // TeamMemberEntity: SEED.teamMembers,
+      // RolePreferenceEntity: SEED.rolePreferences,
+      // AchievementEntity: SEED.achievements,
+      // BadgeEntity: SEED.badges,
+      // SessionEntity: SEED.sessions,
+      // PointEntity: SEED.points,
     };
 
     for (const [entityName, seedData] of Object.entries(seedMap)) {
@@ -150,62 +150,62 @@ export class SeederService {
 
   async demoAll() {
     Logger.log('▶ Demonstrating all user stories...');
-    await this.actionDemoUserStoriesService.execute();
+    // await this.actionDemoUserStoriesService.execute();
     Logger.log('✅ Demonstration complete!');
   }
 
-  async demoEventSubscribers() {
-    Logger.log('▶ Demonstrating event subscribers...');
-    // Earn Achievement (Triggers AchievementEarned Event)
-    const newAchievement: OmitBaseEntityColumns<Entities.AchievementEntity> = {
-      id: uuid(),
-      achievementType: 'Master Player',
-      user: SEED.users[1] as Entities.UserEntity,
-    };
-    Logger.verbose('Creating achievement...');
-    await this.achievementRepository.save(newAchievement);
+  // async demoEventSubscribers() {
+  //   Logger.log('▶ Demonstrating event subscribers...');
+  //   // Earn Achievement (Triggers AchievementEarned Event)
+  //   const newAchievement: OmitBaseEntityColumns<Entities.AchievementEntity> = {
+  //     id: uuid(),
+  //     achievementType: 'Master Player',
+  //     user: SEED.users[1] as Entities.UserEntity,
+  //   };
+  //   Logger.verbose('Creating achievement...');
+  //   await this.achievementRepository.save(newAchievement);
 
-    // Earn Badge (Triggers BadgeEarned Event)
-    const newBadge: OmitBaseEntityColumns<Entities.BadgeEntity> = {
-      id: uuid(),
-      badgeType: 'Platinum',
-      user: SEED.users[1] as Entities.UserEntity,
-    };
-    Logger.verbose('Creating badge...');
-    await this.badgeRepository.save(newBadge);
+  //   // Earn Badge (Triggers BadgeEarned Event)
+  //   const newBadge: OmitBaseEntityColumns<Entities.BadgeEntity> = {
+  //     id: uuid(),
+  //     badgeType: 'Platinum',
+  //     user: SEED.users[1] as Entities.UserEntity,
+  //   };
+  //   Logger.verbose('Creating badge...');
+  //   await this.badgeRepository.save(newBadge);
 
-    // Update Theme (Triggers ThemeUpdated Event)
-    const updatedTheme: Partial<Entities.ThemeEntity> = {
-      name: 'Epic Adventure',
-      premium: true,
-    };
-    Logger.verbose('Updating theme...');
-    await this.themeRepository.update(SEED.themes[0].id, updatedTheme);
+  //   // Update Theme (Triggers ThemeUpdated Event)
+  //   const updatedTheme: Partial<Entities.ThemeEntity> = {
+  //     name: 'Epic Adventure',
+  //     premium: true,
+  //   };
+  //   Logger.verbose('Updating theme...');
+  //   await this.themeRepository.update(SEED.themes[0].id, updatedTheme);
 
-    // Earn Points (Triggers PointsEarned Event)
-    const pointsEarned: Omit<
-      OmitBaseEntityColumns<Entities.PointEntity>,
-      'calculatePointsBalance'
-    > = {
-      ...SEED.points[0],
-      pointsEarned: SEED.points[0].pointsEarned + 20,
-      pointsBalance: SEED.points[0].pointsBalance + 20,
-    };
-    Logger.verbose('Updating points... (earned)');
-    await this.pointRepository.update(SEED.points[0].id, pointsEarned);
+  //   // Earn Points (Triggers PointsEarned Event)
+  //   const pointsEarned: Omit<
+  //     OmitBaseEntityColumns<Entities.PointEntity>,
+  //     'calculatePointsBalance'
+  //   > = {
+  //     ...SEED.points[0],
+  //     pointsEarned: SEED.points[0].pointsEarned + 20,
+  //     pointsBalance: SEED.points[0].pointsBalance + 20,
+  //   };
+  //   Logger.verbose('Updating points... (earned)');
+  //   await this.pointRepository.update(SEED.points[0].id, pointsEarned);
 
-    // Spend Points (Triggers PointsSpent Event)
-    const pointsSpent: Omit<
-      OmitBaseEntityColumns<Entities.PointEntity>,
-      'calculatePointsBalance'
-    > = {
-      ...SEED.points[0],
-      pointsSpent: SEED.points[0].pointsSpent + 10,
-      pointsBalance: SEED.points[0].pointsBalance - 10,
-    };
-    Logger.verbose('Updating points... (spent)');
-    await this.pointRepository.update(SEED.points[0].id, pointsSpent);
+  //   // Spend Points (Triggers PointsSpent Event)
+  //   const pointsSpent: Omit<
+  //     OmitBaseEntityColumns<Entities.PointEntity>,
+  //     'calculatePointsBalance'
+  //   > = {
+  //     ...SEED.points[0],
+  //     pointsSpent: SEED.points[0].pointsSpent + 10,
+  //     pointsBalance: SEED.points[0].pointsBalance - 10,
+  //   };
+  //   Logger.verbose('Updating points... (spent)');
+  //   await this.pointRepository.update(SEED.points[0].id, pointsSpent);
 
-    Logger.log('✅ Demonstration complete!');
-  }
+  //   Logger.log('✅ Demonstration complete!');
+  // }
 }

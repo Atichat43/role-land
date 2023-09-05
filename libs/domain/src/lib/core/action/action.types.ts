@@ -84,7 +84,7 @@ export interface IAction extends ITimestampFields {
 }
 
 export type IActionRaw = OmitBaseFields<IAction>;
-export type IActionExcludeSensitive = Omit<IAction, 'id'>;
+export type IActionExcludeSensitive = Omit<IAction, ''>;
 
 export type IActionMock = Readonly<IActionRaw>;
 

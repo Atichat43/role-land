@@ -1,12 +1,8 @@
 import { ISoftDeletionFields, ITimestampFields } from './_base.types';
 import { ESessionStatus, ETeamMemberMembershipState } from './_enum.types';
-import {
-  IAchievement,
-  IBadge,
-  IRole,
-  ISharedLink,
-  ITheme,
-} from './models.types';
+import { IRole } from './core/role';
+import { ITheme } from './core/theme';
+import { IAchievement, IBadge, ISharedLink } from './models.types';
 import { IProfile, IRolePreference } from './value-objects.types';
 
 // --- User Interface ---

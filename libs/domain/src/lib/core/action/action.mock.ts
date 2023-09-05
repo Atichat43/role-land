@@ -1,3 +1,5 @@
+import { v4 as uuid } from 'uuid';
+
 import {
   EActionKey,
   EActionType,
@@ -9,8 +11,9 @@ import {
 } from './action.enum';
 import { IActionMock } from './action.types';
 
-const actionSeedData: IActionMock[] = [
+const actionDefaultMockData: IActionMock[] = [
   {
+    id: uuid(),
     name: 'Echo',
     des: 'Allows the current speaker to speak again immediately after their turn ends.',
     longDesc: null,
@@ -26,6 +29,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Extra Time',
     des: 'Adds an extra 30 seconds to your speaking time.',
     longDesc: null,
@@ -41,6 +45,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Freeze Time',
     des: 'Pauses the timer for 5 minutes.',
     longDesc: null,
@@ -56,6 +61,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Gift Time',
     des: 'Gives 15 seconds to current speaker.',
     longDesc: null,
@@ -72,6 +78,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Steal Time',
     des: "Steals 15 seconds from another participants's speaking time.",
     longDesc: null,
@@ -93,6 +100,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Time Cut',
     des: "Cut the next person's speaking time by half.",
     longDesc: null,
@@ -108,6 +116,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Time Bomb',
     des: 'Set a timer for 1 minute; random role, random order.',
     longDesc: null,
@@ -135,6 +144,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Hot Potato',
     des: 'The current speaker must immediately stop, and a new random speaker is chosen.',
     longDesc: null,
@@ -156,6 +166,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Randomize',
     des: 'Shuffle the speaking order.',
     longDesc: null,
@@ -171,6 +182,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Reverse',
     des: 'Reverses the order of speaking.',
     longDesc: null,
@@ -186,6 +198,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Skip',
     des: 'Skip your turn and pass it to the next person.',
     longDesc: null,
@@ -201,6 +214,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Swap',
     des: 'Swap roles with another participant.',
     longDesc: null,
@@ -216,6 +230,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Fast Forward',
     des: 'Skip your turn, ignoring any actions in between.',
     longDesc:
@@ -238,6 +253,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Hide',
     des: 'Become invisible; your turn is skipped without notice.',
     longDesc:
@@ -254,6 +270,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Instant Replay',
     des: 'Repeats the last 30 seconds of discussion.',
     longDesc:
@@ -276,6 +293,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Joker',
     des: 'Introduce a new, random topic to the discussion.',
     longDesc: null,
@@ -291,6 +309,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Mirror',
     des: 'Copy the last skill used by another participant.',
     longDesc: null,
@@ -306,6 +325,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Pick Pocket',
     des: 'Steal a random skill from another participant.',
     longDesc: null,
@@ -321,6 +341,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Silencer',
     des: "Skip the target's next turn.",
     longDesc: null,
@@ -336,6 +357,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Veto',
     des: 'Cancel another player’s action.',
     longDesc: null,
@@ -351,6 +373,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Wildcard',
     des: 'Choose any skills to use immediately.',
     longDesc: null,
@@ -366,6 +389,7 @@ const actionSeedData: IActionMock[] = [
     ],
   },
   {
+    id: uuid(),
     name: 'Blank',
     des: 'Do nothing.',
     longDesc: null,
@@ -375,4 +399,30 @@ const actionSeedData: IActionMock[] = [
   },
 ];
 
-export default actionSeedData;
+class ActionMock {
+  data: {
+    default: IActionMock[];
+  };
+
+  constructor() {
+    this.data = {
+      default: actionDefaultMockData,
+    };
+  }
+
+  get(key: EActionKey): IActionMock {
+    const result = this.data.default.find((action) => action.key === key);
+
+    if (!result) throw new Error(`Action not found: ${key}`);
+
+    return result;
+  }
+
+  getAllActions(): IActionMock[] {
+    return this.data.default;
+  }
+}
+
+const actionMock = new ActionMock();
+
+export default actionMock;

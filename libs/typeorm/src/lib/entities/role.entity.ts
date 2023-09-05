@@ -1,4 +1,4 @@
-import { IRole } from '@role-land/domain';
+import { IRole, ISkillTemplate } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -16,8 +16,8 @@ export class RoleEntity extends TimestampsEntityColumns implements IRole {
   @Length(1, 25)
   name: string;
 
-  @Column('text', { array: true })
-  attributes: string[];
+  @Column('jsonb', { nullable: true })
+  skills: ISkillTemplate[];
 
   @Column({ nullable: true })
   @IsUrl()
