@@ -12,7 +12,7 @@ import { IAchievementMock } from './achievement.types';
 
 const achievementDefaultMockData: IAchievementMock[] = [
   {
-    id: 'complete_session',
+    id: uuid(),
     category: EAchievementCategory.RegularUse,
     subCategory: ERegularUseSubCategory.CompleteSession,
     name: 'Complete Session',
@@ -35,7 +35,7 @@ const achievementDefaultMockData: IAchievementMock[] = [
     ],
   },
   {
-    id: 'hosting',
+    id: uuid(),
     category: EAchievementCategory.RegularUse,
     subCategory: ERegularUseSubCategory.Hosting,
     name: 'Hosting',
@@ -58,7 +58,7 @@ const achievementDefaultMockData: IAchievementMock[] = [
     ],
   },
   {
-    id: 'product_owner',
+    id: uuid(),
     category: EAchievementCategory.Roles,
     subCategory: ERoleKey.SdProductOwner,
     name: 'Product Owner',
@@ -81,7 +81,7 @@ const achievementDefaultMockData: IAchievementMock[] = [
     ],
   },
   {
-    id: 'strategic_action',
+    id: uuid(),
     category: EAchievementCategory.Actions,
     subCategory: EActionType.Strategic,
     name: 'Strategic Action',

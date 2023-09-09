@@ -14,9 +14,10 @@ export class TypeOrmDevModule implements OnModuleInit {
   constructor(private readonly seederService: SeederService) {}
 
   async onModuleInit() {
-    await this.seederService.clearAll();
-    await this.seederService.seedAll();
-    await this.seederService.demoAll();
+    await this.seederService.main('delete');
+    await this.seederService.main('save');
+    // await this.seederService.demoAll();
+
     // await this.seederService.demoEventSubscribers();
   }
 }

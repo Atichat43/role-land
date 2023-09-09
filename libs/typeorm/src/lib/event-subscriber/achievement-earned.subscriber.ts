@@ -17,15 +17,16 @@ export class AchievementEarnedSubscriber
     return AchievementEntity;
   }
 
-  afterInsert(event: InsertEvent<AchievementEntity>) {
-    const entityId = getEventEntityId(event);
+  // TODO: Fix this
+  // afterInsert(event: InsertEvent<AchievementEntity>) {
+  //   const entityId = getEventEntityId(event);
 
-    const achievementEarnedEvent: IAchievementEarnedEvent = {
-      type: 'AchievementEarned',
-      userId: event.entity.user.id,
-      achievementId: entityId,
-      entityId,
-    };
-    Logger.verbose(achievementEarnedEvent);
-  }
+  //   const achievementEarnedEvent: IAchievementEarnedEvent = {
+  //     type: 'AchievementEarned',
+  //     userId: event.entity.user.id,
+  //     achievementId: entityId,
+  //     entityId,
+  //   };
+  //   Logger.verbose(achievementEarnedEvent);
+  // }
 }

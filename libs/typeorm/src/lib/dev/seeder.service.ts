@@ -1,151 +1,77 @@
-/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, Logger } from '@nestjs/common';
-import { InjectRepository } from '@nestjs/typeorm';
+import { InjectDataSource } from '@nestjs/typeorm';
 import { SEED as SEED_DOMAIN } from '@role-land/domain';
-import { ObjectLiteral, Repository } from 'typeorm';
-import { v4 as uuid } from 'uuid';
+import { DataSource } from 'typeorm';
 
 import * as Entities from '../entities';
 import * as SEED from './index.seed';
-import { OmitBaseEntityColumns } from './index.seed';
-import { ActionDemoUserStoriesService } from './seed/action.demo.service';
 
 @Injectable()
 export class SeederService {
-  repositories: {
-    ActionEntity?: Repository<Entities.ActionEntity>;
-    PointEntity: Repository<Entities.PointEntity>;
-    SessionEntity: Repository<Entities.SessionEntity>;
-    UserEntity: Repository<Entities.UserEntity>;
-    AchievementEntity: Repository<Entities.AchievementEntity>;
-    BadgeEntity: Repository<Entities.BadgeEntity>;
-    EffectEntity: Repository<Entities.EffectEntity>;
-    RoleEntity: Repository<Entities.RoleEntity>;
-    SharedLinkEntity: Repository<Entities.SharedLinkEntity>;
-    ThemeEntity: Repository<Entities.ThemeEntity>;
-    RolePreferenceEntity: Repository<Entities.RolePreferenceEntity>;
-    TeamEntity?: Repository<Entities.TeamEntity>;
-    TeamMemberEntity?: Repository<Entities.TeamMemberEntity>;
-  };
-
   constructor(
-    @InjectRepository(Entities.ActionEntity)
-    private readonly actionRepository: Repository<Entities.ActionEntity>,
-    @InjectRepository(Entities.PointEntity)
-    private readonly pointRepository: Repository<Entities.PointEntity>,
-    @InjectRepository(Entities.SessionEntity)
-    private readonly sessionRepository: Repository<Entities.SessionEntity>,
-    @InjectRepository(Entities.UserEntity)
-    private readonly userRepository: Repository<Entities.UserEntity>,
-    @InjectRepository(Entities.AchievementEntity)
-    private readonly achievementRepository: Repository<Entities.AchievementEntity>,
-    @InjectRepository(Entities.BadgeEntity)
-    private readonly badgeRepository: Repository<Entities.BadgeEntity>,
-    @InjectRepository(Entities.EffectEntity)
-    private readonly effectRepository: Repository<Entities.EffectEntity>,
-    @InjectRepository(Entities.RoleEntity)
-    private readonly roleRepository: Repository<Entities.RoleEntity>,
-    @InjectRepository(Entities.SharedLinkEntity)
-    private readonly sharedLinkRepository: Repository<Entities.SharedLinkEntity>,
-    @InjectRepository(Entities.ThemeEntity)
-    private readonly themeRepository: Repository<Entities.ThemeEntity>,
-    @InjectRepository(Entities.RolePreferenceEntity)
-    private readonly rolePreferenceRepository: Repository<Entities.RolePreferenceEntity>,
-    @InjectRepository(Entities.TeamEntity)
-    private readonly teamRepository: Repository<Entities.TeamEntity>,
-    @InjectRepository(Entities.TeamMemberEntity)
-    private readonly teamMemberRepository: Repository<Entities.TeamMemberEntity>,
-    private readonly actionDemoUserStoriesService: ActionDemoUserStoriesService,
-  ) {
-    this.repositories = {
-      ActionEntity: this.actionRepository,
-      PointEntity: this.pointRepository,
-      SessionEntity: this.sessionRepository,
-      UserEntity: this.userRepository,
-      AchievementEntity: this.achievementRepository,
-      BadgeEntity: this.badgeRepository,
-      EffectEntity: this.effectRepository,
-      RoleEntity: this.roleRepository,
-      SharedLinkEntity: this.sharedLinkRepository,
-      ThemeEntity: this.themeRepository,
-      RolePreferenceEntity: this.rolePreferenceRepository,
-      TeamEntity: this.teamRepository,
-      TeamMemberEntity: this.teamMemberRepository,
-    };
-  }
+    @InjectDataSource()
+    private readonly dataSource: DataSource,
+  ) {}
 
-  // Abstracted methods
-  private async seedEntity<T extends ObjectLiteral>(
-    entity: Repository<T>,
-    seedData: T[],
-  ) {
-    Logger.verbose(`Seeding ${entity.metadata.name}...`);
-    await entity.save(seedData);
-  }
-
-  private async clearEntity<T extends ObjectLiteral>(entity: Repository<T>) {
-    Logger.verbose(`Clearing ${entity.metadata.name}...`);
-    await entity.delete({});
-  }
-
-  // Seed All Data
-  async seedAll() {
-    Logger.log('▶ Seeding database...');
-
-    const seedMap = {
-      ActionEntity: SEED_DOMAIN.actionMock.getAllActions(),
-      RoleEntity: SEED_DOMAIN.roleMock.getAllRoles(),
-      ThemeEntity: SEED_DOMAIN.themeMock.getAllThemes(),
-      // EffectEntity: SEED.effects,
-      // SharedLinkEntity: SEED.sharedLinks,
-      // UserEntity: SEED.users,
-      // TeamEntity: SEED.teams,
-      // TeamMemberEntity: SEED.teamMembers,
-      // RolePreferenceEntity: SEED.rolePreferences,
-      // AchievementEntity: SEED.achievements,
-      // BadgeEntity: SEED.badges,
-      // SessionEntity: SEED.sessions,
-      // PointEntity: SEED.points,
-    };
-
-    for (const [entityName, seedData] of Object.entries(seedMap)) {
-      const repository = this.repositories[
-        entityName as keyof typeof this.repositories
-      ] as Repository<any>;
-      await this.seedEntity(repository, seedData as any);
-    }
-
-    Logger.log('✅ Seeding complete!');
-  }
-
-  // Clear All Data
-  async clearAll() {
-    Logger.log('▶ Clearing database...');
-
-    const clearEntities = [
-      'PointEntity',
-      'SessionEntity',
-      'BadgeEntity',
-      'AchievementEntity',
-      'RolePreferenceEntity',
-      'TeamMemberEntity',
-      'TeamEntity',
-      'UserEntity',
-      'RoleEntity',
-      'SharedLinkEntity',
-      'EffectEntity',
-      'ThemeEntity',
-      'ActionEntity',
+  async main(method: 'save' | 'delete') {
+    // RoleEntity: SEED_DOMAIN.roleMock.getAllRoles(),
+    // ThemeEntity: SEED_DOMAIN.themeMock.getAllThemes(),
+    // // EffectEntity: SEED.effects,
+    // // SharedLinkEntity: SEED.sharedLinks,
+    // // UserEntity: SEED.users,
+    // // TeamEntity: SEED.teams,
+    // // TeamMemberEntity: SEED.teamMembers,
+    // // RolePreferenceEntity: SEED.rolePreferences,
+    // // AchievementEntity: SEED.achievements,
+    // // BadgeEntity: SEED.badges,
+    // // SessionEntity: SEED.sessions,
+    // // PointEntity: SEED.points,
+    const seed = [
+      {
+        entity: Entities.AchievementEntity,
+        data: SEED_DOMAIN.achievementMock.getAllAchievements(),
+      },
+      {
+        entity: Entities.ActionEntity,
+        data: SEED_DOMAIN.actionMock.getAllActions(),
+      },
+      {
+        entity: Entities.RoleEntity,
+        data: SEED_DOMAIN.roleMock.getAllRoles(),
+      },
+      {
+        entity: Entities.ThemeEntity,
+        data: SEED_DOMAIN.themeMock.getAllThemes(),
+      },
     ];
 
-    for (const entityName of clearEntities) {
-      const repository = this.repositories[
-        entityName as keyof typeof this.repositories
-      ] as Repository<any>;
-      await this.clearEntity(repository);
-    }
+    const queryRunner = this.dataSource.createQueryRunner();
+    await queryRunner.connect();
+    await queryRunner.startTransaction();
+    try {
+      if (method === 'save') {
+        for (const { entity, data } of seed) {
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await queryRunner.manager.save(entity, data as any);
+        }
+      }
 
-    Logger.log('✅ Clearing complete!');
+      if (method === 'delete') {
+        for (const { entity } of seed) {
+          await queryRunner.manager.delete(entity, {});
+        }
+      }
+
+      await queryRunner.commitTransaction();
+      if (method === 'save') Logger.verbose('✅ Seeding complete!');
+      if (method === 'delete') Logger.verbose('✅ Clearing complete!');
+    } catch (error) {
+      await queryRunner.rollbackTransaction();
+      console.error(error);
+      Logger.error('Transaction failed:', error);
+    } finally {
+      await queryRunner.release();
+    }
   }
 
   async demoAll() {

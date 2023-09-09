@@ -14,11 +14,13 @@ export * from './lib/events/record.events.types';
 export * from './lib/models.types';
 export * from './lib/value-objects.types';
 
+import achievementMock from './lib/core/achievement/achievement.mock';
 import actionMock from './lib/core/action/action.mock';
 import roleMock from './lib/core/role/role.mock';
 import themeMock from './lib/core/theme/theme.mock';
 
 export const SEED = {
+  achievementMock,
   actionMock,
   roleMock,
   themeMock,
