@@ -1,6 +1,7 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
 import { ITheme } from '../theme';
+import { ERoleKey } from './role.enum';
 
 // --- Skill Template Interface ---
 export interface ISkillTemplate {
@@ -16,6 +17,7 @@ export interface ISkillTemplate {
  * @extend ITimestampFields
  * @attributes
  * - id: UUID
+ * - key: ERoleKey
  * - name: String, max 25 characters, non-empty
  * - skills: Array of ISkillTemplate
  * - defaultImage: URL or null
@@ -25,6 +27,7 @@ export interface ISkillTemplate {
  */
 export interface IRole extends ITimestampFields {
   id: string;
+  key: ERoleKey;
   name: string;
   skills: ISkillTemplate[];
 
