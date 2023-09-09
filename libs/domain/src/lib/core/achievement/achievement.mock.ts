@@ -1,12 +1,12 @@
 import { v4 as uuid } from 'uuid';
 
 import { EActionType } from '../action';
-import { ESoftwareDevelopmentRoleKey } from '../role/role.enum';
+import { ERoleKey } from '../role/role.enum';
 import {
   EAchievementCategory,
-  EAchievementSubCategory,
   ERegularUseSubCategory,
   EStackableLimit,
+  IMergeTypeAchievementSubCategory,
 } from './achievement.enum';
 import { IAchievementMock } from './achievement.types';
 
@@ -60,7 +60,7 @@ const achievementDefaultMockData: IAchievementMock[] = [
   {
     id: 'product_owner',
     category: EAchievementCategory.Roles,
-    subCategory: ESoftwareDevelopmentRoleKey.ProductOwner,
+    subCategory: ERoleKey.SdProductOwner,
     name: 'Product Owner',
     milestones: [
       {
@@ -147,7 +147,7 @@ class AchievementMock {
 
   get(
     category: EAchievementCategory,
-    subCategory: EAchievementSubCategory,
+    subCategory: IMergeTypeAchievementSubCategory,
   ): IAchievementMock {
     const result = this.data.default.find((achievement) => {
       return (

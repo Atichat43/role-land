@@ -1,4 +1,4 @@
-import { IRole, ISkillTemplate } from '@role-land/domain';
+import { ERoleKey, IRole, ISkillTemplate } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
@@ -11,6 +11,11 @@ import { ThemeEntity } from './theme.entity';
 export class RoleEntity extends TimestampsEntityColumns implements IRole {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column('enum', {
+    enum: ERoleKey,
+  })
+  key: ERoleKey;
 
   @Column()
   @Length(1, 25)

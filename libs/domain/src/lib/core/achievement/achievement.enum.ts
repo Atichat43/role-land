@@ -1,5 +1,5 @@
-import { EActionType } from '../action';
-import { ERoleKey } from '../role/role.enum';
+import { EActionType as EActionSubCategory } from '../action';
+import { ERoleKey as ERoleSubCategory } from '../role/role.enum';
 
 // --- Achievement Category Enum ---
 /**
@@ -15,16 +15,6 @@ export enum EAchievementCategory {
   Actions = 'actions',
 }
 
-// --- Achievement Sub Category Type ---
-/**
- * @desc Type representing the subcategories of achievements.
- * It combines subcategories from regular use, roles, and actions.
- */
-export type EAchievementSubCategory =
-  | ERegularUseSubCategory
-  | ERoleSubCategory
-  | EActionSubCategory;
-
 // --- Regular Use Sub Category Enum ---
 /**
  * @desc Enum representing the subcategories under regular use.
@@ -39,19 +29,22 @@ export enum ERegularUseSubCategory {
   CompleteSession = 'regular_use:complete_session',
 }
 
-// --- Role Sub Category Type ---
+// --- Achievement Sub Category Type ---
 /**
- * @desc Type representing the subcategories related to roles.
- * It refers to the ERoleKey type which lists all available roles.
+ * @desc Type representing the subcategories of achievements.
+ * It combines subcategories from regular use, roles, and actions.
  */
-export type ERoleSubCategory = ERoleKey;
+export type IMergeTypeAchievementSubCategory =
+  | ERegularUseSubCategory
+  | ERoleSubCategory
+  | EActionSubCategory;
 
-// --- Action Sub Category Type ---
-/**
- * @desc Type representing the subcategories related to actions.
- * It refers to the EActionType type which lists all available actions.
- */
-export type EActionSubCategory = EActionType;
+export const MERGE_TYPE_ACHIEVEMENT_SUB_CATEGORY: IMergeTypeAchievementSubCategory[] =
+  ([] as IMergeTypeAchievementSubCategory[]).concat(
+    Object.values(ERegularUseSubCategory),
+    Object.values(ERoleSubCategory),
+    Object.values(EActionSubCategory),
+  );
 
 // --- Stackable Limit Enum ---
 /**

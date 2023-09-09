@@ -1,22 +1,5 @@
 import { ITimestampFields } from './_base.types';
-import { IUser } from './aggregates.types';
-
-// --- Achievement Interface ---
-/**
- * @desc Holds the achievement-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - achievementType: String, non-empty
- * - user: IUser (ManyToOne)
- */
-export interface IAchievement extends ITimestampFields {
-  id: string;
-  achievementType: string;
-
-  // aggregates
-  user: IUser;
-}
+import { IUser } from './core/user';
 
 // --- Badge Interface ---
 /**

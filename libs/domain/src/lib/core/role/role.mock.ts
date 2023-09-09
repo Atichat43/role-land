@@ -2,18 +2,14 @@ import { v4 as uuid } from 'uuid';
 
 import { EActionKey } from '../action';
 import actionMock from '../action/action.mock';
-import {
-  EEducationRoleKey,
-  ESoftwareDevelopmentRoleKey,
-  EWerewolfRoleKey,
-} from './role.enum';
+import { ERoleKey } from './role.enum';
 import { IRoleMock } from './role.types';
 
 const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Product Owner',
-    key: ESoftwareDevelopmentRoleKey.ProductOwner,
+    key: ERoleKey.SdProductOwner,
     defaultImage: 'https://product-owner-default.png',
     skills: [
       {
@@ -39,7 +35,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Backend Developer',
-    key: ESoftwareDevelopmentRoleKey.BackendDeveloper,
+    key: ERoleKey.SdBackendDeveloper,
     defaultImage: 'https://backend-developer-default.png',
     skills: [
       {
@@ -59,7 +55,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Frontend Developer',
-    key: ESoftwareDevelopmentRoleKey.FrontendDeveloper,
+    key: ERoleKey.SdFrontendDeveloper,
     defaultImage: 'https://frontend-developer-default.png',
     skills: [
       {
@@ -79,7 +75,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'DevOps',
-    key: ESoftwareDevelopmentRoleKey.DevOps,
+    key: ERoleKey.SdDevOps,
     defaultImage: 'https://devops-default.png',
     skills: [
       {
@@ -106,7 +102,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'QA',
-    key: ESoftwareDevelopmentRoleKey.QA,
+    key: ERoleKey.SdQA,
     defaultImage: 'https://qa-default.png',
     skills: [
       {
@@ -132,7 +128,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Client',
-    key: ESoftwareDevelopmentRoleKey.Client,
+    key: ERoleKey.SdClient,
     defaultImage: 'https://client-default.png',
     skills: [
       {
@@ -161,7 +157,7 @@ const educationRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Principal',
-    key: EEducationRoleKey.Principal,
+    key: ERoleKey.EduPrincipal,
     defaultImage: 'https://principal-default.png',
     skills: [
       {
@@ -187,7 +183,7 @@ const educationRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Student',
-    key: EEducationRoleKey.Student,
+    key: ERoleKey.EduStudent,
     defaultImage: 'https://student-default.png',
     skills: [
       {
@@ -213,7 +209,7 @@ const educationRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'School Nurse',
-    key: EEducationRoleKey.SchoolNurse,
+    key: ERoleKey.EduSchoolNurse,
     defaultImage: 'https://school-nurse-default.png',
     skills: [
       {
@@ -233,7 +229,7 @@ const educationRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Janitorial Staff',
-    key: EEducationRoleKey.JanitorialStaff,
+    key: ERoleKey.EduJanitorialStaff,
     defaultImage: 'https://janitorial-staff-default.png',
     skills: [
       {
@@ -259,7 +255,7 @@ const educationRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Teacher',
-    key: EEducationRoleKey.Teacher,
+    key: ERoleKey.EduTeacher,
     defaultImage: 'https://teacher-default.png',
     skills: [
       {
@@ -288,7 +284,7 @@ const werewolfRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Werewolf',
-    key: EWerewolfRoleKey.Werewolf,
+    key: ERoleKey.WerewolfWerewolf,
     defaultImage: 'https://werewolf-default.png',
     skills: [
       {
@@ -302,7 +298,7 @@ const werewolfRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Villager',
-    key: EWerewolfRoleKey.Villager,
+    key: ERoleKey.WerewolfVillager,
     defaultImage: 'https://villager-default.png',
     skills: [
       {
@@ -316,7 +312,7 @@ const werewolfRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Seer',
-    key: EWerewolfRoleKey.Seer,
+    key: ERoleKey.WerewolfSeer,
     defaultImage: 'https://seer-default.png',
     skills: [
       {
@@ -331,7 +327,7 @@ const werewolfRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Doctor',
-    key: EWerewolfRoleKey.Doctor,
+    key: ERoleKey.WerewolfDoctor,
     defaultImage: 'https://doctor-default.png',
     skills: [
       {
@@ -345,7 +341,7 @@ const werewolfRoleMock: IRoleMock[] = [
   {
     id: uuid(),
     name: 'Hunter',
-    key: EWerewolfRoleKey.Hunter,
+    key: ERoleKey.WerewolfHunter,
     defaultImage: 'https://hunter-default.png',
     skills: [
       {
@@ -375,7 +371,7 @@ class RoleMock {
     };
   }
 
-  get(key: ESoftwareDevelopmentRoleKey): IRoleMock {
+  get(key: ERoleKey): IRoleMock {
     const result = this.data.default.find((role) => role.key === key);
 
     if (!result) throw new Error(`Role ${key} not found`);

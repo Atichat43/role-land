@@ -11,6 +11,7 @@ import { TeamEntity } from './team.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ThemeEntity } from './theme.entity';
 import { UserEntity } from './user.entity';
+import { UserAchievementEntity } from './user-achievement.entity';
 
 export {
   AchievementEntity,
@@ -25,6 +26,7 @@ export {
   TeamEntity,
   TeamMemberEntity,
   ThemeEntity,
+  UserAchievementEntity,
   UserEntity,
 };
 
@@ -35,6 +37,7 @@ export const Entities = [
   UserEntity,
   TeamEntity,
   TeamMemberEntity,
+  UserAchievementEntity,
 
   // models
   AchievementEntity,

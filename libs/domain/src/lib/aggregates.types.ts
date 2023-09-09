@@ -2,46 +2,8 @@ import { ISoftDeletionFields, ITimestampFields } from './_base.types';
 import { ESessionStatus, ETeamMemberMembershipState } from './_enum.types';
 import { IRole } from './core/role';
 import { ITheme } from './core/theme';
-import { IAchievement, IBadge, ISharedLink } from './models.types';
-import { IProfile, IRolePreference } from './value-objects.types';
-
-// --- User Interface ---
-/**
- * @desc Holds the user-related domain information.
- * @extend ITimestampFields, ISoftDeletionFields
- * @attributes
- *  - id: UUID
- *  - username: String, max 25 characters, non-empty
- *  - globalName: String, max 25 characters, non-empty
- *  - avatar: URL or null
- *  - premiumStatus: Boolean, default false
- *  - profile: IProfile (Value Object)
- *  - rolePreferences: Array of IRolePreference (Value Object)
- *  - badges: Array of IBadge (OneToMany)
- *  - achievements: Array of IAchievement (OneToMany)
- *  - teamMemberships: Array of ITeamMember (OneToMany)
- * @notes
- * - Utilizes soft delete for analyzing user trends and maintaining historical data.
- * -
- */
-export interface IUser extends ITimestampFields, ISoftDeletionFields {
-  id: string;
-  username: string;
-  globalName: string;
-  premiumStatus: boolean;
-  avatar: string | null;
-
-  // value objects
-  profile: IProfile;
-  rolePreferences: IRolePreference[];
-
-  // models
-  badges: IBadge[];
-  achievements: IAchievement[];
-
-  // aggregates
-  teamMemberships: ITeamMember[];
-}
+import { IUser } from './core/user';
+import { ISharedLink } from './models.types';
 
 // --- Team Member Interface ---
 /**

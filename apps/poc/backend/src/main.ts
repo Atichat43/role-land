@@ -5,7 +5,7 @@ import { BackendModule } from './app/backend.module';
 
 async function bootstrap() {
   const app = await NestFactory.create(BackendModule, {
-    logger: ['error', 'warn', 'log', 'debug'],
+    logger: ['error', 'warn', 'log', 'debug', 'verbose'],
   });
   // const globalPrefix = 'api';
   // app.setGlobalPrefix(globalPrefix);

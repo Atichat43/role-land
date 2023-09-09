@@ -10,11 +10,11 @@ import {
 } from 'typeorm';
 
 import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
-import { AchievementEntity } from './achievement.entity';
 import { BadgeEntity } from './badge.entity';
 import { RolePreferenceEntity } from './role-preference.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
+import { UserAchievementEntity } from './user-achievement.entity';
 
 // UserEntity: Central entity for user management. Includes fields like username, globalName, and premiumStatus.
 @Entity('User')
@@ -55,8 +55,11 @@ export class UserEntity
   @OneToMany(() => BadgeEntity, (badge) => badge.user)
   badges: BadgeEntity[];
 
-  @OneToMany(() => AchievementEntity, (achievement) => achievement.user)
-  achievements: AchievementEntity[];
+  @OneToMany(
+    () => UserAchievementEntity,
+    (userAchievement) => userAchievement.user,
+  )
+  userAchievements: UserAchievementEntity[];
 
   @OneToMany(() => TeamMemberEntity, (teamMember) => teamMember.user)
   teamMemberships: TeamMemberEntity[];

@@ -1,4 +1,4 @@
-import { ITheme } from '@role-land/domain';
+import { EThemeKey, ITheme } from '@role-land/domain';
 import { IsBoolean, Length } from 'class-validator';
 import {
   Column,
@@ -17,6 +17,9 @@ import { RoleEntity } from './role.entity';
 export class ThemeEntity extends TimestampsEntityColumns implements ITheme {
   @PrimaryGeneratedColumn('uuid')
   id: string;
+
+  @Column('enum', { enum: EThemeKey })
+  key: EThemeKey;
 
   @Column()
   @Length(1, 25)

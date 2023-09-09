@@ -2,8 +2,8 @@ import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
 import {
   EAchievementCategory,
-  EAchievementSubCategory,
   EStackableLimit,
+  IMergeTypeAchievementSubCategory,
 } from './achievement.enum';
 
 // --- Achievement Milestone Interface ---
@@ -33,7 +33,7 @@ export interface IAchievementMilestone {
  * - id: UUID
  * - name: String, max 25 characters, non-empty
  * - category: EAchievementCategory
- * - subCategory: EAchievementSubCategory
+ * - subCategory: IMergeTypeAchievementSubCategory
  * - milestones: Array of IAchievementMilestone
  */
 export interface IAchievement extends ITimestampFields {
@@ -41,7 +41,7 @@ export interface IAchievement extends ITimestampFields {
   name: string;
 
   category: EAchievementCategory;
-  subCategory: EAchievementSubCategory;
+  subCategory: IMergeTypeAchievementSubCategory;
 
   milestones: IAchievementMilestone[];
 }
