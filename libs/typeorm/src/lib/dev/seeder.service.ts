@@ -47,9 +47,12 @@ export class SeederService {
       // {
       //   tableName: Entities.TeamEntityTableName,
       // },
-      // {
-      //   tableName: Entities.TeamMemberEntityTableName,
-      // },
+      {
+        tableName: Entities.TeamMemberEntityTableName,
+        entity: Entities.TeamMemberEntity,
+        // data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers() as Entities.TeamMemberEntity[],
+        data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers() as Entities.TeamMemberEntity[],
+      },
       {
         tableName: Entities.AchievementEntityTableName,
         entity: Entities.AchievementEntity,

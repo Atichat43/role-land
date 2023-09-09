@@ -1,7 +1,7 @@
 import { ISoftDeletionFields, ITimestampFields } from '../../_base.types';
-import { ITeamMember } from '../../aggregates.types';
 import { IBadge } from '../../models.types';
 import { IProfile, IRolePreference } from '../../value-objects.types';
+import { ITeamMember } from '../team-member';
 import { IUserAchievement } from '../user-achievement';
 
 // --- User Interface ---

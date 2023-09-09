@@ -1,30 +1,10 @@
 import { ISoftDeletionFields, ITimestampFields } from './_base.types';
-import { ESessionStatus, ETeamMemberMembershipState } from './_enum.types';
+import { ESessionStatus } from './_enum.types';
 import { IRole } from './core/role';
+import { ITeamMember } from './core/team-member';
 import { ITheme } from './core/theme';
 import { IUser } from './core/user';
 import { ISharedLink } from './models.types';
-
-// --- Team Member Interface ---
-/**
- * @desc Holds the team member-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - teamMemberMembershipState: ETeamMemberMembershipState
- * - permissions: Array of strings
- * - user: IUser (ManyToOne)
- * - team: ITeam (ManyToOne)
- */
-export interface ITeamMember extends ITimestampFields {
-  id: string;
-  teamMemberMembershipState: ETeamMemberMembershipState;
-  permissions: string[];
-
-  // aggregates
-  user: IUser;
-  team: ITeam;
-}
 
 // --- Team Interface ---
 /**
