@@ -1,6 +1,7 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
 import { IRole, IRoleMock } from '../role';
+import { EThemeKey } from './theme.enum';
 
 // --- Theme Interface ---
 /**
@@ -9,6 +10,7 @@ import { IRole, IRoleMock } from '../role';
  * @attributes
  * - id: UUID
  * - name: String, max 25 characters, non-empty
+ * - key: EThemeKey
  * - premium: Boolean, default false, Indexed
  * - roles: Array of IRole (OneToMany)
  * @notes
@@ -16,6 +18,7 @@ import { IRole, IRoleMock } from '../role';
  */
 export interface ITheme extends ITimestampFields {
   id: string;
+  key: EThemeKey;
   name: string;
   premium: boolean;
 

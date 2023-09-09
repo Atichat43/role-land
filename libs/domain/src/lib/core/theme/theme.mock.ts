@@ -1,24 +1,28 @@
 import { v4 as uuid } from 'uuid';
 
 import roleMock from '../role/role.mock';
+import { EThemeKey } from './theme.enum';
 import { IThemeMock } from './theme.types';
 
 const themeSeedData: IThemeMock[] = [
   {
     id: uuid(),
+    key: EThemeKey.SoftwareDevelopment,
     name: 'Software Development',
     premium: false,
     roles: roleMock.getSoftwareDevelopmentRoles(),
   },
   {
     id: uuid(),
+    key: EThemeKey.Education,
     name: 'Education',
     premium: true,
     roles: roleMock.getEducationRoles(),
   },
   {
     id: uuid(),
-    name: 'Wareworf',
+    key: EThemeKey.Werewolf,
+    name: 'Werewolf',
     premium: false,
     roles: roleMock.getWerewolfRoles(),
   },
@@ -35,8 +39,8 @@ class ThemeMock {
     };
   }
 
-  get(name: 'Software Development' | 'Education' | 'Wareworf'): IThemeMock {
-    const result = this.data.default.find((theme) => theme.name === name);
+  get(key: EThemeKey): IThemeMock {
+    const result = this.data.default.find((theme) => theme.key === key);
 
     if (!result) throw new Error(`Theme ${name} not found`);
 
