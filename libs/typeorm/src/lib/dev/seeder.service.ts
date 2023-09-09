@@ -23,17 +23,17 @@ export class SeederService {
       {
         tableName: Entities.ActionEntityTableName,
         entity: Entities.ActionEntity,
-        data: SEED_DOMAIN.actionMock.getAllActions() as Entities.ActionEntity[],
+        data: SEED_DOMAIN.actionMock.getAllActions(),
       },
       {
         tableName: Entities.ThemeEntityTableName,
         entity: Entities.ThemeEntity,
-        data: SEED_DOMAIN.themeMock.getAllThemes() as Entities.ThemeEntity[],
+        data: SEED_DOMAIN.themeMock.getAllThemes(),
       },
       {
         tableName: Entities.RoleEntityTableName,
         entity: Entities.RoleEntity,
-        data: SEED_DOMAIN.roleMock.getAllRoles() as Entities.RoleEntity[],
+        data: SEED_DOMAIN.roleMock.getAllRoles(),
       },
       // {
       //   tableName: Entities.EffectEntityTableName,
@@ -41,22 +41,23 @@ export class SeederService {
       // {
       //   tableName: Entities.SharedLinkEntityTableName,
       // },
-      // {
-      //   tableName: Entities.UserEntityTableName,
-      // },
+      {
+        tableName: Entities.UserEntityTableName,
+        entity: Entities.UserEntity,
+        data: SEED_DOMAIN.userMock.getAllUsers(),
+      },
       // {
       //   tableName: Entities.TeamEntityTableName,
       // },
       {
         tableName: Entities.TeamMemberEntityTableName,
         entity: Entities.TeamMemberEntity,
-        // data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers() as Entities.TeamMemberEntity[],
-        data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers() as Entities.TeamMemberEntity[],
+        data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers(),
       },
       {
         tableName: Entities.AchievementEntityTableName,
         entity: Entities.AchievementEntity,
-        data: SEED_DOMAIN.achievementMock.getAllAchievements() as Entities.AchievementEntity[],
+        data: SEED_DOMAIN.achievementMock.getAllAchievements(),
       },
       // {
       //   tableName: Entities.UserAchievementEntityTableName,

@@ -20,6 +20,7 @@ import actionMock from './lib/core/action/action.mock';
 import roleMock from './lib/core/role/role.mock';
 import teamMemberMock from './lib/core/team-member/team-member.mock';
 import themeMock from './lib/core/theme/theme.mock';
+import userMock from './lib/core/user/user.mock';
 
 export const SEED = {
   achievementMock,
@@ -27,4 +28,5 @@ export const SEED = {
   roleMock,
   themeMock,
   teamMemberMock,
+  userMock,
 };
