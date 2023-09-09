@@ -80,12 +80,12 @@ export enum EActionType {
  * - Halve: Halve the timer
  */
 export enum ETimerActionOperation {
-  Add = 'add',
-  Subtract = 'subtract',
-  Pause = 'pause',
-  Reset = 'reset',
-  Set = 'set',
-  Halve = 'halve',
+  Add = 'timer:add',
+  Subtract = 'timer:subtract',
+  Pause = 'timer:pause',
+  Reset = 'timer:reset',
+  Set = 'timer:set',
+  Halve = 'timer:halve',
 }
 
 // --- Role Action Operation Enum ---
@@ -96,8 +96,8 @@ export enum ETimerActionOperation {
  * - Randomize: Randomize the speaking order
  */
 export enum ERoleActionOperation {
-  Swap = 'swap',
-  Randomize = 'randomize',
+  Swap = 'role:swap',
+  Randomize = 'role:randomize',
 }
 
 // --- Ordering Action Operation Enum ---
@@ -109,9 +109,9 @@ export enum ERoleActionOperation {
  * - Skip: Skip the current speaker
  */
 export enum EOrderingActionOperation {
-  Randomize = 'randomize',
-  Reverse = 'reverse',
-  Skip = 'skip',
+  Randomize = 'order:randomize',
+  Reverse = 'order:reverse',
+  Skip = 'order:skip',
 }
 
 // --- Strategic Action Operation Enum ---
@@ -129,15 +129,15 @@ export enum EOrderingActionOperation {
  * - Wildcard: Wildcard
  */
 export enum EStrategicActionOperation {
-  FastForward = 'fast_forward',
-  Hide = 'hide',
-  InstantReplay = 'instant_replay',
-  Joker = 'joker',
-  MirrorSkill = 'mirror_skill',
-  PickPocket = 'pick_pocket',
-  Silencer = 'silencer',
-  Veto = 'veto',
-  Wildcard = 'wildcard',
+  FastForward = 'strategic:fast_forward',
+  Hide = 'strategic:hide',
+  InstantReplay = 'strategic:instant_replay',
+  Joker = 'strategic:joker',
+  MirrorSkill = 'strategic:mirror_skill',
+  PickPocket = 'strategic:pick_pocket',
+  Silencer = 'strategic:silencer',
+  Veto = 'strategic:veto',
+  Wildcard = 'strategic:wildcard',
 }
 
 // --- Target Enum ---
