@@ -1,6 +1,6 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
-import { ITeam } from '../../aggregates.types';
+import { ITeam } from '../team';
 import { IUser } from '../user';
 import { ETeamMemberMembershipState } from './team-member.enum';
 

@@ -1,5 +1,6 @@
 import { v4 as uuid } from 'uuid';
 
+import { IMergeUsernames } from './user.mock.types';
 import { IUserMock } from './user.types';
 
 const userMockData: IUserMock[] = [
@@ -163,7 +164,7 @@ class UserMock {
     };
   }
 
-  get(username: 'idiot' | 'role-land-expert'): IUserMock {
+  get(username: IMergeUsernames): IUserMock {
     const result = this.data.default.find((user) => user.username === username);
 
     if (!result) throw new Error(`User ${username} not found`);
@@ -173,6 +174,10 @@ class UserMock {
 
   getAllUsers(): IUserMock[] {
     return this.data.default;
+  }
+
+  getAllUsersInTeam(teamId: 'team-a' | 'team-b'): IUserMock[] {
+    return this.data.default.filter((user) => user.username.includes(teamId));
   }
 }
 

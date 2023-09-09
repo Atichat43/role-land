@@ -18,7 +18,6 @@ export class TypeOrmDevModule implements OnModuleInit {
     await this.seederService.main('delete');
     await this.seederService.main('save');
     // await this.seederService.demoAll();
-
     // await this.seederService.demoEventSubscribers();
   }
 }

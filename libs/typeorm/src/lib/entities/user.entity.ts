@@ -12,6 +12,7 @@ import {
 import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
 import { BadgeEntity } from './badge.entity';
 import { RolePreferenceEntity } from './role-preference.entity';
+import { TeamEntity } from './team.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 import { UserAchievementEntity } from './user-achievement.entity';
@@ -65,6 +66,9 @@ export class UserEntity
 
   @OneToMany(() => TeamMemberEntity, (teamMember) => teamMember.user)
   teamMemberships: TeamMemberEntity[];
+
+  @OneToMany(() => TeamEntity, (team) => team.owner)
+  teamsOwned: TeamEntity[];
 
   // NOTE: optimistic concurrency control
   @VersionColumn({ default: 0 })

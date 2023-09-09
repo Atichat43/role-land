@@ -2,8 +2,10 @@ import { ISoftDeletionFields, ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
 import { IBadge } from '../../models.types';
 import { IRolePreference } from '../../value-objects.types';
+import { ITeam } from '../team';
 import { ITeamMember } from '../team-member';
 import { IUserAchievement } from '../user-achievement';
+import { IMergeUsernames } from './user.mock.types';
 
 // NOTE:
 // Value objects are immutable and are identified by their properties.
@@ -36,6 +38,7 @@ export interface IProfile {
  *  - badges: Array of IBadge (OneToMany)
  *  - userAchievements: Array of IUserAchievement (OneToMany)
  *  - teamMemberships: Array of ITeamMember (OneToMany)
+ *  - teamsOwned: Array of ITeam (OneToMany)
  * @notes
  * - Utilizes soft delete for analyzing user trends and maintaining historical data.
  * -
@@ -57,16 +60,23 @@ export interface IUser extends ITimestampFields, ISoftDeletionFields {
 
   // aggregates
   teamMemberships: ITeamMember[];
+  teamsOwned: ITeam[];
 }
 
 export type IUserRaw = Omit<
   OmitBaseFields<IUser>,
-  'rolePreferences' | 'badges' | 'userAchievements' | 'teamMemberships'
+  | 'rolePreferences'
+  | 'badges'
+  | 'userAchievements'
+  | 'teamMemberships'
+  | 'teamsOwned'
 >;
 export type IUserExcludeSensitive = Omit<IUser, ''>;
 
 // NOTE: roles should be empty array in mocking process due to circular dependency with role who has User
-export type IUserMock = Readonly<IUserRaw>;
+export type IUserMock = Readonly<
+  Omit<IUserRaw, 'username'> & { username: IMergeUsernames }
+>;
 
 // inbound
 export type IUserCreatePayload = Required<IUserRaw>;

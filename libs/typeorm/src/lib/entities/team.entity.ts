@@ -5,6 +5,7 @@ import {
   Column,
   Entity,
   JoinColumn,
+  ManyToOne,
   OneToMany,
   OneToOne,
   PrimaryGeneratedColumn,
@@ -32,8 +33,7 @@ export class TeamEntity
   @IsUrl()
   icon: string | null;
 
-  @OneToOne(() => UserEntity)
-  @JoinColumn()
+  @ManyToOne(() => UserEntity, (user) => user.teamsOwned)
   @ValidateNested()
   @Type(() => UserEntity)
   owner: UserEntity;
