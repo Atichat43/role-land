@@ -16,8 +16,10 @@ import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 import { UserAchievementEntity } from './user-achievement.entity';
 
+export const UserEntityTableName = 'User';
+
 // UserEntity: Central entity for user management. Includes fields like username, globalName, and premiumStatus.
-@Entity('User')
+@Entity(UserEntityTableName)
 export class UserEntity
   extends TimestampsAndSoftDeletionEntityColumns
   implements IUser

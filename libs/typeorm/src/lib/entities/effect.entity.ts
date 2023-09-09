@@ -4,7 +4,9 @@ import { Column, Entity, Index, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
 
-@Entity('Effect')
+export const EffectEntityTableName = 'Effect';
+
+@Entity(EffectEntityTableName)
 @Index('effect_premium_index', ['premium']) // NOTE: query themes by premium
 export class EffectEntity extends TimestampsEntityColumns implements IEffect {
   @PrimaryGeneratedColumn('uuid')

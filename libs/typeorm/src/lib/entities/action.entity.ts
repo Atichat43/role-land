@@ -50,7 +50,9 @@ export class ActionConfig implements IBaseActionConfig {
     | ERoleActionOperation;
 }
 
-@Entity('Action')
+export const ActionEntityTableName = 'Action';
+
+@Entity(ActionEntityTableName)
 export class ActionEntity extends TimestampsEntityColumns implements IAction {
   @PrimaryGeneratedColumn('uuid')
   id: string;

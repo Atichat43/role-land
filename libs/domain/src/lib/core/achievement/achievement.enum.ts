@@ -24,9 +24,9 @@ export enum EAchievementCategory {
  * - CompleteSession: Achievements for completing sessions.
  */
 export enum ERegularUseSubCategory {
-  ConsecutiveUsage = 'regular_use:consecutive_usage',
-  Hosting = 'regular_use:hosting',
-  CompleteSession = 'regular_use:complete_session',
+  ConsecutiveUsage = 'consecutive_usage',
+  Hosting = 'hosting',
+  CompleteSession = 'complete_session',
 }
 
 // --- Achievement Sub Category Type ---

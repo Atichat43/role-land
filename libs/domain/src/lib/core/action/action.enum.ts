@@ -62,10 +62,10 @@ export enum EActionKey {
  * - Strategic: Strategic actions
  */
 export enum EActionType {
-  Timer = 'timer',
-  Role = 'role',
-  Ordering = 'order',
-  Strategic = 'strategic',
+  Timer = 'action:timer',
+  Role = 'action:role',
+  Ordering = 'action:order',
+  Strategic = 'action:strategic',
 }
 
 // --- Timer Action Operation Enum ---

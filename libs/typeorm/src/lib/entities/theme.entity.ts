@@ -11,8 +11,10 @@ import {
 import { TimestampsEntityColumns } from './_common.entity';
 import { RoleEntity } from './role.entity';
 
+export const ThemeEntityTableName = 'Theme';
+
 // ThemeEntity: Manages the themes available in the application.
-@Entity('Theme')
+@Entity(ThemeEntityTableName)
 @Index('theme_premium_index', ['premium'])
 export class ThemeEntity extends TimestampsEntityColumns implements ITheme {
   @PrimaryGeneratedColumn('uuid')

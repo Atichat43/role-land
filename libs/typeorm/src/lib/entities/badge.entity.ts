@@ -6,7 +6,9 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { TimestampsEntityColumns } from './_common.entity';
 import { UserEntity } from './user.entity';
 
-@Entity('Badge')
+export const BadgeEntityTableName = 'Badge';
+
+@Entity(BadgeEntityTableName)
 export class BadgeEntity extends TimestampsEntityColumns implements IBadge {
   @PrimaryGeneratedColumn('uuid')
   id: string;

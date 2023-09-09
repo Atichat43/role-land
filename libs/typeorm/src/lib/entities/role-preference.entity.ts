@@ -6,8 +6,10 @@ import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 import { RoleEntity } from './role.entity';
 import { UserEntity } from './user.entity';
 
+export const RolePreferenceEntityTableName = 'RolePreference';
+
 // RolePreferenceEntity: Manages user's role preferences.
-@Entity('RolePreference')
+@Entity(RolePreferenceEntityTableName)
 export class RolePreferenceEntity implements IRolePreference {
   @PrimaryGeneratedColumn('uuid')
   id: string;

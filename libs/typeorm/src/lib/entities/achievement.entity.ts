@@ -46,7 +46,9 @@ export class AchievementMilestone implements IAchievementMilestone {
   stackableLimit: EStackableLimit | null;
 }
 
-@Entity('Achievement')
+export const AchievementEntityTableName = 'Achievement';
+
+@Entity(AchievementEntityTableName)
 export class AchievementEntity
   extends TimestampsEntityColumns
   implements IAchievement

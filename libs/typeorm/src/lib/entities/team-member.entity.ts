@@ -7,7 +7,9 @@ import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
 import { TeamEntity } from './team.entity';
 import { UserEntity } from './user.entity';
 
-@Entity('TeamMember')
+export const TeamMemberEntityTableName = 'TeamMember';
+
+@Entity(TeamMemberEntityTableName)
 export class TeamMemberEntity
   extends TimestampsAndSoftDeletionEntityColumns
   implements ITeamMember

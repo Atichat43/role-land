@@ -1,10 +1,15 @@
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { SEED as SEED_DOMAIN } from '@role-land/domain';
-import { DataSource } from 'typeorm';
+import {
+  DataSource,
+  DeepPartial,
+  EntityTarget,
+  QueryRunner,
+  SaveOptions,
+} from 'typeorm';
 
 import * as Entities from '../entities';
-import * as SEED from './index.seed';
 
 @Injectable()
 export class SeederService {
@@ -13,71 +18,112 @@ export class SeederService {
     private readonly dataSource: DataSource,
   ) {}
 
-  async main(method: 'save' | 'delete') {
-    // RoleEntity: SEED_DOMAIN.roleMock.getAllRoles(),
-    // ThemeEntity: SEED_DOMAIN.themeMock.getAllThemes(),
-    // // EffectEntity: SEED.effects,
-    // // SharedLinkEntity: SEED.sharedLinks,
-    // // UserEntity: SEED.users,
-    // // TeamEntity: SEED.teams,
-    // // TeamMemberEntity: SEED.teamMembers,
-    // // RolePreferenceEntity: SEED.rolePreferences,
-    // // AchievementEntity: SEED.achievements,
-    // // BadgeEntity: SEED.badges,
-    // // SessionEntity: SEED.sessions,
-    // // PointEntity: SEED.points,
+  async main(method: 'save' | 'delete' | 'dropTable') {
     const seed = [
       {
-        entity: Entities.AchievementEntity,
-        data: SEED_DOMAIN.achievementMock.getAllAchievements(),
-      },
-      {
+        tableName: Entities.ActionEntityTableName,
         entity: Entities.ActionEntity,
-        data: SEED_DOMAIN.actionMock.getAllActions(),
+        data: SEED_DOMAIN.actionMock.getAllActions() as Entities.ActionEntity[],
       },
       {
-        entity: Entities.RoleEntity,
-        data: SEED_DOMAIN.roleMock.getAllRoles(),
-      },
-      {
+        tableName: Entities.ThemeEntityTableName,
         entity: Entities.ThemeEntity,
-        data: SEED_DOMAIN.themeMock.getAllThemes(),
+        data: SEED_DOMAIN.themeMock.getAllThemes() as Entities.ThemeEntity[],
       },
+      {
+        tableName: Entities.RoleEntityTableName,
+        entity: Entities.RoleEntity,
+        data: SEED_DOMAIN.roleMock.getAllRoles() as Entities.RoleEntity[],
+      },
+      // {
+      //   tableName: Entities.EffectEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.SharedLinkEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.UserEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.TeamEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.TeamMemberEntityTableName,
+      // },
+      {
+        tableName: Entities.AchievementEntityTableName,
+        entity: Entities.AchievementEntity,
+        data: SEED_DOMAIN.achievementMock.getAllAchievements() as Entities.AchievementEntity[],
+      },
+      // {
+      //   tableName: Entities.UserAchievementEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.RolePreferenceEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.BadgeEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.SessionEntityTableName,
+      // },
+      // {
+      //   tableName: Entities.Session_Participants__UserTableName,
+      // },
+      // {
+      //   tableName: Entities.Session_RolesAssigned__RoleTableName,
+      // },
+      // {
+      //   tableName: Entities.PointEntityTableName,
+      // },
     ];
 
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
     try {
-      if (method === 'save') {
-        for (const { entity, data } of seed) {
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          await queryRunner.manager.save(entity, data as any);
+      if (method === 'dropTable') {
+        for (const { tableName } of seed.reverse()) {
+          await queryRunner.dropTable(tableName, true, true, true);
         }
       }
 
       if (method === 'delete') {
-        for (const { entity } of seed) {
+        for (const { entity } of seed.reverse()) {
+          if (entity === undefined) return;
+
           await queryRunner.manager.delete(entity, {});
         }
       }
 
+      if (method === 'save') {
+        for (const { entity, data } of seed) {
+          if (entity === undefined || data === undefined) return;
+          // eslint-disable-next-line @typescript-eslint/no-explicit-any
+          await this.dynamicSave(queryRunner, entity, data as any[]);
+        }
+      }
+
       await queryRunner.commitTransaction();
-      if (method === 'save') Logger.verbose('✅ Seeding complete!');
-      if (method === 'delete') Logger.verbose('✅ Clearing complete!');
     } catch (error) {
       await queryRunner.rollbackTransaction();
       console.error(error);
       Logger.error('Transaction failed:', error);
     } finally {
       await queryRunner.release();
+      if (method === 'dropTable') Logger.verbose('✅ Dropping Table complete!');
+      if (method === 'save') Logger.verbose('✅ Saving complete!');
+      if (method === 'delete') Logger.verbose('✅ Deleting complete!');
     }
   }
 
-  async demoAll() {
-    Logger.log('▶ Demonstrating all user stories...');
-    // await this.actionDemoUserStoriesService.execute();
-    Logger.log('✅ Demonstration complete!');
+  private async dynamicSave<Entity, T extends DeepPartial<Entity>>(
+    queryRunner: QueryRunner,
+    entityTarget: EntityTarget<Entity>,
+    entities: T[],
+    options?: SaveOptions,
+  ): Promise<(T & Entity)[]> {
+    return await queryRunner.manager.save(entityTarget, entities, options);
   }
 
   // async demoEventSubscribers() {

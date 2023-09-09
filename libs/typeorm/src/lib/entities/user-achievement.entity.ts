@@ -11,7 +11,9 @@ import { TimestampsEntityColumns } from './_common.entity';
 import { AchievementEntity } from './achievement.entity';
 import { UserEntity } from './user.entity'; // Assuming you have a User entity defined elsewhere
 
-@Entity('UserAchievement')
+export const UserAchievementEntityTableName = 'UserAchievement';
+
+@Entity(UserAchievementEntityTableName)
 export class UserAchievementEntity
   extends TimestampsEntityColumns
   implements IUserAchievement

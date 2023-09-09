@@ -1,33 +1,69 @@
-import { AchievementEntity } from './achievement.entity';
-import { ActionEntity } from './action.entity';
-import { BadgeEntity } from './badge.entity';
-import { EffectEntity } from './effect.entity';
-import { PointEntity } from './point.entity';
-import { RoleEntity } from './role.entity';
-import { RolePreferenceEntity } from './role-preference.entity';
-import { SessionEntity } from './session.entity';
-import { SharedLinkEntity } from './shared-link.entity';
-import { TeamEntity } from './team.entity';
-import { TeamMemberEntity } from './team-member.entity';
-import { ThemeEntity } from './theme.entity';
-import { UserEntity } from './user.entity';
-import { UserAchievementEntity } from './user-achievement.entity';
+import {
+  AchievementEntity,
+  AchievementEntityTableName,
+} from './achievement.entity';
+import { ActionEntity, ActionEntityTableName } from './action.entity';
+import { BadgeEntity, BadgeEntityTableName } from './badge.entity';
+import { EffectEntity, EffectEntityTableName } from './effect.entity';
+import { PointEntity, PointEntityTableName } from './point.entity';
+import { RoleEntity, RoleEntityTableName } from './role.entity';
+import {
+  RolePreferenceEntity,
+  RolePreferenceEntityTableName,
+} from './role-preference.entity';
+import {
+  Session_Participants__UserTableName,
+  Session_RolesAssigned__RoleTableName,
+  SessionEntity,
+  SessionEntityTableName,
+} from './session.entity';
+import {
+  SharedLinkEntity,
+  SharedLinkEntityTableName,
+} from './shared-link.entity';
+import { TeamEntity, TeamEntityTableName } from './team.entity';
+import {
+  TeamMemberEntity,
+  TeamMemberEntityTableName,
+} from './team-member.entity';
+import { ThemeEntity, ThemeEntityTableName } from './theme.entity';
+import { UserEntity, UserEntityTableName } from './user.entity';
+import {
+  UserAchievementEntity,
+  UserAchievementEntityTableName,
+} from './user-achievement.entity';
 
 export {
   AchievementEntity,
+  AchievementEntityTableName,
   ActionEntity,
+  ActionEntityTableName,
   BadgeEntity,
+  BadgeEntityTableName,
   EffectEntity,
+  EffectEntityTableName,
   PointEntity,
+  PointEntityTableName,
   RoleEntity,
+  RoleEntityTableName,
   RolePreferenceEntity,
+  RolePreferenceEntityTableName,
+  Session_Participants__UserTableName,
+  Session_RolesAssigned__RoleTableName,
   SessionEntity,
+  SessionEntityTableName,
   SharedLinkEntity,
+  SharedLinkEntityTableName,
   TeamEntity,
+  TeamEntityTableName,
   TeamMemberEntity,
+  TeamMemberEntityTableName,
   ThemeEntity,
+  ThemeEntityTableName,
   UserAchievementEntity,
+  UserAchievementEntityTableName,
   UserEntity,
+  UserEntityTableName,
 };
 
 export const Entities = [
