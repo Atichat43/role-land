@@ -3,7 +3,6 @@ import {
   AchievementEntityTableName,
 } from './achievement.entity';
 import { ActionEntity, ActionEntityTableName } from './action.entity';
-import { BadgeEntity, BadgeEntityTableName } from './badge.entity';
 import { EffectEntity, EffectEntityTableName } from './effect.entity';
 import { PointEntity, PointEntityTableName } from './point.entity';
 import { RoleEntity, RoleEntityTableName } from './role.entity';
@@ -38,8 +37,6 @@ export {
   AchievementEntityTableName,
   ActionEntity,
   ActionEntityTableName,
-  BadgeEntity,
-  BadgeEntityTableName,
   EffectEntity,
   EffectEntityTableName,
   PointEntity,
@@ -78,7 +75,6 @@ export const Entities = [
   // models
   AchievementEntity,
   ActionEntity,
-  BadgeEntity,
   EffectEntity,
   RoleEntity,
   SharedLinkEntity,

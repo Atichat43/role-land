@@ -1,25 +1,5 @@
 import { IBaseEvent } from './_base.events.types';
 
-// --- BadgeEarned Event Interface ---
-/**
- * @desc Holds the badge earned event-related domain information.
- * @extend IBaseEvent
- * @attributes
- * - type: 'BadgeEarned'
- * - userId: String, non-empty
- * - badgeId: String, non-empty
- * @notes
- * - BadgeEarned use cases - Update badge earned history for business analytics.
- * - BadgeEarned use cases - Notify user of a new badge earned.
- * - BadgeEarned use cases - Update user's profile with the new badge.
- * - BadgeEarned use cases - Log the badge earning event.
- */
-export interface IBadgeEarnedEvent extends IBaseEvent {
-  type: 'BadgeEarned';
-  userId: string;
-  badgeId: string;
-}
-
 // --- AchievementEarned Event Interface ---
 /**
  * @desc Holds the achievement earned event-related domain information.

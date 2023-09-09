@@ -1,22 +1,4 @@
 import { ITimestampFields } from './_base.types';
-import { IUser } from './core/user';
-
-// --- Badge Interface ---
-/**
- * @desc Holds the badge-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - badgeType: String, non-empty
- * - user: IUser (ManyToOne)
- */
-export interface IBadge extends ITimestampFields {
-  id: string;
-  badgeType: string;
-
-  // aggregates
-  user: IUser;
-}
 
 // --- Effect Interface ---
 /**
