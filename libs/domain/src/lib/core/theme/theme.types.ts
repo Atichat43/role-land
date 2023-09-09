@@ -1,6 +1,6 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
-import { IRole, IRoleMock } from '../role';
+import { IRole } from '../role';
 import { EThemeKey } from './theme.enum';
 
 // --- Theme Interface ---
@@ -29,7 +29,8 @@ export interface ITheme extends ITimestampFields {
 export type IThemeRaw = Omit<OmitBaseFields<ITheme>, 'roles'>;
 export type IThemeExcludeSensitive = Omit<ITheme, ''>;
 
-export type IThemeMock = Readonly<IThemeRaw & { roles: IRoleMock[] }>;
+// NOTE: roles should be empty array in mocking process due to circular dependency with role who has theme
+export type IThemeMock = Readonly<IThemeRaw & { roles: [] }>;
 
 // inbound
 export type IThemeCreatePayload = Required<IThemeRaw>;

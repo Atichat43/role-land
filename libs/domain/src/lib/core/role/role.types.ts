@@ -1,6 +1,6 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
-import { ITheme } from '../theme';
+import { ITheme, IThemeMock } from '../theme';
 import { ERoleKey } from './role.enum';
 
 // --- Skill Template Interface ---
@@ -32,13 +32,13 @@ export interface IRole extends ITimestampFields {
   skills: ISkillTemplate[];
 
   defaultImage: string | null;
-  theme: ITheme;
+  theme: ITheme | null;
 }
 
 export type IRoleRaw = Omit<OmitBaseFields<IRole>, 'theme'>;
 export type IRoleExcludeSensitive = Omit<IRole, ''>;
 
-export type IRoleMock = Readonly<IRoleRaw>;
+export type IRoleMock = Readonly<IRoleRaw & { theme: IThemeMock }>;
 
 // inbound
 export type IRoleCreatePayload = Required<IRoleRaw>;

@@ -2,6 +2,8 @@ import { v4 as uuid } from 'uuid';
 
 import { EActionKey } from '../action';
 import actionMock from '../action/action.mock';
+import { EThemeKey } from '../theme';
+import themeMock from '../theme/theme.mock';
 import { ERoleKey } from './role.enum';
 import { IRoleMock } from './role.types';
 
@@ -31,6 +33,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
   {
     id: uuid(),
@@ -51,6 +54,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
   {
     id: uuid(),
@@ -71,6 +75,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
   {
     id: uuid(),
@@ -98,6 +103,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
   {
     id: uuid(),
@@ -124,6 +130,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
   {
     id: uuid(),
@@ -150,6 +157,7 @@ const softwareDevelopementRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.SoftwareDevelopment),
   },
 ];
 
@@ -179,6 +187,7 @@ const educationRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.Education),
   },
   {
     id: uuid(),
@@ -205,6 +214,7 @@ const educationRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.Education),
   },
   {
     id: uuid(),
@@ -225,6 +235,7 @@ const educationRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.Education),
   },
   {
     id: uuid(),
@@ -251,6 +262,7 @@ const educationRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.Education),
   },
   {
     id: uuid(),
@@ -277,6 +289,7 @@ const educationRoleMock: IRoleMock[] = [
         isInfinite: false,
       },
     ],
+    theme: themeMock.get(EThemeKey.Education),
   },
 ];
 
@@ -294,6 +307,7 @@ const werewolfRoleMock: IRoleMock[] = [
         isInfinite: true,
       },
     ],
+    theme: themeMock.get(EThemeKey.Werewolf),
   },
   {
     id: uuid(),
@@ -308,6 +322,7 @@ const werewolfRoleMock: IRoleMock[] = [
         isInfinite: true,
       },
     ],
+    theme: themeMock.get(EThemeKey.Werewolf),
   },
   {
     id: uuid(),
@@ -323,6 +338,7 @@ const werewolfRoleMock: IRoleMock[] = [
         isInfinite: true,
       },
     ],
+    theme: themeMock.get(EThemeKey.Werewolf),
   },
   {
     id: uuid(),
@@ -337,6 +353,7 @@ const werewolfRoleMock: IRoleMock[] = [
         isInfinite: true,
       },
     ],
+    theme: themeMock.get(EThemeKey.Werewolf),
   },
   {
     id: uuid(),
@@ -351,6 +368,7 @@ const werewolfRoleMock: IRoleMock[] = [
         isInfinite: true,
       },
     ],
+    theme: themeMock.get(EThemeKey.Werewolf),
   },
 ];
 

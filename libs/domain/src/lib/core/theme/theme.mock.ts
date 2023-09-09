@@ -1,6 +1,5 @@
 import { v4 as uuid } from 'uuid';
 
-import roleMock from '../role/role.mock';
 import { EThemeKey } from './theme.enum';
 import { IThemeMock } from './theme.types';
 
@@ -10,21 +9,21 @@ const themeSeedData: IThemeMock[] = [
     key: EThemeKey.SoftwareDevelopment,
     name: 'Software Development',
     premium: false,
-    roles: roleMock.getSoftwareDevelopmentRoles(),
+    roles: [],
   },
   {
     id: uuid(),
     key: EThemeKey.Education,
     name: 'Education',
     premium: true,
-    roles: roleMock.getEducationRoles(),
+    roles: [],
   },
   {
     id: uuid(),
     key: EThemeKey.Werewolf,
     name: 'Werewolf',
     premium: false,
-    roles: roleMock.getWerewolfRoles(),
+    roles: [],
   },
 ];
 
