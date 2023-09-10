@@ -5,10 +5,6 @@ import {
 import { ActionEntity, ActionEntityTableName } from './action.entity';
 import { RoleEntity, RoleEntityTableName } from './role.entity';
 import {
-  RolePreferenceEntity,
-  RolePreferenceEntityTableName,
-} from './role-preference.entity';
-import {
   Session_Participants__UserTableName,
   Session_RolesAvailable__RoleTableName,
   SessionEntity,
@@ -41,8 +37,6 @@ export {
   ActionEntityTableName,
   RoleEntity,
   RoleEntityTableName,
-  RolePreferenceEntity,
-  RolePreferenceEntityTableName,
   Session_Participants__UserTableName,
   Session_RolesAvailable__RoleTableName,
   SessionEntity,
@@ -78,9 +72,6 @@ export const Entities = [
   RoleEntity,
   SharedLinkEntity,
   ThemeEntity,
-
-  // embeds
-  RolePreferenceEntity,
 ];
 
 export default Entities;

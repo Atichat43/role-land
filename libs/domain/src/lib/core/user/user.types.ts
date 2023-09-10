@@ -1,6 +1,5 @@
 import { ISoftDeletionFields, ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
-import { IRolePreference } from '../../value-objects.types';
 import { ITeam } from '../team';
 import { ITeamMember } from '../team-member';
 import { IUserAchievement } from '../user-achievement';
@@ -34,7 +33,6 @@ export interface IProfile {
  *  - avatar: URL or null
  *  - premiumStatus: Boolean, default false
  *  - profile: IProfile (Value Object)
- *  - rolePreferences: Array of IRolePreference (Value Object)
  *  - userAchievements: Array of IUserAchievement (OneToMany)
  *  - userAchievementProgresses: Array of IUserAchievementProgress (OneToMany)
  *  - teamMemberships: Array of ITeamMember (OneToMany)
@@ -52,7 +50,6 @@ export interface IUser extends ITimestampFields, ISoftDeletionFields {
 
   // value objects
   profile: IProfile;
-  rolePreferences: IRolePreference[];
 
   // models
   userAchievements: IUserAchievement[];

@@ -1,5 +1,4 @@
 export * from './lib/_base.types';
-export * from './lib/_enum.types';
 export * from './lib/core/achievement';
 export * from './lib/core/action';
 export * from './lib/core/role';
@@ -15,7 +14,6 @@ export * from './lib/errors/report.error.types';
 export * from './lib/events/changed.events.types';
 export * from './lib/events/lifecycle.events.types';
 export * from './lib/events/record.events.types';
-export * from './lib/value-objects.types';
 
 import achievementMock from './lib/core/achievement/achievement.mock';
 import actionMock from './lib/core/action/action.mock';

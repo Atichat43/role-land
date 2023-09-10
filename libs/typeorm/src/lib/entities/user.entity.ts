@@ -10,7 +10,6 @@ import {
 } from 'typeorm';
 
 import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
-import { RolePreferenceEntity } from './role-preference.entity';
 import { TeamEntity } from './team.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
@@ -47,12 +46,6 @@ export class UserEntity
   @ValidateNested()
   @Type(() => ProfileEmbeded)
   profile: ProfileEmbeded;
-
-  @OneToMany(
-    () => RolePreferenceEntity,
-    (rolePreference) => rolePreference.user,
-  )
-  rolePreferences: RolePreferenceEntity[];
 
   @OneToMany(
     () => UserAchievementEntity,
