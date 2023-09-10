@@ -24,13 +24,17 @@ import teamMock from './lib/core/team/team.mock';
 import teamMemberMock from './lib/core/team-member/team-member.mock';
 import themeMock from './lib/core/theme/theme.mock';
 import userMock from './lib/core/user/user.mock';
+import userAchievementMock from './lib/core/user-achievement/user-achievement.mock';
+import userAchievementProgressMock from './lib/core/user-achievement-progress/user-achievement-progress.mock';
 
 export const SEED = {
   achievementMock,
   actionMock,
   roleMock,
-  themeMock,
   teamMemberMock,
-  userMock,
   teamMock,
+  themeMock,
+  userAchievementMock,
+  userAchievementProgressMock,
+  userMock,
 };

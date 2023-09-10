@@ -31,6 +31,13 @@ const achievementDefaultMockData: IAchievementMock[] = [
         isStackable: false,
         stackableLimit: null,
       },
+      {
+        count: 10,
+        description: 'Complete 10 sessions.',
+        iconUrl: 'https://example.com/complete5sessions.png',
+        isStackable: false,
+        stackableLimit: null,
+      },
       // ... add more milestones
     ],
   },
@@ -146,14 +153,15 @@ class AchievementMock {
   }
 
   get(
-    category: EAchievementCategory,
-    subCategory: IMergeTypeAchievementSubCategory,
+    name:
+      | 'Complete Session'
+      | 'Hosting'
+      | 'Product Owner'
+      | 'Strategic Action'
+      | 'Consecutive RoleLand Use',
   ): IAchievementMock {
     const result = this.data.default.find((achievement) => {
-      return (
-        achievement.category === category &&
-        achievement.subCategory === subCategory
-      );
+      return achievement.name === name;
     });
     if (!result) throw new Error('Achievement not found');
 

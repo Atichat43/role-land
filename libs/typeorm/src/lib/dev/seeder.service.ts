@@ -61,9 +61,16 @@ export class SeederService {
         entity: Entities.AchievementEntity,
         data: SEED_DOMAIN.achievementMock.getAllAchievements(),
       },
-      // {
-      //   tableName: Entities.UserAchievementEntityTableName,
-      // },
+      {
+        tableName: Entities.UserAchievementEntityTableName,
+        entity: Entities.UserAchievementEntity,
+        data: SEED_DOMAIN.userAchievementMock.getAllUserAchievements(),
+      },
+      {
+        tableName: Entities.UserAchievementProgressEntityTableName,
+        entity: Entities.UserAchievementProgressEntity,
+        data: SEED_DOMAIN.userAchievementProgressMock.getAllUserAchievementProgresses(),
+      },
       // {
       //   tableName: Entities.RolePreferenceEntityTableName,
       // },

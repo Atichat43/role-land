@@ -1,5 +1,6 @@
-import { IAchievement } from '../achievement';
-import { IUser } from '../user';
+import { OmitBaseFields } from '../../_shared/types.helper';
+import { IAchievement, IAchievementMock } from '../achievement';
+import { IUser, IUserMock } from '../user';
 
 // --- IUserAchievementProgress Interface ---
 /**
@@ -36,3 +37,29 @@ export interface IUserAchievementProgress {
   user: IUser;
   achievement: IAchievement;
 }
+
+export type IUserAchievementProgressRaw = Omit<
+  OmitBaseFields<IUserAchievementProgress>,
+  'user' | 'achievement'
+>;
+export type IUserAchievementProgressExcludeSensitive = Omit<
+  IUserAchievementProgress,
+  ''
+>;
+
+export type IUserAchievementProgressMock = Readonly<
+  IUserAchievementProgressRaw & {
+    user: IUserMock;
+    achievement: IAchievementMock;
+  }
+>;
+
+// inbound
+export type IUserAchievementProgressCreatePayload =
+  Required<IUserAchievementProgressRaw>;
+export type IUserAchievementProgressUpdatePayload =
+  Partial<IUserAchievementProgressRaw>;
+
+// outbound
+export type IUserAchievementProgressView =
+  Readonly<IUserAchievementProgressExcludeSensitive>;

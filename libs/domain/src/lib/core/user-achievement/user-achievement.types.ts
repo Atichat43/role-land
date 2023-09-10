@@ -1,6 +1,7 @@
 import { ITimestampFields } from '../../_base.types';
-import { IAchievement } from '../achievement';
-import { IUser } from '../user';
+import { OmitBaseFields } from '../../_shared/types.helper';
+import { IAchievement, IAchievementMock } from '../achievement';
+import { IUser, IUserMock } from '../user';
 
 // --- User Achievement Interface ---
 /**
@@ -39,3 +40,20 @@ export interface IUserAchievement extends ITimestampFields {
   user: IUser;
   achievement: IAchievement;
 }
+
+export type IUserAchievementRaw = Omit<
+  OmitBaseFields<IUserAchievement>,
+  'user' | 'achievement'
+>;
+export type IUserAchievementExcludeSensitive = Omit<IUserAchievement, ''>;
+
+export type IUserAchievementMock = Readonly<
+  IUserAchievementRaw & { user: IUserMock; achievement: IAchievementMock }
+>;
+
+// inbound
+export type IUserAchievementCreatePayload = Required<IUserAchievementRaw>;
+export type IUserAchievementUpdatePayload = Partial<IUserAchievementRaw>;
+
+// outbound
+export type IUserAchievementView = Readonly<IUserAchievementExcludeSensitive>;
