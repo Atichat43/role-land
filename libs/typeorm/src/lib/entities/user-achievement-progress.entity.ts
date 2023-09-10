@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { TimestampsEntityColumns } from './_common.entity';
+import { TimestampsEntityColumns } from './_base.entity';
 import { AchievementEntity } from './achievement.entity';
 import { UserEntity } from './user.entity';
 

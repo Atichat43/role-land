@@ -3,7 +3,7 @@ import { Type } from 'class-transformer';
 import { IsArray, IsEnum, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from './_base.entity';
 import { TeamEntity } from './team.entity';
 import { UserEntity } from './user.entity';
 

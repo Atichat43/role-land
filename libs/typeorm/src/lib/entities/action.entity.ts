@@ -22,7 +22,7 @@ import {
 } from 'class-validator';
 import { Column, Entity, PrimaryGeneratedColumn } from 'typeorm';
 
-import { TimestampsEntityColumns } from './_common.entity';
+import { TimestampsEntityColumns } from './_base.entity';
 
 export class ActionConfig implements IBaseActionConfig {
   @IsEnum(EActionType)

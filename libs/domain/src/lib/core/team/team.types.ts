@@ -1,5 +1,5 @@
-import { ISoftDeletionFields, ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { ISoftDeletionFields, ITimestampFields } from '../_base.types';
 import { ITeamMember } from '../team-member';
 import { IUser, IUserMock } from '../user';
 

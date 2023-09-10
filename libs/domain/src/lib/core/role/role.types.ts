@@ -1,5 +1,5 @@
-import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { ITimestampFields } from '../_base.types';
 import { ITheme, IThemeMock } from '../theme';
 import { ERoleKey } from './role.enum';
 

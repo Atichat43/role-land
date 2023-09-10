@@ -58,20 +58,17 @@ export {
 };
 
 export const Entities = [
-  // aggregates
-  SessionEntity,
-  UserEntity,
-  TeamEntity,
-  TeamMemberEntity,
-  UserAchievementEntity,
-  UserAchievementProgressEntity,
-
-  // models
   AchievementEntity,
   ActionEntity,
   RoleEntity,
+  SessionEntity,
   SharedLinkEntity,
+  TeamEntity,
+  TeamMemberEntity,
   ThemeEntity,
+  UserAchievementEntity,
+  UserAchievementProgressEntity,
+  UserEntity,
 ];
 
 export default Entities;

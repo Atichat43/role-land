@@ -1,5 +1,5 @@
-import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { ITimestampFields } from '../_base.types';
 import { ITeam, ITeamMock } from '../team';
 import { IUser, IUserMock } from '../user';
 import { ETeamMemberMembershipState } from './team-member.enum';

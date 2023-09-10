@@ -1,5 +1,5 @@
-import { ISoftDeletionFields, ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { ISoftDeletionFields, ITimestampFields } from '../_base.types';
 import { IRole, IRoleMock } from '../role';
 import { ISharedLink, ISharedLinkMock } from '../shared-link';
 import { ITheme, IThemeMock } from '../theme';

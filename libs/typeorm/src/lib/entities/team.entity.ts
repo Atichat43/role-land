@@ -11,7 +11,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from './_base.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { UserEntity } from './user.entity';
 

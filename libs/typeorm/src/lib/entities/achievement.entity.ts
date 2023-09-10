@@ -18,7 +18,7 @@ import {
 } from 'class-validator';
 import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
-import { TimestampsEntityColumns } from './_common.entity';
+import { TimestampsEntityColumns } from './_base.entity';
 import { UserAchievementProgressEntity } from './user-achievement-progress.entity';
 
 export class AchievementMilestone implements IAchievementMilestone {

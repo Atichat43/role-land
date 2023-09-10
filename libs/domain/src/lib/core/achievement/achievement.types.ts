@@ -1,5 +1,5 @@
-import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { ITimestampFields } from '../_base.types';
 import { IUserAchievementProgress } from '../user-achievement-progress';
 import {
   EAchievementCategory,

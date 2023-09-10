@@ -1,4 +1,4 @@
-import { IUser } from '@role-land/domain';
+import { IProfile, IUser } from '@role-land/domain';
 import { Type } from 'class-transformer';
 import { IsBoolean, IsUrl, Length, ValidateNested } from 'class-validator';
 import {
@@ -9,14 +9,23 @@ import {
   VersionColumn,
 } from 'typeorm';
 
-import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from './_base.entity';
 import { TeamEntity } from './team.entity';
 import { TeamMemberEntity } from './team-member.entity';
-import { ProfileEmbeded } from './user.profile.embed';
 import { UserAchievementEntity } from './user-achievement.entity';
 import { UserAchievementProgressEntity } from './user-achievement-progress.entity';
 
 export const UserEntityTableName = 'User';
+
+// ProfileEmbeded: Embedded within UserEntity, contains bio and interests
+export class ProfileEmbeded implements IProfile {
+  @Column()
+  @Length(0, 1000)
+  bio: string;
+
+  @Column('text', { array: true })
+  interests: string[];
+}
 
 @Entity(UserEntityTableName)
 export class UserEntity

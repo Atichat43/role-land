@@ -13,7 +13,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { TimestampsAndSoftDeletionEntityColumns } from './_common.entity';
+import { TimestampsAndSoftDeletionEntityColumns } from './_base.entity';
 import { RoleEntity } from './role.entity';
 import { SharedLinkEntity } from './shared-link.entity';
 import { ThemeEntity } from './theme.entity';

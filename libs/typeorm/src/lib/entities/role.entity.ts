@@ -3,7 +3,7 @@ import { Type } from 'class-transformer';
 import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
 
-import { TimestampsEntityColumns } from './_common.entity';
+import { TimestampsEntityColumns } from './_base.entity';
 import { ThemeEntity } from './theme.entity';
 
 export const RoleEntityTableName = 'Role';

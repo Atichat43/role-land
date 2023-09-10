@@ -8,7 +8,7 @@ import {
   PrimaryGeneratedColumn,
 } from 'typeorm';
 
-import { TimestampsEntityColumns } from './_common.entity';
+import { TimestampsEntityColumns } from './_base.entity';
 import { RoleEntity } from './role.entity';
 
 export const ThemeEntityTableName = 'Theme';
