@@ -1,7 +1,7 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
-import { ITeam } from '../team';
-import { IUser } from '../user';
+import { ITeam, ITeamMock } from '../team';
+import { IUser, IUserMock } from '../user';
 import { ETeamMemberMembershipState } from './team-member.enum';
 
 // --- Team Member Interface ---
@@ -28,7 +28,9 @@ export interface ITeamMember extends ITimestampFields {
 export type ITeamMemberRaw = Omit<OmitBaseFields<ITeamMember>, 'user' | 'team'>;
 export type ITeamMemberExcludeSensitive = Omit<ITeamMember, ''>;
 
-export type ITeamMemberMock = Readonly<ITeamMemberRaw>;
+export type ITeamMemberMock = Readonly<
+  ITeamMemberRaw & { user: IUserMock; team: ITeamMock }
+>;
 
 // inbound
 export type ITeamMemberCreatePayload = Required<ITeamMemberRaw>;

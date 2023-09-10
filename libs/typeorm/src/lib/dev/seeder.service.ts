@@ -75,9 +75,6 @@ export class SeederService {
       //   tableName: Entities.RolePreferenceEntityTableName,
       // },
       // {
-      //   tableName: Entities.BadgeEntityTableName,
-      // },
-      // {
       //   tableName: Entities.SessionEntityTableName,
       // },
       // {
