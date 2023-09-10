@@ -9,6 +9,7 @@ export * from './lib/core/team-member';
 export * from './lib/core/theme';
 export * from './lib/core/user';
 export * from './lib/core/user-achievement';
+export * from './lib/core/user-achievement-progress';
 export * from './lib/errors/report.error.types';
 export * from './lib/events/changed.events.types';
 export * from './lib/events/lifecycle.events.types';

@@ -1,4 +1,4 @@
-import { IUserAchievement } from '@role-land/domain';
+import { IUserAchievementProgress } from '@role-land/domain';
 import { IsUUID, Max, Min } from 'class-validator';
 import {
   Column,
@@ -12,34 +12,31 @@ import { TimestampsEntityColumns } from './_common.entity';
 import { AchievementEntity } from './achievement.entity';
 import { UserEntity } from './user.entity';
 
-export const UserAchievementEntityTableName = 'UserAchievement';
+export const UserAchievementProgressEntityTableName = 'UserAchievementProgress';
 
-@Entity(UserAchievementEntityTableName)
-export class UserAchievementEntity
+@Entity(UserAchievementProgressEntityTableName)
+export class UserAchievementProgressEntity
   extends TimestampsEntityColumns
-  implements IUserAchievement
+  implements IUserAchievementProgress
 {
   @PrimaryGeneratedColumn('uuid')
   id: string;
 
-  @Column('int')
+  @Column()
   @Min(1)
-  milestoneCount: number;
+  progressCount: number;
 
   @Column('date')
-  earnedDate: Date;
+  lastUpdatedDate: Date;
 
   @Column('int')
   @Min(1)
   @Max(12)
-  earnedMonth: number;
+  lastUpdatedMonth: number;
 
   @Column('int')
   @Min(2023)
-  earnedYear: number;
-
-  @Column('int')
-  count: number;
+  lastUpdatedYear: number;
 
   @Column()
   @IsUUID()

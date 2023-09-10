@@ -15,10 +15,10 @@ import { TeamEntity } from './team.entity';
 import { TeamMemberEntity } from './team-member.entity';
 import { ProfileEmbeded } from './user.profile.embed';
 import { UserAchievementEntity } from './user-achievement.entity';
+import { UserAchievementProgressEntity } from './user-achievement-progress.entity';
 
 export const UserEntityTableName = 'User';
 
-// UserEntity: Central entity for user management. Includes fields like username, globalName, and premiumStatus.
 @Entity(UserEntityTableName)
 export class UserEntity
   extends TimestampsAndSoftDeletionEntityColumns
@@ -59,6 +59,12 @@ export class UserEntity
     (userAchievement) => userAchievement.user,
   )
   userAchievements: UserAchievementEntity[];
+
+  @OneToMany(
+    () => UserAchievementProgressEntity,
+    (userAchievementProgress) => userAchievementProgress.user,
+  )
+  userAchievementProgresses: UserAchievementProgressEntity[];
 
   @OneToMany(() => TeamMemberEntity, (teamMember) => teamMember.user)
   teamMemberships: TeamMemberEntity[];

@@ -31,6 +31,10 @@ import {
   UserAchievementEntity,
   UserAchievementEntityTableName,
 } from './user-achievement.entity';
+import {
+  UserAchievementProgressEntity,
+  UserAchievementProgressEntityTableName,
+} from './user-achievement-progress.entity';
 
 export {
   AchievementEntity,
@@ -59,6 +63,8 @@ export {
   ThemeEntityTableName,
   UserAchievementEntity,
   UserAchievementEntityTableName,
+  UserAchievementProgressEntity,
+  UserAchievementProgressEntityTableName,
   UserEntity,
   UserEntityTableName,
 };
@@ -71,6 +77,7 @@ export const Entities = [
   TeamEntity,
   TeamMemberEntity,
   UserAchievementEntity,
+  UserAchievementProgressEntity,
 
   // models
   AchievementEntity,

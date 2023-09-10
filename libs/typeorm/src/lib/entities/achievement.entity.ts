@@ -16,10 +16,10 @@ import {
   Min,
   ValidateNested,
 } from 'class-validator';
-import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';
+import { Column, Entity, OneToMany, PrimaryGeneratedColumn } from 'typeorm';
 
 import { TimestampsEntityColumns } from './_common.entity';
-import { UserEntity } from './user.entity';
+import { UserAchievementProgressEntity } from './user-achievement-progress.entity';
 
 export class AchievementMilestone implements IAchievementMilestone {
   @Column()
@@ -76,8 +76,9 @@ export class AchievementEntity
   @Type(() => AchievementMilestone)
   milestones: AchievementMilestone[];
 
-  @ManyToOne(() => UserEntity, (user) => user.userAchievements)
-  @ValidateNested()
-  @Type(() => UserEntity)
-  user: UserEntity;
+  @OneToMany(
+    () => UserAchievementProgressEntity,
+    (progress) => progress.achievement,
+  )
+  userAchievementProgresses: UserAchievementProgressEntity[];
 }

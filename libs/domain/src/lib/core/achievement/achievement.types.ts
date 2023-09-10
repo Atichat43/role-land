@@ -1,5 +1,6 @@
 import { ITimestampFields } from '../../_base.types';
 import { OmitBaseFields } from '../../_shared/types.helper';
+import { IUserAchievementProgress } from '../user-achievement-progress';
 import {
   EAchievementCategory,
   EStackableLimit,
@@ -35,6 +36,7 @@ export interface IAchievementMilestone {
  * - category: EAchievementCategory
  * - subCategory: IMergeTypeAchievementSubCategory
  * - milestones: Array of IAchievementMilestone
+ * - userAchievementProgresses: Array of IUserAchievementProgress (OneToMany)
  */
 export interface IAchievement extends ITimestampFields {
   id: string;
@@ -44,9 +46,14 @@ export interface IAchievement extends ITimestampFields {
   subCategory: IMergeTypeAchievementSubCategory;
 
   milestones: IAchievementMilestone[];
+
+  userAchievementProgresses: IUserAchievementProgress[];
 }
 
-export type IAchievementRaw = Omit<OmitBaseFields<IAchievement>, ''>;
+export type IAchievementRaw = Omit<
+  OmitBaseFields<IAchievement>,
+  'userAchievementProgresses'
+>;
 export type IAchievementExcludeSensitive = Omit<IAchievement, ''>;
 
 export type IAchievementMock = Readonly<IAchievementRaw>;

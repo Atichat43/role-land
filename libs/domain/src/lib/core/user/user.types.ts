@@ -4,6 +4,7 @@ import { IRolePreference } from '../../value-objects.types';
 import { ITeam } from '../team';
 import { ITeamMember } from '../team-member';
 import { IUserAchievement } from '../user-achievement';
+import { IUserAchievementProgress } from '../user-achievement-progress';
 import { IMergeUsernames } from './user.mock.types';
 
 // NOTE:
@@ -35,6 +36,7 @@ export interface IProfile {
  *  - profile: IProfile (Value Object)
  *  - rolePreferences: Array of IRolePreference (Value Object)
  *  - userAchievements: Array of IUserAchievement (OneToMany)
+ *  - userAchievementProgresses: Array of IUserAchievementProgress (OneToMany)
  *  - teamMemberships: Array of ITeamMember (OneToMany)
  *  - teamsOwned: Array of ITeam (OneToMany)
  * @notes
@@ -54,6 +56,7 @@ export interface IUser extends ITimestampFields, ISoftDeletionFields {
 
   // models
   userAchievements: IUserAchievement[];
+  userAchievementProgresses: IUserAchievementProgress[];
 
   // aggregates
   teamMemberships: ITeamMember[];
@@ -65,6 +68,7 @@ export type IUserRaw = Omit<
   | 'rolePreferences'
   | 'badges'
   | 'userAchievements'
+  | 'userAchievementProgresses'
   | 'teamMemberships'
   | 'teamsOwned'
 >;

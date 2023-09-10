@@ -2,12 +2,39 @@ import { ITimestampFields } from '../../_base.types';
 import { IAchievement } from '../achievement';
 import { IUser } from '../user';
 
+// --- User Achievement Interface ---
+/**
+ * @desc Represents the achievements earned by a user.
+ * @extend ITimestampFields
+ * @attributes
+ * - id: UUID
+ * - milestoneCount: Number, >=1 indicates which milestone the user achieved (e.g., 7, 14, 30).
+ * - earnedDate: Date, when the achievement was earned.
+ * - earnedMonth: Number, >=1, <=12 month extracted from earnedDate.
+ * - earnedYear: Number, year extracted from earnedDate.
+ * - count: Number, >=1 The total number of times this specific milestone has been achieved.
+ * - user: IUser, (ManyToOne)
+ * - achievement: IAchievement (ManyToOne)
+ * @example
+ * For an achievement "Consecutive RoleLand Use" with milestones at 7, 14, and 30 days:
+ * If a user achieves the 7-day milestone twice, once in January and once in February, the record might be:
+ * {
+ *   milestoneCount: 7,
+ *   earnedDate: new Date('2023-02-07'),
+ *   earnedMonth: 2,
+ *   earnedYear: 2023,
+ *   count: 2,
+ *   user: { ...userDetails },
+ *   achievement: { ...achievementDetails }
+ * }
+ */
 export interface IUserAchievement extends ITimestampFields {
-  milestoneCount: number; // This indicates which milestone the user achieved (e.g., 7, 14, 30).
+  id: string;
+  milestoneCount: number;
   earnedDate: Date;
-  earnedMonth: number; // Extracted from earnedDate
-  earnedYear: number; // Extracted from earnedDate
-  count: number; // Number of times this specific milestone has been earned by the user
+  earnedMonth: number;
+  earnedYear: number;
+  count: number;
 
   user: IUser;
   achievement: IAchievement;
