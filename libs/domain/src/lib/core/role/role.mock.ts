@@ -385,7 +385,11 @@ class RoleMock {
       softwareDevelopement: softwareDevelopementRoleMock,
       education: educationRoleMock,
       werewolf: werewolfRoleMock,
-      default: softwareDevelopementRoleMock,
+      default: ([] as IRoleMock[]).concat(
+        softwareDevelopementRoleMock,
+        educationRoleMock,
+        werewolfRoleMock,
+      ),
     };
   }
 

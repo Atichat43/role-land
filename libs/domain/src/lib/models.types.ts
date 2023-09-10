@@ -14,18 +14,3 @@ export interface IEffect extends ITimestampFields {
   name: string;
   premium: boolean;
 }
-
-// --- Shared Link Interface ---
-/**
- * @desc Holds the shared link-related domain information.
- * @extend ITimestampFields
- * @attributes
- * - id: UUID
- * - url: URL, unique, indexed
- * - isActive: boolean, default false
- */
-export interface ISharedLink extends ITimestampFields {
-  id: string;
-  url: string;
-  isActive: boolean;
-}

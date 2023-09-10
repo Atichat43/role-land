@@ -20,6 +20,23 @@ export interface IAchievementEarnedEvent extends IBaseEvent {
   achievementId: string;
 }
 
+/**
+ * User: Role Land Expert
+ * Session Completed: 16 times
+ * -- team A: 10 time
+ * -- team B: 6 time
+ * -- guest: 0 time
+ * Roles:
+ * - SD:Product Owner: 11 times
+ * -- team A: 7 time
+ * -- team B: 3 time
+ * -- guest: 1 time
+ * - SD:Backend Developer: 5 times
+ * -- team A: 4 time
+ * -- team B: 1 time
+ * -- guest: 0 time
+ */
+
 // --- RoleAssigned Event Interface ---
 /**
  * @desc Holds the role assigned event-related domain information.
@@ -37,4 +54,5 @@ export interface IRoleAssignedEvent extends IBaseEvent {
   type: 'RoleAssigned';
   roleId: string;
   userId: string;
+  teamId: string;
 }

@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import { IMergeUsernames } from './user.mock.types';
-import { IUserMock } from './user.types';
+import { IUser, IUserMock } from './user.types';
 
 const userMockData: IUserMock[] = [
   {

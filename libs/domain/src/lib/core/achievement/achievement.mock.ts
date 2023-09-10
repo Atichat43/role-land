@@ -6,7 +6,6 @@ import {
   EAchievementCategory,
   ERegularUseSubCategory,
   EStackableLimit,
-  IMergeTypeAchievementSubCategory,
 } from './achievement.enum';
 import { IAchievementMock } from './achievement.types';
 

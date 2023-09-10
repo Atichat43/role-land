@@ -20,8 +20,8 @@ import { UserEntity } from './user.entity';
 
 export const SessionEntityTableName = 'Session';
 export const Session_Participants__UserTableName = 'Session_Participants__User';
-export const Session_RolesAssigned__RoleTableName =
-  'Session_RolesAssigned__Role';
+export const Session_RolesAvailable__RoleTableName =
+  'Session_RolesAvailable__Role';
 
 // SessionEntity: Manages the session status, shared links, and participants.
 @Entity(SessionEntityTableName)
@@ -56,13 +56,13 @@ export class SessionEntity
   // aggregates
   @ManyToMany(() => RoleEntity)
   @JoinTable({
-    name: 'Session_RolesAssigned__Role',
+    name: Session_RolesAvailable__RoleTableName,
   })
-  rolesAssigned: RoleEntity[];
+  rolesAvailable: RoleEntity[];
 
   @ManyToMany(() => UserEntity)
   @JoinTable({
-    name: 'Session_Participants__User',
+    name: Session_Participants__UserTableName,
   })
   participants: UserEntity[];
 }

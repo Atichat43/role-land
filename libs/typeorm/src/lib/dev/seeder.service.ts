@@ -38,9 +38,11 @@ export class SeederService {
       // {
       //   tableName: Entities.EffectEntityTableName,
       // },
-      // {
-      //   tableName: Entities.SharedLinkEntityTableName,
-      // },
+      {
+        tableName: Entities.SharedLinkEntityTableName,
+        entity: Entities.SharedLinkEntity,
+        data: SEED_DOMAIN.sharedLinkMock.getAllSharedLinks(),
+      },
       {
         tableName: Entities.UserEntityTableName,
         entity: Entities.UserEntity,
@@ -74,14 +76,16 @@ export class SeederService {
       // {
       //   tableName: Entities.RolePreferenceEntityTableName,
       // },
-      // {
-      //   tableName: Entities.SessionEntityTableName,
-      // },
+      {
+        tableName: Entities.SessionEntityTableName,
+        Entities: Entities.SessionEntity,
+        data: SEED_DOMAIN.sessionMock.getAllSessions(),
+      },
       // {
       //   tableName: Entities.Session_Participants__UserTableName,
       // },
       // {
-      //   tableName: Entities.Session_RolesAssigned__RoleTableName,
+      //   tableName: Entities.Session_RolesAvailable__RoleTableName,
       // },
       // {
       //   tableName: Entities.PointEntityTableName,

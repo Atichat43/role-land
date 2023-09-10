@@ -12,7 +12,7 @@ import {
 } from './role-preference.entity';
 import {
   Session_Participants__UserTableName,
-  Session_RolesAssigned__RoleTableName,
+  Session_RolesAvailable__RoleTableName,
   SessionEntity,
   SessionEntityTableName,
 } from './session.entity';
@@ -50,7 +50,7 @@ export {
   RolePreferenceEntity,
   RolePreferenceEntityTableName,
   Session_Participants__UserTableName,
-  Session_RolesAssigned__RoleTableName,
+  Session_RolesAvailable__RoleTableName,
   SessionEntity,
   SessionEntityTableName,
   SharedLinkEntity,
