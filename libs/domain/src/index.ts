@@ -1,6 +1,5 @@
 export * from './lib/_base.types';
 export * from './lib/_enum.types';
-export * from './lib/aggregates.types';
 export * from './lib/core/achievement';
 export * from './lib/core/action';
 export * from './lib/core/role';

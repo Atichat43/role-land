@@ -4,7 +4,6 @@ import {
 } from './achievement.entity';
 import { ActionEntity, ActionEntityTableName } from './action.entity';
 import { EffectEntity, EffectEntityTableName } from './effect.entity';
-import { PointEntity, PointEntityTableName } from './point.entity';
 import { RoleEntity, RoleEntityTableName } from './role.entity';
 import {
   RolePreferenceEntity,
@@ -43,8 +42,6 @@ export {
   ActionEntityTableName,
   EffectEntity,
   EffectEntityTableName,
-  PointEntity,
-  PointEntityTableName,
   RoleEntity,
   RoleEntityTableName,
   RolePreferenceEntity,
@@ -71,7 +68,6 @@ export {
 
 export const Entities = [
   // aggregates
-  PointEntity,
   SessionEntity,
   UserEntity,
   TeamEntity,

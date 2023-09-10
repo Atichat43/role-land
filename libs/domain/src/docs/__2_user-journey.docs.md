@@ -201,16 +201,6 @@
 
 ---
 
-## Points
-
-### Earning Points for Joining a Session
-
-- **Join Session**: User joins a session.
-- **Point Allocation**: Points are awarded upon joining.
-- **Point Update**: The point count is updated in real-time.
-
----
-
 ## Achievements
 
 ### Role Versatility Achievements

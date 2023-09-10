@@ -30,7 +30,7 @@
 
 #### Target Audience: Agile teams, remote teams using daily scrum on platforms such as Discord, Slack, etc.
 
-#### Key Features: Role assignment, record-keeping, shared link generation, interactive features, point system, custom themes and roles, badges/achievements, etc.
+#### Key Features: Role assignment, record-keeping, shared link generation, interactive features, custom themes and roles, badges/achievements, etc.
 
 #### Tech Stack: Utilizes Nx, NestJS, TypeORM, and Postgres, and adheres to DDD and Hexagonal patterns. Employs Kafka for Event Sourcing.
 
@@ -50,7 +50,6 @@
 - Personal Profiles
 - Role Attributes
 - Role Assignment Preferences
-- Points System
 
 ##### Phase 2 - Expansion
 
