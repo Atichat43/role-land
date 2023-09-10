@@ -15,7 +15,6 @@ export * from './lib/errors/report.error.types';
 export * from './lib/events/changed.events.types';
 export * from './lib/events/lifecycle.events.types';
 export * from './lib/events/record.events.types';
-export * from './lib/models.types';
 export * from './lib/value-objects.types';
 
 import achievementMock from './lib/core/achievement/achievement.mock';

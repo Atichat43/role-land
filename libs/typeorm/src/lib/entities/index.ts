@@ -3,7 +3,6 @@ import {
   AchievementEntityTableName,
 } from './achievement.entity';
 import { ActionEntity, ActionEntityTableName } from './action.entity';
-import { EffectEntity, EffectEntityTableName } from './effect.entity';
 import { RoleEntity, RoleEntityTableName } from './role.entity';
 import {
   RolePreferenceEntity,
@@ -40,8 +39,6 @@ export {
   AchievementEntityTableName,
   ActionEntity,
   ActionEntityTableName,
-  EffectEntity,
-  EffectEntityTableName,
   RoleEntity,
   RoleEntityTableName,
   RolePreferenceEntity,
@@ -78,7 +75,6 @@ export const Entities = [
   // models
   AchievementEntity,
   ActionEntity,
-  EffectEntity,
   RoleEntity,
   SharedLinkEntity,
   ThemeEntity,
