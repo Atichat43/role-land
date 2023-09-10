@@ -1,3 +1,4 @@
+/* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
 import { SEED as SEED_DOMAIN } from '@role-land/domain';
@@ -11,6 +12,20 @@ import {
 
 import * as Entities from '../entities';
 
+export enum SeederMethod {
+  Save = 'save',
+  Delete = 'delete',
+  DropTable = 'dropTable',
+}
+
+type SeedDataEntry<Entity, DataType> = {
+  tableName: string;
+  entity: Entity;
+  mockData: ReadonlyArray<DataType>;
+};
+
+type AnySeedDataEntry = SeedDataEntry<any, any>;
+
 @Injectable()
 export class SeederService {
   constructor(
@@ -18,102 +33,114 @@ export class SeederService {
     private readonly dataSource: DataSource,
   ) {}
 
-  async main(method: 'save' | 'delete' | 'dropTable') {
-    const seed = [
+  private seedData: AnySeedDataEntry[] = [];
+
+  private getSeedData() {
+    this.seedData = [
       {
         tableName: Entities.ActionEntityTableName,
         entity: Entities.ActionEntity,
-        data: SEED_DOMAIN.actionMock.getAllActions(),
+        mockData: SEED_DOMAIN.actionMock.getAllActions(),
       },
       {
         tableName: Entities.ThemeEntityTableName,
         entity: Entities.ThemeEntity,
-        data: SEED_DOMAIN.themeMock.getAllThemes(),
+        mockData: SEED_DOMAIN.themeMock.getAllThemes(),
       },
       {
         tableName: Entities.RoleEntityTableName,
         entity: Entities.RoleEntity,
-        data: SEED_DOMAIN.roleMock.getAllRoles(),
+        mockData: SEED_DOMAIN.roleMock.getAllRoles(),
       },
       {
         tableName: Entities.SharedLinkEntityTableName,
         entity: Entities.SharedLinkEntity,
-        data: SEED_DOMAIN.sharedLinkMock.getAllSharedLinks(),
+        mockData: SEED_DOMAIN.sharedLinkMock.getAllSharedLinks(),
       },
       {
         tableName: Entities.UserEntityTableName,
         entity: Entities.UserEntity,
-        data: SEED_DOMAIN.userMock.getAllUsers(),
+        mockData: SEED_DOMAIN.userMock.getAllUsers(),
       },
       {
         tableName: Entities.TeamEntityTableName,
         entity: Entities.TeamEntity,
-        data: SEED_DOMAIN.teamMock.getAllTeams(),
+        mockData: SEED_DOMAIN.teamMock.getAllTeams(),
       },
       {
         tableName: Entities.TeamMemberEntityTableName,
         entity: Entities.TeamMemberEntity,
-        data: SEED_DOMAIN.teamMemberMock.getAllTeamMembers(),
+        mockData: SEED_DOMAIN.teamMemberMock.getAllTeamMembers(),
       },
       {
         tableName: Entities.AchievementEntityTableName,
         entity: Entities.AchievementEntity,
-        data: SEED_DOMAIN.achievementMock.getAllAchievements(),
+        mockData: SEED_DOMAIN.achievementMock.getAllAchievements(),
       },
       {
         tableName: Entities.UserAchievementEntityTableName,
         entity: Entities.UserAchievementEntity,
-        data: SEED_DOMAIN.userAchievementMock.getAllUserAchievements(),
+        mockData: SEED_DOMAIN.userAchievementMock.getAllUserAchievements(),
       },
       {
         tableName: Entities.UserAchievementProgressEntityTableName,
         entity: Entities.UserAchievementProgressEntity,
-        data: SEED_DOMAIN.userAchievementProgressMock.getAllUserAchievementProgresses(),
+        mockData:
+          SEED_DOMAIN.userAchievementProgressMock.getAllUserAchievementProgresses(),
       },
       {
         tableName: Entities.SessionEntityTableName,
         entity: Entities.SessionEntity,
-        data: SEED_DOMAIN.sessionMock.getAllSessions(),
+        mockData: SEED_DOMAIN.sessionMock.getAllSessions(),
       },
     ];
+  }
 
+  async main(method: SeederMethod) {
     const queryRunner = this.dataSource.createQueryRunner();
     await queryRunner.connect();
     await queryRunner.startTransaction();
+    this.getSeedData();
+
     try {
-      if (method === 'dropTable') {
-        for (const { tableName } of seed.reverse()) {
-          await queryRunner.dropTable(tableName, true, true, true);
-        }
-      }
-
-      if (method === 'delete') {
-        for (const { entity } of seed.reverse()) {
-          if (entity === undefined) return;
-
-          await queryRunner.manager.delete(entity, {});
-        }
-      }
-
-      if (method === 'save') {
-        for (const { entity, data } of seed) {
-          if (entity === undefined || data === undefined) return;
-
-          // eslint-disable-next-line @typescript-eslint/no-explicit-any
-          await this.dynamicSave(queryRunner, entity, data as any[]);
-        }
+      switch (method) {
+        case SeederMethod.DropTable:
+          await this.dropTables(queryRunner);
+          break;
+        case SeederMethod.Delete:
+          await this.deleteEntities(queryRunner);
+          break;
+        case SeederMethod.Save:
+          await this.saveEntities(queryRunner);
+          break;
       }
 
       await queryRunner.commitTransaction();
+      Logger.log(`✅ seeder ${method} complete!`);
     } catch (error) {
       await queryRunner.rollbackTransaction();
       console.error(error);
       Logger.error('Transaction failed:', error);
     } finally {
       await queryRunner.release();
-      if (method === 'dropTable') Logger.log('✅ Dropping Table complete!');
-      if (method === 'save') Logger.log('✅ Saving complete!');
-      if (method === 'delete') Logger.log('✅ Deleting complete!');
+    }
+  }
+
+  private async dropTables(queryRunner: QueryRunner) {
+    for (const { entity } of this.seedData.reverse()) {
+      await queryRunner.dropTable(entity.name, true, true, true);
+    }
+  }
+
+  private async deleteEntities(queryRunner: QueryRunner) {
+    for (const { entity } of this.seedData.reverse()) {
+      await queryRunner.manager.delete(entity, {});
+    }
+  }
+
+  private async saveEntities(queryRunner: QueryRunner) {
+    for (const { entity, mockData } of this.seedData) {
+      await this.dynamicSave(queryRunner, entity, mockData as any[]);
     }
   }
 
