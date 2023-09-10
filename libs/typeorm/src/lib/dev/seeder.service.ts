@@ -73,20 +73,14 @@ export class SeederService {
         entity: Entities.UserAchievementProgressEntity,
         data: SEED_DOMAIN.userAchievementProgressMock.getAllUserAchievementProgresses(),
       },
-      // {
+      // // {
       //   tableName: Entities.RolePreferenceEntityTableName,
       // },
       {
         tableName: Entities.SessionEntityTableName,
-        Entities: Entities.SessionEntity,
+        entity: Entities.SessionEntity,
         data: SEED_DOMAIN.sessionMock.getAllSessions(),
       },
-      // {
-      //   tableName: Entities.Session_Participants__UserTableName,
-      // },
-      // {
-      //   tableName: Entities.Session_RolesAvailable__RoleTableName,
-      // },
       // {
       //   tableName: Entities.PointEntityTableName,
       // },
@@ -113,6 +107,7 @@ export class SeederService {
       if (method === 'save') {
         for (const { entity, data } of seed) {
           if (entity === undefined || data === undefined) return;
+
           // eslint-disable-next-line @typescript-eslint/no-explicit-any
           await this.dynamicSave(queryRunner, entity, data as any[]);
         }

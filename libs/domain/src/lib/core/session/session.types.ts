@@ -13,7 +13,7 @@ import { ESessionStatus } from './session.enum';
  * - id: UUID
  * - status: ESessionStatus, default PENDING , Indexed
  * - sharedLink: ISharedLink (OneToOne)
- * - theme: ITheme (OneToOne)
+ * - theme: ITheme (ManyToOne)
  * - rolesAvailable: Array of IRole (ManyToMany)
  * - participants: Array of IUser (ManyToMany)
  * @notes

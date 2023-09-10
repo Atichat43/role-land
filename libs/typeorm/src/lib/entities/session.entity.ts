@@ -8,6 +8,7 @@ import {
   JoinColumn,
   JoinTable,
   ManyToMany,
+  ManyToOne,
   OneToOne,
   PrimaryGeneratedColumn,
 } from 'typeorm';
@@ -41,14 +42,14 @@ export class SessionEntity
   status: ESessionStatus;
 
   // models
-  @OneToOne(() => SharedLinkEntity)
+  @OneToOne(() => SharedLinkEntity, { onDelete: 'CASCADE' })
   @JoinColumn()
   @ValidateNested()
   @Type(() => SharedLinkEntity)
   sharedLink: SharedLinkEntity;
 
-  @OneToOne(() => ThemeEntity)
-  @JoinColumn()
+  @ManyToOne(() => ThemeEntity)
+  @JoinColumn({ name: 'themeId' })
   @ValidateNested()
   @Type(() => ThemeEntity)
   theme: ThemeEntity;
