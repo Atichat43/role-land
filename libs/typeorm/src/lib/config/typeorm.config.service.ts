@@ -2,7 +2,7 @@ import { Injectable } from '@nestjs/common';
 import { ConfigService } from '@nestjs/config';
 import { TypeOrmModuleOptions } from '@nestjs/typeorm';
 
-import { EnumDatabaseType, TypeOrmEnvConfig } from './typeorm.env.config';
+import { EnumDatabaseType } from './typeorm.env.config';
 
 @Injectable()
 export class TypeOrmConfigService {
