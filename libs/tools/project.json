@@ -1,0 +1,65 @@
+{
+  "name": "tools",
+  "$schema": "../../node_modules/nx/schemas/project-schema.json",
+  "sourceRoot": "libs/tools/src",
+  "projectType": "library",
+  "targets": {
+    "merge-files": {
+      "executor": "nx:run-commands",
+      "options": {
+        "commands": [
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/lib/' 'libs/domain/src/lib/__domain__.merged.local.ts'",
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/docs/' 'libs/domain/src/docs/__docs__.merged.local.md'",
+          // "ts-node libs/tools/src/lib/merge-files.ts 'libs/typeorm/src/lib/entities/' 'libs/typeorm/src/lib/entities/__typeorm-entities__.merged.local.ts'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/lib/' 'merged/domain/__domain__.merged.local.ts'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/domain/src/docs/' 'merged/docs/__docs__.merged.local.md'",
+          "ts-node libs/tools/src/lib/merge-files.ts 'libs/typeorm/src/lib/entities/' 'merged/entities/__typeorm-entities__.merged.local.ts'"
+        ],
+        "cwd": "."
+      }
+    },
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/tools",
+        "main": "libs/tools/src/index.ts",
+        "tsConfig": "libs/tools/tsconfig.lib.json",
+        "assets": [
+          "libs/tools/*.md"
+        ]
+      }
+    },
+    "lint": {
+      "executor": "@nx/linter:eslint",
+      "outputs": [
+        "{options.outputFile}"
+      ],
+      "options": {
+        "lintFilePatterns": [
+          "libs/tools/**/*.ts",
+          "libs/tools/package.json"
+        ]
+      }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/{projectRoot}"
+      ],
+      "options": {
+        "jestConfig": "libs/tools/jest.config.ts",
+        "passWithNoTests": true
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
+    }
+  },
+  "tags": []
+}

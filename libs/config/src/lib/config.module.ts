@@ -1,10 +1,11 @@
-import { Module, DynamicModule } from '@nestjs/common';
+import { DynamicModule,Module } from '@nestjs/common';
 import {
-  ConfigModuleOptions,
   ConfigModule as _ConfigModule,
+  ConfigModuleOptions,
 } from '@nestjs/config';
-import { ConfigService } from './config.service';
+
 import { EnvironmentEnvConfig } from './config.env.config';
+import { ConfigService } from './config.service';
 
 type ConfigModuleOptionsWithoutEnvIsGlobalValidate = Omit<
   ConfigModuleOptions,

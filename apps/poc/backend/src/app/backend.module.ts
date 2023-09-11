@@ -1,12 +1,8 @@
 import { Module } from '@nestjs/common';
-import { AuthDevModule, AuthEnvConfig, AuthModule } from '@role-land/auth';
 import { ConfigModule } from '@role-land/config';
+import { TypeOrmDevModule, TypeOrmEnvConfig } from '@role-land/typeorm';
 
 @Module({
-  imports: [ConfigModule.forRoot([AuthEnvConfig]), AuthDevModule],
+  imports: [ConfigModule.forRoot([TypeOrmEnvConfig]), TypeOrmDevModule],
 })
-export class BackendModule {
-  constructor() {
-    // console.log('BackendModule', process.env.AUTH_PRIVATE_KEY);
-  }
-}
+export class BackendModule {}

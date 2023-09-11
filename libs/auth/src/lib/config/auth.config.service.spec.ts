@@ -1,6 +1,7 @@
-import { Test, TestingModule } from '@nestjs/testing';
-import { AuthConfigService } from './auth.config.service';
 import { ConfigService } from '@nestjs/config';
+import { Test, TestingModule } from '@nestjs/testing';
+
+import { AuthConfigService } from './auth.config.service';
 import { AuthEnvConfig } from './auth.env.config';
 
 describe('AuthConfigService', () => {
