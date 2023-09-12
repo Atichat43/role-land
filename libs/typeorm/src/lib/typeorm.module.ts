@@ -1,5 +1,5 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule as _TypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule as NestJSTypeOrmModule } from '@nestjs/typeorm';
 
 import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
 import Entities from './entities';
@@ -7,20 +7,20 @@ import EventSubscribers from './event-subscriber';
 
 @Module({
   imports: [
-    _TypeOrmModule.forRootAsync({
+    NestJSTypeOrmModule.forRootAsync({
       imports: [TypeOrmConfigModule],
-      useFactory: async (configService: TypeOrmConfigService) => {
-        const typeOrmModuleOptions = configService.get();
+      useFactory: async (typeOrmConfigService: TypeOrmConfigService) => {
+        const config = typeOrmConfigService.get();
 
         return {
-          ...typeOrmModuleOptions,
+          ...config,
           entities: Entities,
           subscribers: EventSubscribers,
         };
       },
       inject: [TypeOrmConfigService],
     }),
-    _TypeOrmModule.forFeature(Entities),
+    NestJSTypeOrmModule.forFeature(Entities),
   ],
 })
 export class TypeOrmModule {}

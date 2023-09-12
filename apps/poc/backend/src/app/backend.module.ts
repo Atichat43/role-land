@@ -1,8 +1,7 @@
 import { Module } from '@nestjs/common';
-import { ConfigModule } from '@role-land/config';
-import { TypeOrmDevModule, TypeOrmEnvConfig } from '@role-land/typeorm';
+import { TypeOrmModule } from '@role-land/typeorm';
 
 @Module({
-  imports: [ConfigModule.forRoot([TypeOrmEnvConfig]), TypeOrmDevModule],
+  imports: [TypeOrmModule],
 })
 export class BackendModule {}
