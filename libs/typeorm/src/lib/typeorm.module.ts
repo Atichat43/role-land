@@ -1,16 +1,27 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule as NestJSTypeOrmModule } from '@nestjs/typeorm';
+import { ConfigModule, ConfigService } from '@nestjs/config';
+import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 
-import { TypeOrmConfigModule, TypeOrmConfigService } from './config';
 import Entities from './entities';
 import EventSubscribers from './event-subscriber';
+import {
+  registerTypeOrmConfig,
+  typeOrmConfigTokenSymbol,
+  TypeOrmEnvConfig,
+} from './typeorm.env.config';
 
 @Module({
   imports: [
-    NestJSTypeOrmModule.forRootAsync({
-      imports: [TypeOrmConfigModule],
-      useFactory: async (typeOrmConfigService: TypeOrmConfigService) => {
-        const config = typeOrmConfigService.get();
+    NestJsTypeOrmModule.forRootAsync({
+      imports: [
+        ConfigModule.forFeature(
+          registerTypeOrmConfig(typeOrmConfigTokenSymbol),
+        ),
+      ],
+      useFactory: async (configService: ConfigService) => {
+        const config = configService.get<TypeOrmEnvConfig>(
+          typeOrmConfigTokenSymbol.toString(),
+        );
 
         return {
           ...config,
@@ -18,9 +29,9 @@ import EventSubscribers from './event-subscriber';
           subscribers: EventSubscribers,
         };
       },
-      inject: [TypeOrmConfigService],
+      inject: [ConfigService],
     }),
-    NestJSTypeOrmModule.forFeature(Entities),
+    NestJsTypeOrmModule.forFeature(Entities),
   ],
 })
 export class TypeOrmModule {}

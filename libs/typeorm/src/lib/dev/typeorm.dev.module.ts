@@ -1,12 +1,12 @@
 import { Module, OnModuleInit } from '@nestjs/common';
-import { TypeOrmModule as NestJSTypeOrmModule } from '@nestjs/typeorm';
+import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 
 import Entities from '../entities';
 import { TypeOrmModule } from '../typeorm.module';
 import { SeederMethod, SeederService } from './seeder.service';
 
 @Module({
-  imports: [TypeOrmModule, NestJSTypeOrmModule.forFeature(Entities)],
+  imports: [TypeOrmModule, NestJsTypeOrmModule.forFeature(Entities)],
   providers: [SeederService],
 })
 export class TypeOrmDevModule implements OnModuleInit {

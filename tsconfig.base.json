@@ -22,9 +22,6 @@
       "@role-land/auth": [
         "libs/auth/src/index.ts"
       ],
-      "@role-land/config": [
-        "libs/config/src/index.ts"
-      ],
       "@role-land/domain": [
         "libs/domain/src/index.ts"
       ],
