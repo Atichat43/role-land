@@ -5,9 +5,9 @@ import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 import Entities from './entities';
 import EventSubscribers from './event-subscriber';
 import {
-  registerTypeOrmConfig,
-  typeOrmConfigTokenSymbol,
+  registerTypeOrmEnvConfig,
   TypeOrmEnvConfig,
+  typeOrmEnvConfigTokenSymbol,
 } from './typeorm.env.config';
 
 @Module({
@@ -15,12 +15,12 @@ import {
     NestJsTypeOrmModule.forRootAsync({
       imports: [
         ConfigModule.forFeature(
-          registerTypeOrmConfig(typeOrmConfigTokenSymbol),
+          registerTypeOrmEnvConfig(typeOrmEnvConfigTokenSymbol),
         ),
       ],
       useFactory: async (configService: ConfigService) => {
         const config = configService.get<TypeOrmEnvConfig>(
-          typeOrmConfigTokenSymbol.toString(),
+          typeOrmEnvConfigTokenSymbol.toString(),
         );
 
         return {

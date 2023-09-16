@@ -35,9 +35,11 @@ export class TypeOrmEnvConfig extends BaseTypeOrmEnvConfig {
   synchronize: boolean;
 }
 
-export const typeOrmConfigTokenSymbol = Symbol('TypeOrmConfigToken');
+export const typeOrmEnvConfigTokenSymbol = Symbol('TypeOrmConfigToken');
 
-export const registerTypeOrmConfig = (token = typeOrmConfigTokenSymbol) => {
+export const registerTypeOrmEnvConfig = (
+  token = typeOrmEnvConfigTokenSymbol,
+) => {
   return registerConfig(token.toString(), TypeOrmEnvConfig, {
     retryAttempts: process.env['TYPEORM_RETRY_ATTEMPTS'],
     type: process.env['TYPEORM_TYPE'],
