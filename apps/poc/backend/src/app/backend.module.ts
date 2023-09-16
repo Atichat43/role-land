@@ -1,7 +1,9 @@
 import { Module } from '@nestjs/common';
-import { TypeOrmModule } from '@role-land/typeorm';
+
+import { BackendService } from './backend.service';
 
 @Module({
-  imports: [TypeOrmModule],
+  imports: [],
+  providers: [BackendService],
 })
 export class BackendModule {}
