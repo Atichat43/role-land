@@ -12,7 +12,7 @@ Content-Type: application/json
 @accessToken = {{login.response.body.access_token}}
 
 ### GET /profile
-GET http://localhost:3000/profile
+GET http://localhost:3000/auth/profile
 Content-Type: application/json
 Authorization: Bearer {{accessToken}}
 

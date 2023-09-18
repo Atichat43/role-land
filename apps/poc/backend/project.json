@@ -62,6 +62,21 @@
           "apps/poc/backend/**/*.ts"
         ]
       }
+    },
+    "test": {
+      "executor": "@nx/jest:jest",
+      "outputs": [
+        "{workspaceRoot}/coverage/apps/poc/backend"
+      ],
+      "options": {
+        "jestConfig": "apps/poc/backend/jest.config.ts"
+      },
+      "configurations": {
+        "ci": {
+          "ci": true,
+          "codeCoverage": true
+        }
+      }
     }
   },
   "tags": [
