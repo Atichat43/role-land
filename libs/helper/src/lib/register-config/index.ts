@@ -1,1 +1,1 @@
-export * from './register-config.helper';
+export * from './helper.register-config';

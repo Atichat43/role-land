@@ -4,8 +4,8 @@ import { Test } from '@nestjs/testing';
 import { instanceToPlain } from 'class-transformer';
 import { v4 } from 'uuid';
 
-import { registerConfig } from './register-config.helper';
-import { MockConfigObj } from './register-config.mock';
+import { registerConfig } from './helper.register-config';
+import { MockConfigObj } from './helper.register-config.mock';
 
 describe('registerConfig', () => {
   let app: INestApplication;
