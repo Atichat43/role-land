@@ -1,12 +1,15 @@
-import { registerAs } from '@nestjs/config';
-import { ClassConstructor, plainToInstance } from 'class-transformer';
+import { ConfigFactoryKeyHost, registerAs } from '@nestjs/config';
+import { Class } from '@role-land/utility-types';
+import { plainToInstance } from 'class-transformer';
 import { validateSync } from 'class-validator';
+
+type INestJsRegisterAsFunctionReturn<T> = (() => T) & ConfigFactoryKeyHost<T>;
 
 export const registerConfig = <T extends object, V>(
   token: string,
-  configObj: ClassConstructor<T>,
+  configObj: Class<T>,
   plain: V,
-) => {
+): INestJsRegisterAsFunctionReturn<T> => {
   return registerAs(token, () => {
     const config = plainToInstance(configObj, plain, {
       enableImplicitConversion: true,

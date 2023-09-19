@@ -37,8 +37,6 @@ describe('ClassValidator', () => {
       const validationDetails: Optional<IClassValidationDetails> =
         await ClassValidator.validate(invalidInstance);
 
-      console.log(validationDetails);
-
       expect(validationDetails).toBeDefined();
       expect(validationDetails!.context).toBe('MockClass');
       expect(validationDetails!.errors[0].property).toBe('stringProperty');
