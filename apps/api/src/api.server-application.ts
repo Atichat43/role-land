@@ -8,11 +8,11 @@ import {
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
-import { getLogLevel } from '@role-land/helper';
+import { getLogLevels } from '@role-land/helper';
 import helmet from 'helmet';
 import * as requestIp from 'request-ip';
 
-import { ApiModule } from './app/api.module';
+import { ApiModule } from './api.module';
 
 export class ServerApplication {
   private readonly logger: Logger = new Logger(ServerApplication.name);
@@ -21,7 +21,7 @@ export class ServerApplication {
 
   private readonly port: number = Number(process.env.PORT);
 
-  private readonly logLevels: LogLevel[] = getLogLevel(
+  private readonly logLevels: LogLevel[] = getLogLevels(
     process.env.LOG_LEVEL ?? 'log',
   );
 

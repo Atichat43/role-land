@@ -1,4 +1,4 @@
-import { ServerApplication } from './server-application';
+import { ServerApplication } from './api.server-application';
 
 async function bootstrap() {
   const serverApplication: ServerApplication = ServerApplication.new();
