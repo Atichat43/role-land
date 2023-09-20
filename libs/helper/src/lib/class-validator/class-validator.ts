@@ -22,7 +22,7 @@ export class ClassValidator {
 
     if (errors.length > 0) {
       details = {
-        context: context || target.constructor.name,
+        context: context ?? target.constructor.name,
         errors: [],
       };
 

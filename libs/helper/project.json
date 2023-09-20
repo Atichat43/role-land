@@ -4,6 +4,18 @@
   "sourceRoot": "libs/helper/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/helper",
+        "main": "libs/helper/src/index.ts",
+        "tsConfig": "libs/helper/tsconfig.lib.json",
+        "assets": []
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": [
