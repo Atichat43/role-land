@@ -1,3 +1,5 @@
+export * from './lib/_shared/error';
+export * from './lib/_shared/persistence';
 export * from './lib/core/_base.types';
 export * from './lib/core/achievement';
 export * from './lib/core/action';
