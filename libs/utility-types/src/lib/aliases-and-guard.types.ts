@@ -38,7 +38,7 @@ export const isFalsy = (val: unknown): val is Falsy => !val;
 export type Nullish = null | undefined;
 
 /**
- * Tests for Nullish by simply comparing `val` for equality with `null`.
+ * Tests for Nullish by simply comparing `val` for equality with `null | undefined`.
  * @example
  *   const consumer = (param: Nullish | string): string => {
  *     if (isNullish(param)) {
@@ -50,3 +50,8 @@ export type Nullish = null | undefined;
  *   };
  */
 export const isNullish = (val: unknown): val is Nullish => val == null;
+
+export const isUndefined = (val: unknown): val is undefined =>
+  val === undefined;
+
+export const isNull = (val: unknown): val is null => val === null;

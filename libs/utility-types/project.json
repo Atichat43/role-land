@@ -4,6 +4,18 @@
   "sourceRoot": "libs/utility-types/src",
   "projectType": "library",
   "targets": {
+    "build": {
+      "executor": "@nx/js:tsc",
+      "outputs": [
+        "{options.outputPath}"
+      ],
+      "options": {
+        "outputPath": "dist/libs/utility-types",
+        "main": "libs/utility-types/src/index.ts",
+        "tsConfig": "libs/utility-types/tsconfig.lib.json",
+        "assets": []
+      }
+    },
     "lint": {
       "executor": "@nx/linter:eslint",
       "outputs": [
@@ -21,8 +33,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/utility-types/jest.config.ts",
-        "passWithNoTests": true
+        "jestConfig": "libs/utility-types/jest.config.ts"
       },
       "configurations": {
         "ci": {
