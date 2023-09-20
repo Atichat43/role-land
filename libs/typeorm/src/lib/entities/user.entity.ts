@@ -1,6 +1,4 @@
-import { IProfile, IUser } from '@role-land/domain';
-import { Type } from 'class-transformer';
-import { IsBoolean, IsUrl, Length, ValidateNested } from 'class-validator';
+import { IUser, IUserProfile } from '@role-land/domain';
 import {
   Column,
   Entity,
@@ -17,10 +15,9 @@ import { UserAchievementProgressEntity } from './user-achievement-progress.entit
 
 export const UserEntityTableName = 'User';
 
-// ProfileEmbeded: Embedded within UserEntity, contains bio and interests
-export class ProfileEmbeded implements IProfile {
+// UserProfileEmbeded: Embedded within UserEntity, contains bio and interests
+export class UserProfileEmbeded implements IUserProfile {
   @Column()
-  @Length(0, 1000)
   bio: string;
 
   @Column('text', { array: true })
@@ -36,25 +33,22 @@ export class UserEntity
   id: string;
 
   @Column()
-  @Length(1, 25)
   username: string;
 
   @Column()
-  @Length(1, 25)
+  password: string;
+
+  @Column()
   globalName: string;
 
   @Column({ default: false })
-  @IsBoolean()
   premiumStatus: boolean;
 
   @Column({ nullable: true })
-  @IsUrl()
   avatar: string | null;
 
-  @Column(() => ProfileEmbeded)
-  @ValidateNested()
-  @Type(() => ProfileEmbeded)
-  profile: ProfileEmbeded;
+  @Column(() => UserProfileEmbeded)
+  profile: UserProfileEmbeded;
 
   @OneToMany(
     () => UserAchievementEntity,
