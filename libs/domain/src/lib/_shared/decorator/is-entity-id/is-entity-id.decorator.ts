@@ -12,7 +12,7 @@ import {
  * Checks if a value is a valid entity id (string: UUID or number: positive number based on the type).
  */
 @ValidatorConstraint({ name: 'IsEntityId', async: false })
-class IsEntityIdConstraint implements ValidatorConstraintInterface {
+export class IsEntityIdConstraint implements ValidatorConstraintInterface {
   validate(id: string | number): boolean {
     if (typeof id === 'string') {
       return isUUID(id);
