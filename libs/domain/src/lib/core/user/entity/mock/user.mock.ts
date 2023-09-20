@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
+import { IUserMock } from '../type';
 import { IMergeUsernames } from './user.mock.types';
-import { IUser, IUserMock } from './user.types';
 
 const userMockData: IUserMock[] = [
   {
@@ -181,6 +181,4 @@ class UserMock {
   }
 }
 
-const userMock = new UserMock();
-
-export default userMock;
+export const userMock = new UserMock();

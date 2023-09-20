@@ -5,7 +5,7 @@ import roleMock from '../role/role.mock';
 import sharedLinkMock from '../shared-link/shared-link.mock';
 import { EThemeKey } from '../theme';
 import themeMock from '../theme/theme.mock';
-import userMock from '../user/user.mock';
+import { userMock } from '../user/entity/mock';
 import { ESessionStatus } from './session.enum';
 import { ISessionMock } from './session.types';
 

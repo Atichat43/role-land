@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import achievementMock from '../achievement/achievement.mock';
-import userMock from '../user/user.mock';
+import { userMock } from '../user/entity/mock';
 import { IUserAchievementProgressMock } from './user-achievement-progress.types';
 
 /**

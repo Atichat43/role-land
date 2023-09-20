@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import { IUserMock } from '../user';
-import userMock from '../user/user.mock';
+import { userMock } from '../user/entity/mock';
 import { ITeamMock } from './team.types';
 
 const teamMockData: ITeamMock[] = [

@@ -1,26 +1,13 @@
-import { OmitBaseFields } from '../../_shared/types.helper';
-import { ISoftDeletionFields, ITimestampFields } from '../_base.types';
-import { ITeam } from '../team';
-import { ITeamMember } from '../team-member';
-import { IUserAchievement } from '../user-achievement';
-import { IUserAchievementProgress } from '../user-achievement-progress';
-import { IMergeUsernames } from './user.mock.types';
+import { Nullable } from '@role-land/utility-types';
 
-// NOTE:
-// Value objects are immutable and are identified by their properties.
-// They are not identified by an id field.
-
-// --- Profile (Value Object) Interface ---
-/**
- * @desc Holds the profile-related domain information.
- * @attributes
- * - bio: String, max 1000 characters, can be empty
- * - interests: Array of strings
- */
-export interface IProfile {
-  bio: string;
-  interests: string[];
-}
+import { OmitBaseFields } from '../../../../_shared/types.helper';
+import { ISoftDeletionFields, ITimestampFields } from '../../../_base.types';
+import { ITeam } from '../../../team';
+import { ITeamMember } from '../../../team-member';
+import { IUserAchievement } from '../../../user-achievement';
+import { IUserAchievementProgress } from '../../../user-achievement-progress';
+import { IMergeUsernames } from '../../entity/mock/user.mock.types';
+import { IUserProfile } from './user-profile.value-object.types';
 
 // --- User Interface ---
 /**
@@ -32,7 +19,7 @@ export interface IProfile {
  *  - globalName: String, max 25 characters, non-empty
  *  - avatar: URL or null
  *  - premiumStatus: Boolean, default false
- *  - profile: IProfile (Value Object)
+ *  - profile: IUserProfile (Value Object)
  *  - userAchievements: Array of IUserAchievement (OneToMany)
  *  - userAchievementProgresses: Array of IUserAchievementProgress (OneToMany)
  *  - teamMemberships: Array of ITeamMember (OneToMany)
@@ -43,13 +30,14 @@ export interface IProfile {
  */
 export interface IUser extends ITimestampFields, ISoftDeletionFields {
   id: string;
-  username: string;
+  readonly username: string;
+  readonly password: string;
   globalName: string;
   premiumStatus: boolean;
-  avatar: string | null;
+  avatar: Nullable<string>;
 
   // value objects
-  profile: IProfile;
+  profile: IUserProfile;
 
   // models
   userAchievements: IUserAchievement[];
@@ -73,7 +61,7 @@ export type IUserExcludeSensitive = Omit<IUser, ''>;
 
 // NOTE: roles should be empty array in mocking process due to circular dependency with role who has User
 export type IUserMock = Readonly<
-  Omit<IUserRaw, 'username'> & { username: IMergeUsernames }
+  Omit<IUserRaw, 'username' | 'password'> & { username: IMergeUsernames }
 >;
 
 // inbound

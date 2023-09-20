@@ -1,7 +1,7 @@
 import { v4 as uuid } from 'uuid';
 
 import teamMock from '../team/team.mock';
-import userMock from '../user/user.mock';
+import { userMock } from '../user/entity/mock';
 import { ETeamMemberMembershipState } from './team-member.enum';
 import { ITeamMemberMock } from './team-member.types';
 
