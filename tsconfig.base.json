@@ -36,6 +36,9 @@
       ],
       "@role-land/typeorm": [
         "libs/typeorm/src/index.ts"
+      ],
+      "@role-land/utility-types": [
+        "libs/utility-types/src/index.ts"
       ]
     }
   },
