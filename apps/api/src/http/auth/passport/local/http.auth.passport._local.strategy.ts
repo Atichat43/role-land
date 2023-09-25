@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ErrorCode, Exception } from '@role-land/core';
+import { Code, Exception } from '@role-land/core';
 import { isNull, Nullable } from '@role-land/utility-types';
 import { Strategy as PassportLocalStrategy } from 'passport-local';
 
@@ -27,7 +27,7 @@ export class HttpAuthLocalStrategy extends PassportStrategy(
       await this.authService.validateUser(username, password);
 
     if (isNull(user)) {
-      throw Exception.new({ code: ErrorCode.WRONG_CREDENTIALS_ERROR });
+      throw Exception.new({ code: Code.WRONG_CREDENTIALS_ERROR });
     }
 
     return user;

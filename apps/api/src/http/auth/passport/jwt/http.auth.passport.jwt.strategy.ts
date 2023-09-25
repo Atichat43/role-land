@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ErrorCode, Exception } from '@role-land/core';
+import { Code, Exception } from '@role-land/core';
 import { isUndefined } from '@role-land/utility-types';
 import { ExtractJwt, Strategy as PassportJwtStrategy } from 'passport-jwt';
 
@@ -29,7 +29,7 @@ export class HttpAuthJwtStrategy extends PassportStrategy(PassportJwtStrategy) {
     const user = await this.authService.getUser({ id: payload.id });
 
     if (isUndefined(user)) {
-      throw Exception.new({ code: ErrorCode.UNAUTHORIZED_ERROR });
+      throw Exception.new({ code: Code.UNAUTHORIZED_ERROR });
     }
 
     return { id: user.id, username: user.username };
