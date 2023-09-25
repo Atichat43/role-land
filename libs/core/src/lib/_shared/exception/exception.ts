@@ -1,9 +1,9 @@
 import { Optional } from '@role-land/utility-types';
 
-import { IErrorCodeDesc } from './error-code';
+import { ICodeDesc } from '../code';
 
 export type ICreateExceptionPayload<TData> = {
-  code: IErrorCodeDesc;
+  code: ICodeDesc;
   overrideMessage?: string;
   data?: TData;
 };
@@ -14,16 +14,16 @@ export class Exception<TData> extends Error {
   public readonly data: Optional<TData>;
 
   private constructor(
-    errorCodeDesc: IErrorCodeDesc,
+    CodeDesc: ICodeDesc,
     overrideMessage?: string,
     data?: TData,
   ) {
     super();
 
     this.name = this.constructor.name;
-    this.code = errorCodeDesc.code;
+    this.code = CodeDesc.code;
     this.data = data;
-    this.message = overrideMessage || errorCodeDesc.message;
+    this.message = overrideMessage || CodeDesc.message;
 
     Error.captureStackTrace(this, this.constructor);
   }

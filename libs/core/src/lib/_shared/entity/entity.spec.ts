@@ -3,8 +3,8 @@ import { IClassValidationDetails } from '@role-land/helper';
 import { IsString } from 'class-validator';
 import { v4 } from 'uuid';
 
-import { ErrorCode } from '../error/error-code';
-import { Exception } from '../error/exception';
+import { Code } from '../code';
+import { Exception } from '../exception';
 import { Entity } from './entity';
 
 class MockEntity extends Entity<string> {
@@ -54,7 +54,7 @@ describe('Entity', () => {
           e as Exception<IClassValidationDetails>;
 
         expect(exception).toBeInstanceOf(Exception);
-        expect(exception.code).toBe(ErrorCode.ENTITY_VALIDATION_ERROR.code);
+        expect(exception.code).toBe(Code.ENTITY_VALIDATION_ERROR.code);
         expect(exception.data!.errors[0].property).toBe('id');
       }
     });
@@ -72,7 +72,7 @@ describe('Entity', () => {
           e as Exception<IClassValidationDetails>;
 
         expect(exception).toBeInstanceOf(Exception);
-        expect(exception.code).toBe(ErrorCode.ENTITY_VALIDATION_ERROR.code);
+        expect(exception.code).toBe(Code.ENTITY_VALIDATION_ERROR.code);
         expect(exception.data!.errors[0].property).toBe('name');
       }
     });

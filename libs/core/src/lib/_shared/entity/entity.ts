@@ -1,9 +1,9 @@
 import { ClassValidator, IClassValidationDetails } from '@role-land/helper';
 import { isUndefined, Optional } from '@role-land/utility-types';
 
+import { Code } from '../code';
 import { IsEntityId } from '../decorator';
-import { ErrorCode } from '../error/error-code';
-import { Exception } from '../error/exception';
+import { Exception } from '../exception';
 
 export class Entity<TIdentifier extends string | number> {
   @IsEntityId()
@@ -15,7 +15,7 @@ export class Entity<TIdentifier extends string | number> {
 
     if (!isUndefined(details)) {
       throw Exception.new({
-        code: ErrorCode.ENTITY_VALIDATION_ERROR,
+        code: Code.ENTITY_VALIDATION_ERROR,
         data: details,
       });
     }

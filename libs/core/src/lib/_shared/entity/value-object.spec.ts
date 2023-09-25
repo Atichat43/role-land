@@ -3,8 +3,8 @@
 import { IClassValidationDetails } from '@role-land/helper';
 import { IsString } from 'class-validator';
 
-import { ErrorCode } from '../error/error-code';
-import { Exception } from '../error/exception';
+import { Code } from '../code';
+import { Exception } from '../exception';
 import { ValueObject } from './value-object';
 
 class MockValueObject extends ValueObject {
@@ -41,9 +41,7 @@ describe('ValueObject', () => {
           e as Exception<IClassValidationDetails>;
 
         expect(exception).toBeInstanceOf(Exception);
-        expect(exception.code).toBe(
-          ErrorCode.VALUE_OBJECT_VALIDATION_ERROR.code,
-        );
+        expect(exception.code).toBe(Code.VALUE_OBJECT_VALIDATION_ERROR.code);
         expect(exception.data!.errors[0].property).toBe('address');
       }
     });
