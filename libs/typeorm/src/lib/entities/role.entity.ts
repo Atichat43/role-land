@@ -1,4 +1,4 @@
-import { ERoleKey, IRole, ISkillTemplate } from '@role-land/domain';
+import { ERoleKey, IRole, ISkillTemplate } from '@role-land/core';
 import { Type } from 'class-transformer';
 import { IsUrl, Length, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';

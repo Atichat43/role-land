@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { IRoleLifecycleEvent } from '@role-land/domain';
+import { IRoleLifecycleEvent } from '@role-land/core';
 import {
   EntitySubscriberInterface,
   EventSubscriber,

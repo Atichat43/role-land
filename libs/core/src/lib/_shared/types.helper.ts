@@ -1,4 +1,4 @@
-import { ISoftDeletionFields, ITimestampFields } from '../core/_base.types';
+import { ISoftDeletionFields, ITimestampFields } from '../domain/_base.types';
 
 export type OmitBaseFields<T> = Omit<
   T,

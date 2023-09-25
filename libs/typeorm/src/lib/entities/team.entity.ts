@@ -1,4 +1,4 @@
-import { ITeam } from '@role-land/domain';
+import { ITeam } from '@role-land/core';
 import { Type } from 'class-transformer';
 import { IsEmpty, IsUrl, Length, ValidateNested } from 'class-validator';
 import {

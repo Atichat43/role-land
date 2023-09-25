@@ -1,4 +1,4 @@
-import { ISharedLink } from '@role-land/domain';
+import { ISharedLink } from '@role-land/core';
 import { IsBoolean, IsUrl } from 'class-validator';
 import { Column, Entity, Index, PrimaryGeneratedColumn, Unique } from 'typeorm';
 

@@ -1,4 +1,4 @@
-import { IUserAchievementProgress } from '@role-land/domain';
+import { IUserAchievementProgress } from '@role-land/core';
 import { IsUUID, Max, Min } from 'class-validator';
 import {
   Column,

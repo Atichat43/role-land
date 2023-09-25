@@ -1,7 +1,7 @@
 /* eslint-disable @typescript-eslint/no-explicit-any */
 import { Injectable, Logger } from '@nestjs/common';
 import { InjectDataSource } from '@nestjs/typeorm';
-import { SEED as SEED_DOMAIN } from '@role-land/domain';
+import { SEED as SEED_DOMAIN } from '@role-land/core';
 import {
   DataSource,
   DeepPartial,

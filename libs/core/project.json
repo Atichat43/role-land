@@ -1,7 +1,7 @@
 {
-  "name": "domain",
+  "name": "core",
   "$schema": "../../node_modules/nx/schemas/project-schema.json",
-  "sourceRoot": "libs/domain/src",
+  "sourceRoot": "libs/core/src",
   "projectType": "library",
   "targets": {
     "build": {
@@ -10,11 +10,11 @@
         "{options.outputPath}"
       ],
       "options": {
-        "outputPath": "dist/libs/domain",
-        "main": "libs/domain/src/index.ts",
-        "tsConfig": "libs/domain/tsconfig.lib.json",
+        "outputPath": "dist/libs/core",
+        "main": "libs/core/src/index.ts",
+        "tsConfig": "libs/core/tsconfig.lib.json",
         "assets": [
-          "libs/domain/*.md"
+          "libs/core/*.md"
         ]
       }
     },
@@ -25,8 +25,8 @@
       ],
       "options": {
         "lintFilePatterns": [
-          "libs/domain/**/*.ts",
-          "libs/domain/package.json"
+          "libs/core/**/*.ts",
+          "libs/core/package.json"
         ]
       }
     },
@@ -36,7 +36,7 @@
         "{workspaceRoot}/coverage/{projectRoot}"
       ],
       "options": {
-        "jestConfig": "libs/domain/jest.config.ts"
+        "jestConfig": "libs/core/jest.config.ts"
       },
       "configurations": {
         "ci": {

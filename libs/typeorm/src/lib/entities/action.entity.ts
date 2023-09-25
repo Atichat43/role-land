@@ -8,7 +8,7 @@ import {
   ETimerActionOperation,
   IAction,
   IBaseActionConfig,
-} from '@role-land/domain';
+} from '@role-land/core';
 import { Type } from 'class-transformer';
 import {
   IsArray,

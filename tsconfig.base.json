@@ -22,8 +22,8 @@
       "@role-land/auth": [
         "libs/auth/src/index.ts"
       ],
-      "@role-land/domain": [
-        "libs/domain/src/index.ts"
+      "@role-land/core": [
+        "libs/core/src/index.ts"
       ],
       "@role-land/helper": [
         "libs/helper/src/index.ts"

@@ -1,4 +1,4 @@
-import { EThemeKey, ITheme } from '@role-land/domain';
+import { EThemeKey, ITheme } from '@role-land/core';
 import { IsBoolean, Length } from 'class-validator';
 import {
   Column,

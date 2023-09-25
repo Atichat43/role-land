@@ -1,4 +1,4 @@
-import { ETeamMemberMembershipState, ITeamMember } from '@role-land/domain';
+import { ETeamMemberMembershipState, ITeamMember } from '@role-land/core';
 import { Type } from 'class-transformer';
 import { IsArray, IsEnum, ValidateNested } from 'class-validator';
 import { Column, Entity, ManyToOne, PrimaryGeneratedColumn } from 'typeorm';

@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { IAchievementEarnedEvent } from '@role-land/domain';
+import { IAchievementEarnedEvent } from '@role-land/core';
 import {
   EntitySubscriberInterface,
   EventSubscriber,

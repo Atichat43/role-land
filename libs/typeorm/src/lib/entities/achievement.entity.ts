@@ -5,7 +5,7 @@ import {
   IAchievementMilestone,
   IMergeTypeAchievementSubCategory,
   MERGE_TYPE_ACHIEVEMENT_SUB_CATEGORY,
-} from '@role-land/domain';
+} from '@role-land/core';
 import { Type } from 'class-transformer';
 import {
   IsArray,

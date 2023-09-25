@@ -1,4 +1,4 @@
-import { User } from '@role-land/domain';
+import { User } from '@role-land/core';
 import { Request } from 'express';
 
 export type IHttpAuthValidatedUser = Pick<User, 'id' | 'username'>;

@@ -1,4 +1,4 @@
-import { IUser, IUserProfile } from '@role-land/domain';
+import { IUser, IUserProfile } from '@role-land/core';
 import {
   Column,
   Entity,

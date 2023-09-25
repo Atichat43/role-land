@@ -1,0 +1,15 @@
+{
+  "name": "@role-land/core",
+  "version": "0.0.1",
+  "dependencies": {
+    "tslib": "^2.3.0",
+    "uuid": "^9.0.0",
+    "class-validator": "^0.14.0",
+    "@role-land/helper": "*",
+    "@role-land/utility-types": "*",
+    "bcrypt": "^5.1.1"
+  },
+  "type": "commonjs",
+  "main": "./src/index.js",
+  "typings": "./src/index.d.ts"
+}

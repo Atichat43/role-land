@@ -1,5 +1,5 @@
 import { Logger } from '@nestjs/common';
-import { IThemeLifecycleEvent } from '@role-land/domain';
+import { IThemeLifecycleEvent } from '@role-land/core';
 import {
   EntitySubscriberInterface,
   EventSubscriber,

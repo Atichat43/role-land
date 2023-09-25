@@ -1,4 +1,4 @@
-import { ESessionStatus, ISession } from '@role-land/domain';
+import { ESessionStatus, ISession } from '@role-land/core';
 import { Type } from 'class-transformer';
 import { IsEnum, ValidateNested } from 'class-validator';
 import {

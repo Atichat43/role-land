@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User, UserDiToken, UserRepoPort } from '@role-land/domain';
+import { User, UserDiToken, UserRepoPort } from '@role-land/core';
 import { isUndefined, Nullable, Optional } from '@role-land/utility-types';
 
 import {

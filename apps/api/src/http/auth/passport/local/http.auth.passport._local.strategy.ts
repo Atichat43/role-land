@@ -1,6 +1,6 @@
 import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
-import { ErrorCode, Exception } from '@role-land/domain';
+import { ErrorCode, Exception } from '@role-land/core';
 import { isNull, Nullable } from '@role-land/utility-types';
 import { Strategy as PassportLocalStrategy } from 'passport-local';
 

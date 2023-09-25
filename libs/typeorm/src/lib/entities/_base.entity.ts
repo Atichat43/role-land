@@ -1,4 +1,4 @@
-import { ISoftDeletionFields, ITimestampFields } from '@role-land/domain';
+import { ISoftDeletionFields, ITimestampFields } from '@role-land/core';
 import {
   Column,
   CreateDateColumn,
