@@ -28,6 +28,9 @@
       "@role-land/helper": [
         "libs/helper/src/index.ts"
       ],
+      "@role-land/infrastructure": [
+        "libs/infrastructure/src/index.ts"
+      ],
       "@role-land/plugin": [
         "libs/plugin/src/index.ts"
       ],
