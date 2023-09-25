@@ -1,13 +1,10 @@
 import { Module } from '@nestjs/common';
 
+import { UserModule } from '../../di/user.module';
 import { HttpUserController } from './http.user.controller';
 
-const persistenceProviders = [];
-
 @Module({
+  imports: [UserModule],
   controllers: [HttpUserController],
-  providers: [
-    ...persistenceProviders,
-  ],
 })
 export class HttpUserModule {}
