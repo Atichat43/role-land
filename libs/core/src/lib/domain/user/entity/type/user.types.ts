@@ -57,7 +57,7 @@ export type IUserRaw = Omit<
   | 'teamMemberships'
   | 'teamsOwned'
 >;
-export type IUserExcludeSensitive = Omit<IUser, ''>;
+export type IUserExcludeSensitive = Omit<IUser, 'password'>;
 
 // NOTE: roles should be empty array in mocking process due to circular dependency with role who has User
 export type IUserMock = Readonly<

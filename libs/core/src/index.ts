@@ -1,4 +1,5 @@
-export * from './lib/_shared/error';
+export * from './lib/_shared/code';
+export * from './lib/_shared/exception';
 export * from './lib/_shared/persistence';
 export * from './lib/domain/_base.types';
 export * from './lib/domain/achievement';
@@ -16,6 +17,7 @@ export * from './lib/errors/report.error.types';
 export * from './lib/events/changed.events.types';
 export * from './lib/events/lifecycle.events.types';
 export * from './lib/events/record.events.types';
+export * from './lib/service';
 
 import achievementMock from './lib/domain/achievement/achievement.mock';
 import actionMock from './lib/domain/action/action.mock';

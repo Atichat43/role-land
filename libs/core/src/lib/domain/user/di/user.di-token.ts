@@ -1,5 +1,6 @@
 export class UserDiToken {
   // use-cases
+  public static readonly GetUserUseCase = Symbol('GetUserUseCase');
 
   // handlers
 
