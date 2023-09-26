@@ -7,7 +7,8 @@
     "class-validator": "^0.14.0",
     "@role-land/helper": "*",
     "@role-land/utility-types": "*",
-    "bcrypt": "^5.1.1"
+    "bcrypt": "^5.1.1",
+    "class-transformer": "^0.5.1"
   },
   "type": "commonjs",
   "main": "./src/index.js",
