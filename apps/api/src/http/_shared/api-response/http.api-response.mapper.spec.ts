@@ -1,11 +1,12 @@
-import { ApiResponseMapper } from './api-response.mapper';
+import { HttpApiResponseMapper } from './http.api-response.mapper';
 
-describe('ApiResponseMapper', () => {
+describe('HttpApiResponseMapper', () => {
   describe('success', () => {
     it('should create success response with default parameters when input args are empty', () => {
       const currentDate: number = Date.now();
 
-      const response: ApiResponseMapper<unknown> = ApiResponseMapper.success();
+      const response: HttpApiResponseMapper<unknown> =
+        HttpApiResponseMapper.success();
 
       expect(response.code).toBe(200);
       expect(response.message).toBe('Success.');
@@ -19,10 +20,8 @@ describe('ApiResponseMapper', () => {
       const customMessage = 'Success Response.';
       const customData: Record<string, unknown> = { result: customMessage };
 
-      const response: ApiResponseMapper<unknown> = ApiResponseMapper.success(
-        customData,
-        customMessage,
-      );
+      const response: HttpApiResponseMapper<unknown> =
+        HttpApiResponseMapper.success(customData, customMessage);
 
       expect(response.code).toBe(200);
       expect(response.message).toBe(customMessage);
@@ -35,7 +34,8 @@ describe('ApiResponseMapper', () => {
     it('should create error response with default parameters when input args are empty', () => {
       const currentDate: number = Date.now();
 
-      const response: ApiResponseMapper<unknown> = ApiResponseMapper.error();
+      const response: HttpApiResponseMapper<unknown> =
+        HttpApiResponseMapper.error();
 
       expect(response.code).toBe(500);
       expect(response.message).toBe('Internal error.');
@@ -50,11 +50,8 @@ describe('ApiResponseMapper', () => {
       const customMessage = 'Resource not found.';
       const customData: Record<string, unknown> = { result: customMessage };
 
-      const response: ApiResponseMapper<unknown> = ApiResponseMapper.error(
-        customCode,
-        customMessage,
-        customData,
-      );
+      const response: HttpApiResponseMapper<unknown> =
+        HttpApiResponseMapper.error(customCode, customMessage, customData);
 
       expect(response.code).toBe(customCode);
       expect(response.message).toBe(customMessage);

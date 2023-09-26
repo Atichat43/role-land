@@ -1,7 +1,7 @@
 import { Code } from '@role-land/core';
 import { Nullable } from '@role-land/utility-types';
 
-export class ApiResponseMapper<TData> {
+export class HttpApiResponseMapper<TData> {
   public readonly code: number;
 
   public readonly message: string;
@@ -20,21 +20,21 @@ export class ApiResponseMapper<TData> {
   public static success<TData>(
     data?: TData,
     message?: string,
-  ): ApiResponseMapper<TData> {
+  ): HttpApiResponseMapper<TData> {
     const resultCode: number = Code.SUCCESS.code;
     const resultMessage: string = message ?? Code.SUCCESS.message;
 
-    return new ApiResponseMapper(resultCode, resultMessage, data);
+    return new HttpApiResponseMapper(resultCode, resultMessage, data);
   }
 
   public static error<TData>(
     code?: number,
     message?: string,
     data?: TData,
-  ): ApiResponseMapper<TData> {
+  ): HttpApiResponseMapper<TData> {
     const resultCode: number = code ?? Code.INTERNAL_ERROR.code;
     const resultMessage: string = message ?? Code.INTERNAL_ERROR.message;
 
-    return new ApiResponseMapper(resultCode, resultMessage, data);
+    return new HttpApiResponseMapper(resultCode, resultMessage, data);
   }
 }
