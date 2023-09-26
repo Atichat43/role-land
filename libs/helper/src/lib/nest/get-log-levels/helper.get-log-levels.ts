@@ -1,8 +1,6 @@
 import { LogLevel } from '@nestjs/common';
 
-type NestJsLogLevels = LogLevel[];
-
-export function getLogLevels(logLevel = 'log'): NestJsLogLevels {
+export function getLogLevels(logLevel = 'log'): LogLevel[] {
   switch (logLevel) {
     case 'error':
       return ['error'];
