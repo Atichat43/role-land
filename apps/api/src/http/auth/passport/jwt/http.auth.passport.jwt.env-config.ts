@@ -1,5 +1,5 @@
 import { registerConfig } from '@role-land/helper';
-import { IsNumber, IsString } from 'class-validator';
+import { IsString } from 'class-validator';
 
 export class JwtEnvConfig {
   @IsString()

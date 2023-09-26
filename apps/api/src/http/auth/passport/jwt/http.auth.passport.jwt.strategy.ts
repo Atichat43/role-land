@@ -35,6 +35,7 @@ export class HttpAuthJwtStrategy extends PassportStrategy(PassportJwtStrategy) {
   public async validate(
     payload: IHttpAuthJwtPayload,
   ): Promise<IHttpAuthValidatedUser> {
+    console.log('test');
     const user = await this.authService.getUser({ id: payload.id });
 
     if (isUndefined(user)) {

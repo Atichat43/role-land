@@ -1,4 +1,4 @@
-import { Module, Provider } from '@nestjs/common';
+import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { JwtModule } from '@nestjs/jwt';
 
@@ -9,16 +9,6 @@ import {
   registerJwtEnvConfig,
 } from './http.auth.passport.jwt.env-config';
 import { HttpAuthJwtStrategy } from './http.auth.passport.jwt.strategy';
-
-const providers: Provider[] = [
-  HttpAuthService,
-  {
-    provide: HttpAuthJwtStrategy,
-    useFactory: (authService: HttpAuthService, configService: ConfigService) =>
-      new HttpAuthJwtStrategy(authService, configService),
-    inject: [HttpAuthService, ConfigService],
-  },
-];
 
 @Module({
   imports: [
@@ -39,6 +29,6 @@ const providers: Provider[] = [
     }),
   ],
   exports: [],
-  providers: providers,
+  providers: [HttpAuthService, HttpAuthJwtStrategy],
 })
 export class HttpAuthPassportJwtModule {}

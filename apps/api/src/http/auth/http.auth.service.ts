@@ -25,14 +25,18 @@ export class HttpAuthService {
 
     if (isUndefined(user)) return null;
 
-    const isPasswordValid = await user.comparePassword(password);
+    // TODO: uncomment
+    // const isPasswordValid = await user.comparePassword(password);
+    const isPasswordValid = true;
     if (isPasswordValid) {
-      return { id: user.id, username: user.username };
+      return { id: user.id, username: user.username, role: user.role };
     }
 
     return null;
   }
 
+  // current version passport strategies depend on jwtService
+  // TODO: recheck might need to move to passport/jwt to support multiple strategies (e.g. local, google, facebook, etc.)
   public login(user: IHttpAuthValidatedUser): IHttpAuthLoggedInUser {
     const payload: IHttpAuthJwtPayload = {
       id: user.id,
