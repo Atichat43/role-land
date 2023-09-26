@@ -9,8 +9,8 @@ import {
 import { ApiBody, ApiResponse } from '@nestjs/swagger';
 
 import {
-  HttpAuthDocLoginApiBody,
-  HttpAuthDocLoginApiResponse,
+  HttpDocAuthLoginBody,
+  HttpDocAuthLoginResponse,
 } from './http.auth.controller.docs';
 import { HttpAuthService } from './http.auth.service';
 import { HttpLocalAuthGuard } from './passport/local';
@@ -23,8 +23,8 @@ export class HttpAuthController {
   @Post('login')
   @HttpCode(HttpStatus.OK)
   @UseGuards(HttpLocalAuthGuard)
-  @ApiBody({ type: HttpAuthDocLoginApiBody })
-  @ApiResponse({ status: HttpStatus.OK, type: HttpAuthDocLoginApiResponse })
+  @ApiBody({ type: HttpDocAuthLoginBody })
+  @ApiResponse({ status: HttpStatus.OK, type: HttpDocAuthLoginResponse })
   async login(@Req() req: IHttpAuthRequestWithUser) {
     console.log('req', req.ip);
     console.log('req', req.body);

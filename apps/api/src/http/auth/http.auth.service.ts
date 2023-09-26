@@ -1,6 +1,6 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { User, UserDiToken, UserRepoPort } from '@role-land/core';
+import { IUserRepoPort, User, UserDiToken } from '@role-land/core';
 import { isUndefined, Nullable, Optional } from '@role-land/utility-types';
 
 import {
@@ -13,7 +13,7 @@ import {
 export class HttpAuthService {
   constructor(
     @Inject(UserDiToken.UserRepo)
-    private userRepo: UserRepoPort,
+    private userRepo: IUserRepoPort,
     private jwtService: JwtService,
   ) {}
 

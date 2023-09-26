@@ -2,8 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { HttpApiDocResponse } from '../_shared/controller/docs';
 
-// login
-export class HttpAuthDocLoginApiBody {
+class AuthLoginBody {
   @ApiProperty({ type: 'string', default: 'username' })
   public username: string;
 
@@ -11,7 +10,7 @@ export class HttpAuthDocLoginApiBody {
   public password: string;
 }
 
-class HttpAuthDocLoginApiResponseData {
+class AuthLoginResponseData {
   @ApiProperty({ type: 'string' })
   public id: string;
 
@@ -19,7 +18,12 @@ class HttpAuthDocLoginApiResponseData {
   public accessToken: string;
 }
 
-export class HttpAuthDocLoginApiResponse extends HttpApiDocResponse {
-  @ApiProperty({ type: HttpAuthDocLoginApiResponseData })
-  public data: HttpAuthDocLoginApiResponseData;
+export class AuthLoginResponse extends HttpApiDocResponse {
+  @ApiProperty({ type: AuthLoginResponseData })
+  public data: AuthLoginResponseData;
 }
+
+export {
+  AuthLoginBody as HttpDocAuthLoginBody,
+  AuthLoginResponse as HttpDocAuthLoginResponse,
+};
