@@ -4,9 +4,6 @@ import { APP_GUARD } from '@nestjs/core';
 import { ThrottlerModule } from '@nestjs/throttler';
 import { TypeOrmDevModule } from '@role-land/typeorm';
 
-import { AppController } from './app.controller';
-import { AuthModule } from './auth/auth.module';
-import { BackendService } from './backend.service';
 import { ThrottlerBehindProxyGuard } from './throttler-behind-proxy.guard';
 
 @Module({
@@ -20,11 +17,9 @@ import { ThrottlerBehindProxyGuard } from './throttler-behind-proxy.guard';
       },
     ]),
     TypeOrmDevModule,
-    AuthModule,
   ],
-  controllers: [AppController],
+  controllers: [],
   providers: [
-    BackendService,
     {
       provide: APP_GUARD,
       useClass: ThrottlerBehindProxyGuard,
