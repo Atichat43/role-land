@@ -1,20 +1,14 @@
 import { Module, Provider } from '@nestjs/common';
+import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 import { GetUserUseCaseService, UserDiToken } from '@role-land/core';
-
-class MockUserRepo {
-  constructor() {
-    console.log('MockUserRepo constructor');
-  }
-
-  findUser() {
-    console.log('MockUserRepo findUser');
-  }
-}
+import { UserTypeOrmEntity, UserTypeOrmRepo } from '@role-land/infrastructure';
+import { DataSource } from 'typeorm';
 
 const persistenceProviders: Provider[] = [
   {
     provide: UserDiToken.UserRepo,
-    useFactory: () => new MockUserRepo(),
+    useFactory: (dataSource) => new UserTypeOrmRepo(dataSource),
+    inject: [DataSource],
   },
 ];
 
@@ -27,6 +21,7 @@ const useCaseProviders: Provider[] = [
 ];
 
 @Module({
+  imports: [NestJsTypeOrmModule.forFeature([UserTypeOrmEntity])],
   providers: [...persistenceProviders, ...useCaseProviders],
   exports: [UserDiToken.UserRepo, UserDiToken.GetUserUseCase],
 })

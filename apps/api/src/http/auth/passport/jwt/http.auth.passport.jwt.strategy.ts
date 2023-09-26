@@ -16,9 +16,9 @@ export class HttpAuthJwtStrategy extends PassportStrategy(PassportJwtStrategy) {
   constructor(private authService: HttpAuthService) {
     super({
       jwtFromRequest: ExtractJwt.fromAuthHeaderAsBearerToken(),
-      ignoreExpiration: false,
+      ignoreExpiration: true,
       // secretOrKey: jwtConstants.secret,
-      secretOrKey: 'temp',
+      secretOrKey: 'secret',
       // passReqToCallback: true,
     });
   }
@@ -32,6 +32,6 @@ export class HttpAuthJwtStrategy extends PassportStrategy(PassportJwtStrategy) {
       throw Exception.new({ code: Code.UNAUTHORIZED_ERROR });
     }
 
-    return { id: user.id, username: user.username };
+    return { id: user.id, username: user.username, role: user.role };
   }
 }

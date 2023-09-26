@@ -1,7 +1,7 @@
 import { User } from '@role-land/core';
 import { Request } from 'express';
 
-export type IHttpAuthValidatedUser = Pick<User, 'id' | 'username'>;
+export type IHttpAuthValidatedUser = Pick<User, 'id' | 'username' | 'role'>;
 
 export type IHttpAuthLoggedInUser = Pick<User, 'id'> & {
   access_token: string;

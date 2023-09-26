@@ -7,6 +7,7 @@ import { ITeamMember } from '../../../team-member';
 import { IUserAchievement } from '../../../user-achievement';
 import { IUserAchievementProgress } from '../../../user-achievement-progress';
 import { IMergeUsernames } from '../../entity/mock/user.mock.types';
+import { EUserRole } from './user.enum';
 import { IUserProfile } from './user-profile.value-object.types';
 
 // --- User Interface ---
@@ -32,6 +33,7 @@ export interface IUser extends ITimestampFields, ISoftDeletionFields {
   id: string;
   readonly username: string;
   readonly password: string;
+  role: EUserRole;
   globalName: string;
   premiumStatus: boolean;
   avatar: Nullable<string>;
@@ -61,7 +63,9 @@ export type IUserExcludeSensitive = Omit<IUser, 'password'>;
 
 // NOTE: roles should be empty array in mocking process due to circular dependency with role who has User
 export type IUserMock = Readonly<
-  Omit<IUserRaw, 'username' | 'password'> & { username: IMergeUsernames }
+  Omit<IUserRaw, 'username' | 'password' | 'role'> & {
+    username: IMergeUsernames;
+  }
 >;
 
 // inbound

@@ -1,15 +1,12 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmEnvConfig } from '@role-land/infrastructure';
-import { EntitySchema } from 'typeorm';
+import { TypeOrmEnvConfig, UserTypeOrmEntity } from '@role-land/infrastructure';
 
 import {
   registerTypeOrmEnvConfig,
   typeOrmEnvConfigTokenSymbol,
 } from './typeorm.env.config';
-
-const entities: EntitySchema[] = [];
 
 @Module({
   imports: [
@@ -22,7 +19,7 @@ const entities: EntitySchema[] = [];
 
         return {
           ...config,
-          entities: entities,
+          entities: [UserTypeOrmEntity],
           migrationsRun: false,
         };
       },

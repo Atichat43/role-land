@@ -2,6 +2,7 @@ import { isUndefined, Nullable } from '@role-land/utility-types';
 import { compare, genSalt, hash } from 'bcrypt';
 import {
   IsBoolean,
+  IsEnum,
   IsInstance,
   IsOptional,
   IsString,
@@ -11,7 +12,12 @@ import {
 import { v4 } from 'uuid';
 
 import { Entity } from '../../../_shared/entity/entity';
-import { ICreateUserPayload, IEditUserPayload, IUserRaw } from './type';
+import {
+  EUserRole,
+  ICreateUserPayload,
+  IEditUserPayload,
+  IUserRaw,
+} from './type';
 import { UserProfile } from './user-profile.value-object';
 
 export class User extends Entity<string> implements IUserRaw {
@@ -21,6 +27,9 @@ export class User extends Entity<string> implements IUserRaw {
 
   @IsString()
   password: string;
+
+  @IsEnum(EUserRole)
+  role: EUserRole;
 
   @IsString()
   @Length(1, 25)
@@ -42,6 +51,7 @@ export class User extends Entity<string> implements IUserRaw {
 
     this.username = payload.username;
     this.password = payload.password;
+    this.role = payload.role ?? EUserRole.EndUser;
 
     this.globalName = payload.globalName ?? payload.username;
     this.premiumStatus = payload.premiumStatus ?? false;

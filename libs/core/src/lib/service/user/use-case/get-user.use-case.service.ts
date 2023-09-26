@@ -5,13 +5,13 @@ import { Exception } from '../../../_shared/exception';
 import {
   IGetUserPort,
   IGetUserUseCase,
+  IUserRepoPort,
   User,
-  UserRepoPort,
   UserUseCaseDto,
 } from '../../../domain/user';
 
 export class GetUserUseCaseService implements IGetUserUseCase {
-  constructor(private readonly userRepo: UserRepoPort) {}
+  constructor(private readonly userRepo: IUserRepoPort) {}
 
   public async execute(payload: IGetUserPort): Promise<UserUseCaseDto> {
     const user: Optional<User> = await this.userRepo.findUser({
