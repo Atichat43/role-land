@@ -1,12 +1,12 @@
 import { registerConfig } from '@role-land/helper';
-import { IsString } from 'class-validator';
+import { IsNumber, IsString } from 'class-validator';
 
 export class JwtEnvConfig {
   @IsString()
   secret: string;
 
   @IsString()
-  expiresIn: number;
+  expiresIn: string;
 }
 
 export const jwtEnvConfigTokenSymbol = Symbol('JwtEnvConfigToken');

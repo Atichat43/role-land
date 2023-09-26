@@ -1,23 +1,21 @@
 import { Module } from '@nestjs/common';
-import { JwtModule } from '@nestjs/jwt';
+import { ConfigModule } from '@nestjs/config';
 import { PassportModule } from '@nestjs/passport';
 
 import { UserModule } from '../../di';
 import { HttpAuthController } from './http.auth.controller';
 import { HttpAuthService } from './http.auth.service';
-import { HttpAuthJwtStrategy } from './passport/jwt';
+import { HttpAuthPassportJwtModule } from './passport/jwt/http.auth.passport.jwt.module';
 import { HttpAuthLocalStrategy } from './passport/local';
 
 @Module({
   imports: [
     UserModule,
-    PassportModule,
-    JwtModule.register({
-      secret: 'secret',
-      signOptions: { expiresIn: '1m' },
-    }),
+    ConfigModule.forRoot({ isGlobal: true }),
+    PassportModule, // TODO: recheck
+    HttpAuthPassportJwtModule,
   ],
-  providers: [HttpAuthService, HttpAuthLocalStrategy, HttpAuthJwtStrategy],
+  providers: [HttpAuthService, HttpAuthLocalStrategy],
   controllers: [HttpAuthController],
 })
 export class HttpAuthModule {}

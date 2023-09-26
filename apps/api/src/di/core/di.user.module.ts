@@ -1,4 +1,4 @@
-import { Module, Provider } from '@nestjs/common';
+import { Global, Module, Provider } from '@nestjs/common';
 import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 import { GetUserUseCaseService, UserDiToken } from '@role-land/core';
 import { UserTypeOrmEntity, UserTypeOrmRepo } from '@role-land/infrastructure';
@@ -20,6 +20,7 @@ const useCaseProviders: Provider[] = [
   },
 ];
 
+@Global()
 @Module({
   imports: [NestJsTypeOrmModule.forFeature([UserTypeOrmEntity])],
   providers: [...persistenceProviders, ...useCaseProviders],
