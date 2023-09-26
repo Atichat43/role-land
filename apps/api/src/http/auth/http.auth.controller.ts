@@ -6,8 +6,9 @@ import {
   Req,
   UseGuards,
 } from '@nestjs/common';
-import { ApiBody, ApiResponse } from '@nestjs/swagger';
+import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
 
+import { HttpApiResponseMapper } from '../_shared/api-response/http.api-response.mapper';
 import {
   HttpDocAuthLoginBody,
   HttpDocAuthLoginResponse,
@@ -17,6 +18,7 @@ import { HttpLocalAuthGuard } from './passport/local';
 import { IHttpAuthRequestWithUser } from './type/http.auth.type';
 
 @Controller('auth')
+@ApiTags('auth')
 export class HttpAuthController {
   constructor(private readonly authService: HttpAuthService) {}
 
@@ -29,6 +31,6 @@ export class HttpAuthController {
     console.log('req', req.ip);
     console.log('req', req.body);
 
-    return this.authService.login(req.user);
+    return HttpApiResponseMapper.success(this.authService.login(req.user));
   }
 }

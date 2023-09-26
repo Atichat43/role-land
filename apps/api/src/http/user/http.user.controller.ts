@@ -1,7 +1,7 @@
 import { Controller, Get, HttpCode, HttpStatus, Inject } from '@nestjs/common';
 import { IGetUserUseCase, UserDiToken, UserUseCaseDto } from '@role-land/core';
 
-import { ApiResponseMapper } from '../_shared/api-response/api-response.mapper';
+import { HttpApiResponseMapper } from '../_shared/api-response/http.api-response.mapper';
 import { HttpRequestParamUser } from '../auth/decorator';
 import { IHttpAuthValidatedUser } from '../auth/type/http.auth.type';
 
@@ -20,6 +20,6 @@ export class HttpUserController {
       userId: httpUser.id,
     });
 
-    return ApiResponseMapper.success(user);
+    return HttpApiResponseMapper.success(user);
   }
 }

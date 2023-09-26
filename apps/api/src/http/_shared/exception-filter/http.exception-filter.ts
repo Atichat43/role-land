@@ -30,6 +30,7 @@ export class NestHttpExceptionFilter implements ExceptionFilter {
         `Path: ${request.path}; ` +
         `Error: ${errorResponse.message}`;
 
+      // TODO: remove console.error
       console.error(error);
       Logger.error(message);
     }
