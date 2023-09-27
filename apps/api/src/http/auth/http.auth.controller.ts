@@ -28,9 +28,6 @@ export class HttpAuthController {
   @ApiBody({ type: HttpDocAuthLoginBody })
   @ApiResponse({ status: HttpStatus.OK, type: HttpDocAuthLoginResponse })
   async login(@Req() req: IHttpAuthRequestWithUser) {
-    console.log('req', req.ip);
-    console.log('req', req.body);
-
     return HttpApiResponseMapper.success(this.authService.login(req.user));
   }
 }
