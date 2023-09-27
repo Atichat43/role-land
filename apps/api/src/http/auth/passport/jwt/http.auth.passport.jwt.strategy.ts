@@ -6,10 +6,7 @@ import { isUndefined } from '@role-land/utility-types';
 import { ExtractJwt, Strategy as PassportJwtStrategy } from 'passport-jwt';
 
 import { HttpAuthService } from '../../http.auth.service';
-import {
-  IHttpAuthJwtPayload,
-  IHttpAuthValidatedUser,
-} from '../../type/http.auth.type';
+import { IHttpAuthJwtPayload, IHttpAuthValidatedUser } from '../../type';
 import {
   JwtEnvConfig,
   jwtEnvConfigTokenSymbol,

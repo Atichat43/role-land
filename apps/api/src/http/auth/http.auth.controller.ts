@@ -12,10 +12,10 @@ import { HttpApiResponseMapper } from '../_shared/api-response/http.api-response
 import {
   HttpApiModelAuthLoginBody,
   HttpApiModelAuthLoginResponse,
-} from './http.auth.controller.docs';
+} from './api-model';
 import { HttpAuthService } from './http.auth.service';
 import { HttpLocalAuthGuard } from './passport/local';
-import { IHttpAuthRequestWithUser } from './type/http.auth.type';
+import { IHttpAuthRequestWithUser } from './type';
 
 @Controller('auth')
 @ApiTags('auth')

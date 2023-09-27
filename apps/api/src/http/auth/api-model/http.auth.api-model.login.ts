@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 
-import { HttpApiModelBaseResponse } from '../_shared/api-model';
+import { HttpApiModelBaseResponse } from '../../_shared/api-model';
 
 class AuthLoginBody {
   @ApiProperty({ type: 'string', default: 'username' })

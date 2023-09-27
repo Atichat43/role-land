@@ -10,7 +10,7 @@ import { Reflector } from '@nestjs/core';
 import { Code, EUserRole, Exception } from '@role-land/core';
 
 import { HttpJwtAuthGuard } from '../passport/jwt';
-import { IHttpAuthRequestWithUser } from '../type/http.auth.type';
+import { IHttpAuthRequestWithUser } from '../type';
 
 @Injectable()
 class HttpRoleAuthGuard implements CanActivate {

@@ -5,7 +5,7 @@ import { isNull, Nullable } from '@role-land/utility-types';
 import { Strategy as PassportLocalStrategy } from 'passport-local';
 
 import { HttpAuthService } from '../../http.auth.service';
-import { IHttpAuthValidatedUser } from '../../type/http.auth.type';
+import { IHttpAuthValidatedUser } from '../../type';
 
 // NOTE: to verify using username and password
 @Injectable()

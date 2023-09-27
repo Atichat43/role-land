@@ -7,7 +7,7 @@ import {
   IHttpAuthJwtPayload,
   IHttpAuthLoggedInUser,
   IHttpAuthValidatedUser,
-} from './type/http.auth.type';
+} from './type';
 
 @Injectable()
 export class HttpAuthService {
