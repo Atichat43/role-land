@@ -1,7 +1,7 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { Code } from '@role-land/core';
 
-export class HttpApiModelBaseResponse {
+export abstract class HttpApiModelBaseResponse {
   @ApiProperty({
     type: 'number',
     default: Code.SUCCESS.code,

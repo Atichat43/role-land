@@ -3,7 +3,7 @@ import { EUserRole } from '@role-land/core';
 
 import { HttpApiModelBaseResponse } from '../../_shared/api-model';
 
-class UserGetMeResponseData {
+abstract class UserGetMeResponseData {
   @ApiProperty({
     type: 'string',
     default: '290c9ef8-c1fd-4734-9338-87d69eeXXXXX',
@@ -17,7 +17,7 @@ class UserGetMeResponseData {
   public role: EUserRole;
 }
 
-class UserGetMeResponse extends HttpApiModelBaseResponse {
+abstract class UserGetMeResponse extends HttpApiModelBaseResponse {
   @ApiProperty({ type: UserGetMeResponseData })
   public data: UserGetMeResponseData;
 }

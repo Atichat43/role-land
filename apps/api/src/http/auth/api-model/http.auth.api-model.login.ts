@@ -2,7 +2,7 @@ import { ApiProperty } from '@nestjs/swagger';
 
 import { HttpApiModelBaseResponse } from '../../_shared/api-model';
 
-class AuthLoginBody {
+abstract class AuthLoginBody {
   @ApiProperty({ type: 'string', default: 'username' })
   public username: string;
 
@@ -10,7 +10,7 @@ class AuthLoginBody {
   public password: string;
 }
 
-class AuthLoginResponseData {
+abstract class AuthLoginResponseData {
   @ApiProperty({ type: 'string' })
   public id: string;
 
@@ -18,7 +18,7 @@ class AuthLoginResponseData {
   public accessToken: string;
 }
 
-export class AuthLoginResponse extends HttpApiModelBaseResponse {
+export abstract class AuthLoginResponse extends HttpApiModelBaseResponse {
   @ApiProperty({ type: AuthLoginResponseData })
   public data: AuthLoginResponseData;
 }
