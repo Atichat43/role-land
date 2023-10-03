@@ -8,4 +8,11 @@ export interface IUserRepoPort {
     by: { id?: string; username?: string },
     options?: IRepoFindOpts,
   ): Promise<Optional<User>>;
+
+  countUsers(
+    by: { username?: string },
+    options?: IRepoFindOpts,
+  ): Promise<number>;
+
+  addUser(user: User): Promise<Pick<User, 'id'>>;
 }

@@ -13,4 +13,15 @@ export class UserTypeOrmMapper {
 
     return domainUser;
   }
+
+  public static toOrmEntity(domainEntity: User): UserTypeOrmEntity {
+    const ormUser: UserTypeOrmEntity = new UserTypeOrmEntity();
+
+    ormUser.id = domainEntity.id;
+    ormUser.username = domainEntity.username;
+    ormUser.password = domainEntity.password;
+    ormUser.role = domainEntity.role;
+
+    return ormUser;
+  }
 }

@@ -55,4 +55,24 @@ export class UserTypeOrmRepo implements IUserRepoPort {
 
     return domainEntity;
   }
+
+  public async countUsers(
+    by: { username?: string },
+    options: IRepoFindOpts = {},
+  ): Promise<number> {
+    const query: SelectQueryBuilder<UserTypeOrmEntity> =
+      this.buildUserQueryBuilder();
+
+    this.extendQueryWithByProp(by, query);
+
+    return query.getCount();
+  }
+
+  public async addUser(user: User): Promise<Pick<User, 'id'>> {
+    const ormEntity: UserTypeOrmEntity = UserTypeOrmMapper.toOrmEntity(user);
+
+    await this.dataSource.manager.save(ormEntity);
+
+    return { id: ormEntity.id };
+  }
 }
