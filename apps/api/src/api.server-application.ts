@@ -30,8 +30,9 @@ export class ServerApplication {
   private configureAppMiddleware = (app: NestExpressApplication): void => {
     // enable validation globally
     const validationPipeOptions: ValidationPipeOptions = {
-      whitelist: true, // any extraneous properties that are not expected or defined in your DTO (Data Transfer Object) will be stripped
       transform: true,
+      whitelist: true, // strip extraneous data
+      forbidNonWhitelisted: true, // throw an error if extraneous data is found
     };
     app.useGlobalPipes(new ValidationPipe(validationPipeOptions));
 
