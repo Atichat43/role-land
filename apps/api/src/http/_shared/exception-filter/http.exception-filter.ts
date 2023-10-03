@@ -1,5 +1,6 @@
 import {
   ArgumentsHost,
+  BadRequestException,
   Catch,
   ExceptionFilter,
   HttpException,
@@ -43,17 +44,31 @@ export class NestHttpExceptionFilter implements ExceptionFilter {
     error: Error,
     errorResponse: HttpApiResponseMapper<unknown>,
   ): HttpApiResponseMapper<unknown> {
-    if (error instanceof HttpException) {
-      errorResponse = HttpApiResponseMapper.error(
-        error.getStatus(),
-        error.message,
-        null,
-      );
-    }
     if (error instanceof UnauthorizedException) {
       errorResponse = HttpApiResponseMapper.error(
         Code.UNAUTHORIZED_ERROR.code,
         Code.UNAUTHORIZED_ERROR.message,
+        null,
+      );
+
+      return errorResponse;
+    }
+
+    if (error instanceof BadRequestException) {
+      errorResponse = HttpApiResponseMapper.error(
+        Code.BAD_REQUEST_ERROR.code,
+        Code.BAD_REQUEST_ERROR.message,
+        // eslint-disable-next-line @typescript-eslint/no-explicit-any
+        (error.getResponse() as any).message,
+      );
+
+      return errorResponse;
+    }
+
+    if (error instanceof HttpException) {
+      errorResponse = HttpApiResponseMapper.error(
+        error.getStatus(),
+        error.message,
         null,
       );
     }
