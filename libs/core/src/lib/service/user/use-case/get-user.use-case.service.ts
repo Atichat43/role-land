@@ -1,3 +1,4 @@
+import { Assert } from '@role-land/helper';
 import { Optional } from '@role-land/utility-types';
 
 import { Code } from '../../../_shared/code';
@@ -14,16 +15,15 @@ export class GetUserUseCaseService implements IGetUserUseCase {
   constructor(private readonly userRepo: IUserRepoPort) {}
 
   public async execute(payload: IGetUserPort): Promise<UserUseCaseDto> {
-    const user: Optional<User> = await this.userRepo.findUser({
-      id: payload.userId,
-    });
-
-    if (!user) {
-      throw Exception.new({
+    const user: User = Assert.notEmpty(
+      await this.userRepo.findUser({
+        id: payload.userId,
+      }),
+      Exception.new({
         code: Code.ENTITY_NOT_FOUND_ERROR,
         overrideMessage: 'User not found.',
-      });
-    }
+      }),
+    );
 
     return UserUseCaseDto.newFromUser(user);
   }
