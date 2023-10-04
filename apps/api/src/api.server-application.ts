@@ -8,7 +8,9 @@ import {
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import session from 'express-session';
 import helmet from 'helmet';
+import passport from 'passport';
 import * as requestIp from 'request-ip';
 
 import { ApiEnvConfig } from './api.env.config';
@@ -43,6 +45,24 @@ export class ServerApplication {
     app.use(helmet());
   };
 
+  private configureAppSessionMiddleware = (
+    app: NestExpressApplication,
+  ): void => {
+    app.use(
+      session({
+        cookie: {
+          maxAge: 24 * 60 * 60 * 1000, // 1 day
+        },
+        secret: 'secret',
+        resave: false,
+        saveUninitialized: false,
+      }),
+    );
+
+    app.use(passport.initialize());
+    app.use(passport.session());
+  };
+
   private buildApiDocumentation(app: NestExpressApplication): void {
     const title = 'Role Land API';
     const description = 'Role Land API description';
@@ -73,6 +93,7 @@ export class ServerApplication {
       await NestFactory.create<NestExpressApplication>(ApiModule, appOptions);
 
     this.configureAppMiddleware(app);
+    this.configureAppSessionMiddleware(app);
     this.buildApiDocumentation(app);
 
     await app.listen(this.port, this.host);
