@@ -81,7 +81,11 @@ export class ServerApplication {
 
     await app.listen(this.port, this.host);
 
-    const message = `🚀 Application is running on: http://${this.host}:${this.port}/`;
-    this.logger.log(message);
+    this.logger.log(
+      `🚀 Application is running on: http://${this.host}:${this.port}/`,
+    );
+    this.logger.log(
+      `👾 Discord Login: http://${this.host}:${this.port}/auth/discord/login`,
+    );
   }
 }
