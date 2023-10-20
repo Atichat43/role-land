@@ -7,6 +7,8 @@
     "Embeded",
     "necord",
     "nocheck",
+    "overscan",
+    "tanstack",
     "typeorm"
   ]
 }
