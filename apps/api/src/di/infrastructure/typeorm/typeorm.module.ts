@@ -1,7 +1,11 @@
 import { Module } from '@nestjs/common';
 import { ConfigModule, ConfigService } from '@nestjs/config';
 import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
-import { TypeOrmEnvConfig, UserTypeOrmEntity } from '@role-land/infrastructure';
+import {
+  AuthProviderTypeOrmEntity,
+  TypeOrmEnvConfig,
+  UserTypeOrmEntity,
+} from '@role-land/infrastructure';
 
 import {
   registerTypeOrmEnvConfig,
@@ -19,7 +23,7 @@ import {
 
         return {
           ...config,
-          entities: [UserTypeOrmEntity],
+          entities: [UserTypeOrmEntity, AuthProviderTypeOrmEntity],
           migrationsRun: false,
         };
       },
