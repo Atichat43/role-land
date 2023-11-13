@@ -4,6 +4,7 @@ export * from './lib/_shared/persistence';
 export * from './lib/domain/_base.types';
 export * from './lib/domain/achievement';
 export * from './lib/domain/action';
+export * from './lib/domain/auth-provider';
 export * from './lib/domain/role';
 export * from './lib/domain/session';
 export * from './lib/domain/shared-link';
@@ -21,6 +22,7 @@ export * from './lib/service';
 
 import achievementMock from './lib/domain/achievement/achievement.mock';
 import actionMock from './lib/domain/action/action.mock';
+import { authProviderMock } from './lib/domain/auth-provider/entity/mock';
 import roleMock from './lib/domain/role/role.mock';
 import sessionMock from './lib/domain/session/session.mock';
 import sharedLinkMock from './lib/domain/shared-link/shared-link.mock';
@@ -32,6 +34,7 @@ import userAchievementMock from './lib/domain/user-achievement/user-achievement.
 import userAchievementProgressMock from './lib/domain/user-achievement-progress/user-achievement-progress.mock';
 
 export const SEED = {
+  authProviderMock,
   achievementMock,
   actionMock,
   roleMock,

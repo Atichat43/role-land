@@ -1,11 +1,11 @@
-import { v4 as uuid } from 'uuid';
+import { v4 } from 'uuid';
 
 import { IUserMock } from '../type';
 import { IMergeUsernames } from './user.mock.types';
 
 const userMockData: IUserMock[] = [
   {
-    id: uuid(),
+    id: v4(),
     username: 'idiot',
     globalName: 'Idiot who knows nothing',
     premiumStatus: false,
@@ -16,7 +16,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'role-land-expert',
     globalName: 'Role Land Expert',
     premiumStatus: true,
@@ -27,7 +27,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'product-owner-team-a-b',
     globalName: 'Product Owner Team A and B',
     premiumStatus: true,
@@ -40,7 +40,7 @@ const userMockData: IUserMock[] = [
 
   // team A: mini team
   {
-    id: uuid(),
+    id: v4(),
     username: 'backend-developer-1-team-a',
     globalName: 'Backend Developer 1 Team A',
     premiumStatus: false,
@@ -51,7 +51,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'backend-developer-2-team-a',
     globalName: 'Backend Developer 2 Team A',
     premiumStatus: false,
@@ -62,7 +62,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'frontend-developer-1-team-a',
     globalName: 'Frontend Developer 1 Team A',
     premiumStatus: false,
@@ -75,7 +75,7 @@ const userMockData: IUserMock[] = [
 
   // team B: full team
   {
-    id: uuid(),
+    id: v4(),
     username: 'backend-developer-1-team-b',
     globalName: 'Backend Developer 1 Team B',
     premiumStatus: true,
@@ -86,7 +86,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'backend-developer-2-team-b',
     globalName: 'Backend Developer 2 Team B',
     premiumStatus: true,
@@ -97,7 +97,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'frontend-developer-1-team-b',
     globalName: 'Frontend Developer 1 Team B',
     premiumStatus: true,
@@ -108,7 +108,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'frontend-developer-2-team-b',
     globalName: 'Frontend Developer 2 Team B',
     premiumStatus: true,
@@ -119,7 +119,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'dev-ops-team-b',
     globalName: 'Dev Ops Team B',
     premiumStatus: true,
@@ -130,7 +130,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'qa-team-b',
     globalName: 'QA Team B',
     premiumStatus: true,
@@ -141,7 +141,7 @@ const userMockData: IUserMock[] = [
     },
   },
   {
-    id: uuid(),
+    id: v4(),
     username: 'client-team-b',
     globalName: 'Client Team B',
     premiumStatus: true,
