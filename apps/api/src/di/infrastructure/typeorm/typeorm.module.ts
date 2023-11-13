@@ -4,6 +4,7 @@ import { TypeOrmModule as NestJsTypeOrmModule } from '@nestjs/typeorm';
 import {
   AuthProviderTypeOrmEntity,
   TypeOrmEnvConfig,
+  UserAuthTypeOrmEntity,
   UserTypeOrmEntity,
 } from '@role-land/infrastructure';
 
@@ -23,7 +24,11 @@ import {
 
         return {
           ...config,
-          entities: [UserTypeOrmEntity, AuthProviderTypeOrmEntity],
+          entities: [
+            UserTypeOrmEntity,
+            AuthProviderTypeOrmEntity,
+            UserAuthTypeOrmEntity,
+          ],
           migrationsRun: false,
         };
       },
