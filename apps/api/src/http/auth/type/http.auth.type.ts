@@ -15,3 +15,5 @@ export type IHttpAuthJwtPayload = Pick<User, 'id' | 'username'> & {
 export type IHttpAuthRequestWithUser = Request & {
   user: IHttpAuthValidatedUser;
 };
+
+export type IDone = (err: Error, user: IHttpAuthValidatedUser) => void;

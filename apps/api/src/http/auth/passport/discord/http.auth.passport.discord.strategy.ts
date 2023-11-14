@@ -1,10 +1,15 @@
+import { Injectable } from '@nestjs/common';
 import { PassportStrategy } from '@nestjs/passport';
 import { Profile, Strategy as PassportDiscordStrategy } from 'passport-discord';
 
+import { HttpAuthService } from '../../http.auth.service';
+import { IDone } from '../../type';
+
+@Injectable()
 export class HttpAuthDiscordStrategy extends PassportStrategy(
   PassportDiscordStrategy,
 ) {
-  constructor() {
+  constructor(private authService: HttpAuthService) {
     super({
       clientID: process.env.DISCORD_CLIENT_ID,
       clientSecret: process.env.DISCORD_CLIENT_SECRET,
@@ -17,25 +22,16 @@ export class HttpAuthDiscordStrategy extends PassportStrategy(
     accessToken: string,
     refreshToken: string,
     profile: Profile,
-    // done: any,
+    done: IDone,
   ) {
-    const { id, username, discriminator, avatar, guilds } = profile;
-
-    console.log('accessToken', accessToken);
-    console.log('refreshToken', refreshToken);
-    console.log('profile', profile);
-    // console.log('done', done);
-
-    const user = {
-      id,
-      username,
-      discriminator,
-      avatar,
-      guilds,
+    // TODO: save tokens
+    // const encryptedAccessToken = encrypt(accessToken).toString();
+    // const encryptedRefreshToken = encrypt(refreshToken).toString();
+    const user = await this.authService.validateDiscordUser(profile, {
       accessToken,
       refreshToken,
-    };
+    });
 
-    // done(null, user);
+    done(null, user);
   }
 }

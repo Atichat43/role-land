@@ -5,9 +5,11 @@ import {
   HttpStatus,
   Post,
   Req,
+  Session,
   UseGuards,
 } from '@nestjs/common';
 import { ApiBody, ApiResponse, ApiTags } from '@nestjs/swagger';
+import { Session as ExpressSession } from 'express-session';
 
 import { HttpApiResponseMapper } from '../_shared/api-response/http.api-response.mapper';
 import {
@@ -16,7 +18,7 @@ import {
 } from './api-model';
 import { HttpAuthService } from './http.auth.service';
 import { HttpDiscordAuthGuard } from './passport/discord/http.auth.passport.discord.auth-guard';
-import { HttpLocalAuthGuard } from './passport/local';
+import { HttpAuthenticatedGuard, HttpLocalAuthGuard } from './passport/local';
 import { IHttpAuthRequestWithUser } from './type';
 
 @Controller('auth')
@@ -31,6 +33,18 @@ export class HttpAuthController {
   @ApiResponse({ status: HttpStatus.OK, type: HttpApiModelAuthLoginResponse })
   async login(@Req() req: IHttpAuthRequestWithUser) {
     return HttpApiResponseMapper.success(this.authService.login(req.user));
+  }
+
+  @UseGuards(HttpAuthenticatedGuard)
+  @Get('status')
+  async getStatus(@Req() req: IHttpAuthRequestWithUser) {
+    return HttpApiResponseMapper.success(req.user);
+  }
+
+  @Get('session')
+  async getAuthSession(@Session() session: ExpressSession) {
+    console.log('session', { session, id: session.id });
+    return HttpApiResponseMapper.success(session);
   }
 
   @Get('discord/login')

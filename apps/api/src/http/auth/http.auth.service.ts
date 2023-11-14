@@ -1,7 +1,17 @@
 import { Inject, Injectable } from '@nestjs/common';
 import { JwtService } from '@nestjs/jwt';
-import { IUserRepoPort, User, UserDiToken } from '@role-land/core';
+import {
+  AuthProvider,
+  AuthProviderDiToken,
+  IUserAuthRepoPort,
+  IUserRepoPort,
+  User,
+  UserAuth,
+  UserAuthDiToken,
+  UserDiToken,
+} from '@role-land/core';
 import { isUndefined, Nullable, Optional } from '@role-land/utility-types';
+import { Profile } from 'passport-discord';
 
 import {
   IHttpAuthJwtPayload,
@@ -14,8 +24,33 @@ export class HttpAuthService {
   constructor(
     @Inject(UserDiToken.UserRepo)
     private userRepo: IUserRepoPort,
+    @Inject(UserAuthDiToken.UserAuthRepo)
+    private userAuthRepo: IUserAuthRepoPort,
+    @Inject(AuthProviderDiToken.AuthProviderRepo)
+    private authProviderRepo: AuthProvider,
     private jwtService: JwtService,
   ) {}
+
+  // TODO: Profile
+  public async validateDiscordUser(
+    profile: Profile,
+    tokens: { accessToken: string; refreshToken: string },
+  ): Promise<Nullable<IHttpAuthValidatedUser>> {
+    // discord auth provider
+    // 90e15c93-95b1-4b9c-9c9a-09aececef06d
+    const userAuth: Optional<UserAuth> = await this.userAuthRepo.findUserAuth({
+      authProviderId: '90e15c93-95b1-4b9c-9c9a-09aececef06d',
+      providerUserId: profile.username,
+    });
+
+    if (isUndefined(userAuth)) return null;
+
+    const user: Optional<User> = await this.userRepo.findUser({
+      id: userAuth.userId,
+    });
+
+    return { id: user.id, username: user.username, role: user.role };
+  }
 
   public async validateUser(
     username: string,
@@ -25,9 +60,7 @@ export class HttpAuthService {
 
     if (isUndefined(user)) return null;
 
-    // TODO: uncomment
-    // const isPasswordValid = await user.comparePassword(password);
-    const isPasswordValid = true;
+    const isPasswordValid = await user.comparePassword(password);
     if (isPasswordValid) {
       return { id: user.id, username: user.username, role: user.role };
     }

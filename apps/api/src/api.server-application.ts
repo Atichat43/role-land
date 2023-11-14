@@ -50,6 +50,7 @@ export class ServerApplication {
   ): void => {
     app.use(
       session({
+        name: 'role-land.sid',
         cookie: {
           maxAge: 24 * 60 * 60 * 1000, // 1 day
         },
@@ -86,7 +87,9 @@ export class ServerApplication {
 
   public async run(): Promise<void> {
     const appOptions: NestApplicationOptions = {
-      cors: true,
+      cors: {
+        origin: [`http://${this.host}:${this.port}`],
+      },
       logger: this.logLevels,
     };
     const app: NestExpressApplication =
