@@ -8,6 +8,9 @@ import {
 import { NestFactory } from '@nestjs/core';
 import { NestExpressApplication } from '@nestjs/platform-express';
 import { DocumentBuilder, OpenAPIObject, SwaggerModule } from '@nestjs/swagger';
+import { getDataSourceToken } from '@nestjs/typeorm';
+import { UserAuthSessionEntity } from '@role-land/infrastructure';
+import { TypeormStore } from 'connect-typeorm';
 import session from 'express-session';
 import helmet from 'helmet';
 import passport from 'passport';
@@ -48,6 +51,8 @@ export class ServerApplication {
   private configureAppSessionMiddleware = (
     app: NestExpressApplication,
   ): void => {
+    const dataSource = app.get(getDataSourceToken());
+
     app.use(
       session({
         name: 'role-land.sid',
@@ -57,6 +62,11 @@ export class ServerApplication {
         secret: 'secret',
         resave: false,
         saveUninitialized: false,
+        // instead of using memory store, use actual database to store session
+        store: new TypeormStore({
+          cleanupLimit: 10, // 10 or 20 small to medium size application
+          ttl: 86400, // 1 day
+        }).connect(dataSource.getRepository(UserAuthSessionEntity)),
       }),
     );
 
